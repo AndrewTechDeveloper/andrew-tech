@@ -3,6 +3,7 @@
 /vendor/bundle
 /next/node_modules
 /next/package-lock.json
+/next/.next
 
 # Ignore all logfiles and tempfiles.
 /log/*
