@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import { Store } from 'redux';
-import { History } from 'history';
+import * as React from 'react'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
+import { Store } from 'redux'
+import { History } from 'history'
 
-import Routes from 'routes';
-import { AppState } from 'store';
+import Routes from 'routes'
+import { AppState } from 'store'
 
 interface AppProps {
-  store: Store<AppState>;
-  history: History;
+  store: Store<AppState>
+  history: History
 }
 
 const App: React.FC<AppProps> = ({ store, history }) => {
@@ -19,7 +19,7 @@ const App: React.FC<AppProps> = ({ store, history }) => {
         <Routes />
       </ConnectedRouter>
     </Provider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import * as React from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-import IndexPage from 'pages/blogs/index';
+import IndexPage from 'pages/blogs/index'
 
 const Routes: React.SFC = () => (
   <div>
@@ -10,6 +10,6 @@ const Routes: React.SFC = () => (
       <Route component={() => <div>Not Found</div>} />
     </Switch>
   </div>
-);
+)
 
-export default Routes;
+export default Routes

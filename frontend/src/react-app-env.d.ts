@@ -1,3 +1,3 @@
 interface Window {
-  INITIAL_REDUX_STATE: any;
+  INITIAL_REDUX_STATE: any
 }
