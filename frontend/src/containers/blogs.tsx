@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps, Route, Switch } from 'react-router-dom'
 import { AppState } from 'store'
-import { changeEditorState } from 'store/blogs/actions'
+import* as blogsActions from 'store/blogs/actions'
 import BlogsIndexPage from 'pages/blogs/index'
 
 interface PropsFromState {
@@ -24,7 +24,7 @@ const mapStateToProps = ({ blogs }: AppState) => ({
 })
 
 const mapDispatchToProps = {
-  changeEditor: changeEditorState
+  changeEditor: blogsActions.changeEditorState
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogsPage)
