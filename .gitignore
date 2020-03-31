@@ -1,9 +1,10 @@
 # Ignore bundler config.
 /.bundle
 /vendor/bundle
-/next/node_modules
-/next/package-lock.json
-/next/.next
+/frontend/node_modules
+/frontend/package-lock.json
+/frontend/.next
+/frontend/.env
 
 # Ignore all logfiles and tempfiles.
 /log/*
