@@ -1,0 +1,33 @@
+@import '~mdbreact/dist/css/mdb.css';
+@import '~bootstrap-css-only/css/bootstrap.min.css';
+
+
+body {
+  margin: 0;
+  color: #333;
+  font-family: "Roboto", "Helvetica", "Arial", 'Noto Sans Japanese',"游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", 'メイリオ' , Meiryo , Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input:focus {
+  outline: none;
+}
+input:hover {
+  text-decoration: none;
+}
+button {
+  border: none !important;
+  outline: none !important;
+}
+button:hover {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}

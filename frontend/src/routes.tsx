@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import IndexPage from 'pages/blogs/index'
+import BlogsPage from 'pages/blogs'
 
-const Routes: React.SFC = () => (
+const Routes: React.FC = () => (
   <div>
     <Switch>
-      <Route exact path="/" component={IndexPage} />
+      <Route path="/blogs" component={BlogsPage} />
       <Route component={() => <div>Not Found</div>} />
     </Switch>
   </div>

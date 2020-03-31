@@ -1,15 +1,49 @@
 import * as React from 'react'
+import Button from '@material-ui/core/Button';
+import { Editor, EditorState, RichUtils } from 'draft-js';
+import { AppState } from 'store'
+import { connect } from 'react-redux'
+import * as blogsActions from 'store/blogs/actions'
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import { CarouselTitle } from 'components/blogs/Carousel'
+import { TrendList } from 'components/blogs/List'
 
-function IndexPage() {
-  return (
-    <div>
-      <h1>Welcome to japan!</h1>
-      <p>
-        Welcome to the Redux 4 + TypeScript 3.3 example! This example site shows you the ideal project structure, recommended libraries, as
-        well as design pattern on writing type-safe React + Redux app with TypeScript.
-      </p>
-    </div>
-  )
+interface PropsFromState {
+  editorState: EditorState
+}
+interface PropsFromDispatch {
+  changeEditorState: typeof blogsActions.changeEditorState
+}
+type AllProps = PropsFromState & PropsFromDispatch
+
+const mapStateToProps = ({ blogs }: AppState) => ({
+  editorState: blogs.editorState
+})
+const mapDispatchToProps = {
+  changeEditorState: blogsActions.changeEditorState,
 }
 
-export default IndexPage
+class BlogsNewPage extends React.Component<AllProps> {
+  public render() {
+    const { editorState, changeEditorState } = this.props
+
+    return (
+      <>
+        <CarouselTitle />
+        <Container maxWidth="md" className='mt-4'>
+          <Typography variant="h4">
+            人気の記事
+          </Typography>
+          <TrendList />
+        </Container>
+      </>
+    )
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BlogsNewPage)
