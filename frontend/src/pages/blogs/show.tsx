@@ -1,12 +1,10 @@
 import * as React from 'react'
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { EditorState } from 'draft-js'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
-import { InlineStyleButton, BlockTypeButton } from 'components/blogs/Button'
-import 'draft-js/dist/Draft.css';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
 
 interface PropsFromState {
   editorState: EditorState
@@ -20,28 +18,11 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   editorState: blogs.editorState
 })
 const mapDispatchToProps = {
-  changeEditorState: blogsActions.changeEditorState,
+  changeEditorState: blogsActions.changeEditorState
 }
 
 class BlogsShowPage extends React.Component<AllProps> {
   public render() {
-    const { editorState, changeEditorState } = this.props
-
-    const changeInlineStyle = (style: string) => {
-      changeEditorState(RichUtils.toggleInlineStyle(editorState, style));
-    }
-    const changeBlockType = (style: string) => {
-      changeEditorState(RichUtils.toggleBlockType(editorState, style));
-    }
-    const handleKeyCommand = (command: string, editorState: EditorState) => {
-      const newState = RichUtils.handleKeyCommand(editorState, command);
-      if (newState) {
-        changeEditorState(newState);
-        return 'handled';
-      }
-      return 'not-handled';
-    }
-
     return (
       <>
         <Container maxWidth="md">
@@ -54,7 +35,4 @@ class BlogsShowPage extends React.Component<AllProps> {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BlogsShowPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BlogsShowPage)

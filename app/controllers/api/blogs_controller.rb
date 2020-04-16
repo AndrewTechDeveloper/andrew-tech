@@ -1,10 +1,12 @@
 class Api::BlogsController < Api::ApplicationController
   def index
     @blogs = Blog.all
+    render 'index', formats: :json, handlers: 'jbuilder'
   end
 
   def show
     @blog = Blog.find(params[:id])
+    render 'show', formats: :json, handlers: 'jbuilder'
   end
 
   def create
@@ -17,8 +19,8 @@ class Api::BlogsController < Api::ApplicationController
   end
 
   private
-  def chat_talk_params
-    params.require(:blog).permit(:title, :description, :, :edited)
+  def blog_params
+    params.require(:blog).permit(:title, :image, :description, :content)
   end
 end
 

@@ -3,7 +3,6 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { Store } from 'redux'
 import { History } from 'history'
-
 import Routes from 'routes'
 import { AppState } from 'store'
 import 'App.scss'
@@ -18,8 +17,8 @@ interface AppProps {
 const App: React.FC<AppProps> = ({ store, history }) => {
   return (
     <Provider store={store}>
-      <NavBar />
       <ConnectedRouter history={history}>
+        <NavBar />
         <Routes />
       </ConnectedRouter>
       <Footer />

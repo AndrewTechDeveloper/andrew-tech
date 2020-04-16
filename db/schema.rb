@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_132908) do
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
+    t.string "image", null: false
     t.text "description", null: false
     t.text "content", null: false
     t.integer "status", default: 0, null: false

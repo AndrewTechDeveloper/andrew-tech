@@ -1,12 +1,11 @@
-import React from 'react';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import Divider from '@material-ui/core/Divider'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import Avatar from '@material-ui/core/Avatar'
+import Typography from '@material-ui/core/Typography'
 
 export const TrendList = () => {
   return (
@@ -19,11 +18,7 @@ export const TrendList = () => {
           primary="Brunch this weekend?"
           secondary={
             <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                color="textPrimary"
-              >
+              <Typography component="span" variant="body2" color="textPrimary">
                 Ali Connors
               </Typography>
               {" — I'll be in your neighborhood doing errands this…"}
@@ -40,11 +35,7 @@ export const TrendList = () => {
           primary="Summer BBQ"
           secondary={
             <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                color="textPrimary"
-              >
+              <Typography component="span" variant="body2" color="textPrimary">
                 to Scott, Alex, Jennifer
               </Typography>
               {" — Wish I could come, but I'm out of town this…"}
@@ -61,11 +52,7 @@ export const TrendList = () => {
           primary="Oui Oui"
           secondary={
             <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                color="textPrimary"
-              >
+              <Typography component="span" variant="body2" color="textPrimary">
                 Sandra Adams
               </Typography>
               {' — Do you have Paris recommendations? Have you ever…'}
@@ -74,5 +61,5 @@ export const TrendList = () => {
         />
       </ListItem>
     </List>
-  );
+  )
 }

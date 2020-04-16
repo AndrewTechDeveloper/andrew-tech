@@ -7,10 +7,9 @@ import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
 import { EditorState, RichUtils } from 'draft-js'
 import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
 import EditorTools from 'components/blogs/EditorTools'
-import { BlogsSelect, TitleForm } from 'components/blogs/Form'
-import { JumpToEditButton, SaveButton } from 'components/blogs/Button'
+import Typography from '@material-ui/core/Typography'
+import { UpdateButton } from 'components/blogs/Button'
 import Toast from 'components/layouts/Toast'
 
 interface PropsFromState {
@@ -31,6 +30,7 @@ interface PropsFromDispatch {
   fetchRequest: typeof blogsActions.fetchRequest
   fetchAllRequest: typeof blogsActions.fetchAllRequest
   saveRequest: typeof blogsActions.saveRequest
+  updateRequest: typeof blogsActions.updateRequest
   deleteToast: typeof blogsActions.deleteToast
 }
 type AllProps = PropsFromState & PropsFromDispatch
@@ -53,12 +53,13 @@ const mapDispatchToProps = {
   fetchRequest: blogsActions.fetchRequest,
   fetchAllRequest: blogsActions.fetchAllRequest,
   saveRequest: blogsActions.saveRequest,
+  updateRequest: blogsActions.updateRequest,
   deleteToast: blogsActions.deleteToast
 }
 
-class BlogsIndexPage extends React.Component<AllProps> {
+class BlogsEditPage extends React.Component<AllProps> {
   componentDidMount() {
-    this.props.fetchAllRequest()
+    this.props.fetchRequest()
   }
 
   render() {
@@ -75,19 +76,12 @@ class BlogsIndexPage extends React.Component<AllProps> {
       <>
         <Toast {...this.props} />
         <Container maxWidth="md" className="my-4">
-          <div className="my-4">
-            <TitleForm {...this.props} />
-          </div>
           <Typography variant="h2" gutterBottom>
             {title}
           </Typography>
-          <div>
-            <BlogsSelect {...this.props} />
-            <JumpToEditButton {...this.props} />
-          </div>
           <div className="my-4">
             <EditorTools {...this.props} />
-            <SaveButton {...this.props} />
+            <UpdateButton {...this.props} />
           </div>
           <Editor
             editorState={editorState}
@@ -102,4 +96,4 @@ class BlogsIndexPage extends React.Component<AllProps> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlogsIndexPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BlogsEditPage)
