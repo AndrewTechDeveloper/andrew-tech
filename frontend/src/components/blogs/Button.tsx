@@ -3,8 +3,9 @@ import * as blogsActions from 'store/blogs/actions'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 
-interface JumpButtonProps {
+interface FetchButtonProps {
   id: number
+  fetchRequest: typeof blogsActions.fetchRequest
 }
 interface SaveButtonProps {
   saveRequest: typeof blogsActions.saveRequest
@@ -13,11 +14,9 @@ interface UpdateButtonProps {
   updateRequest: typeof blogsActions.updateRequest
 }
 
-export const JumpToEditButton: React.FC<JumpButtonProps> = ({ id }) => (
-  <Button variant="contained" color="primary">
-    <Link to={`/blogs/edit/${id}`} style={{ color: '#fff' }}>
-      Jump to edit
-    </Link>
+export const FetchButton: React.FC<FetchButtonProps> = ({ id, fetchRequest }) => (
+  <Button variant="contained" color="primary" onClick={() => fetchRequest()}>
+    Fetch
   </Button>
 )
 

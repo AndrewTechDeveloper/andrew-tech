@@ -1,3 +1,3 @@
 class Blog < ApplicationRecord
-  enum status: { editing: 0, publish: 1, hidden: 2 }
+  enum status: { editing: 1, publish: 2, hidden: 3 }
 end

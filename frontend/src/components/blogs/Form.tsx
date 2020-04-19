@@ -33,6 +33,9 @@ export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, selectBlog }
   <FormControl style={{ minWidth: 120 }}>
     <InputLabel id="blog-select">Select Blog</InputLabel>
     <Select labelId="blog-select" id="blog-select" value={id || ''} onChange={selectBlog}>
+      <MenuItem value={0} key={0}>
+        新しく作成
+      </MenuItem>
       {data.map(blog => (
         <MenuItem value={blog.id} key={blog.id}>
           {blog.title}
@@ -43,9 +46,9 @@ export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, selectBlog }
 )
 export const StatusSelect: React.FC<StatusSelectProps> = ({ status, selectStatus }) => {
   const options = [
-    { name: 'editing', status: 0 },
-    { name: 'publish', status: 1 },
-    { name: 'hidden', status: 2 }
+    { name: 'editing', status: 1 },
+    { name: 'publish', status: 2 },
+    { name: 'hidden', status: 3 }
   ]
   return (
     <FormControl style={{ minWidth: 120 }}>

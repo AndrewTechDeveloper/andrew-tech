@@ -8,14 +8,9 @@ export enum BlogsActionTypes {
   SAVE_REQUEST = '@@blogs/SAVE_REQUEST',
   UPDATE_REQUEST = '@@blogs/UPDATE_REQUEST',
   CHANGE_EDITOR_STATE = '@@blogs/CHANGE_EDITOR_STATE',
-  CHANGE_STYLE = '@@blogs/CHANGE_STYLE',
-  CHANGE_INLINE_STYLE_REQUEST = '@@blogs/CHANGE_INLINE_STYLE_REQUEST',
-  CHANGE_BLOCK_TYPE_REQUEST = '@@blogs/CHANGE_BLOCK_TYPE_REQUEST',
-  INSERT_IMAGE_REQUEST = '@@blogs/INSERT_IMAGE_REQUEST',
   CHANGE_TITLE = '@@blogs/CHANGE_TITLE',
   CHANGE_DESCRIPTION = '@@blogs/CHANGE_DESCRIPTION',
   CHANGE_OG_IMAGE = '@@blogs/CHANGE_OG_IMAGE',
-  CHANGE_IMAGE = '@@blogs/CHANGE_IMAGE',
   SELECT_STATUS = '@@blogs/SELECT_STATUS',
   SELECT_BLOG = '@@blogs/SELECT_BLOG',
   CREATE_TOAST = '@@blogs/CREATE_TOAST',
@@ -40,7 +35,6 @@ export interface BlogsState {
   readonly editorState: EditorState
   readonly style: string
   readonly ogImage: string
-  readonly image: string
   readonly title: string
   readonly description: string
   readonly status: number

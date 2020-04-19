@@ -5,14 +5,12 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
 interface EditorToolsProps {
-  image: string
   editorState: EditorState
   changeEditorState: typeof blogsActions.changeEditorState
-  changeImage: typeof blogsActions.changeImage
 }
 
 const EditorTools: React.FC<EditorToolsProps> = props => {
-  const { image, editorState, changeEditorState, changeImage } = props
+  const { editorState, changeEditorState } = props
 
   const changeStyle = (style: string) => {
     let newEditorState
@@ -31,6 +29,10 @@ const EditorTools: React.FC<EditorToolsProps> = props => {
     const setEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity })
     const newEditorState = AtomicBlockUtils.insertAtomicBlock(setEditorState, entityKey, ' ')
     changeEditorState(newEditorState)
+  }
+  const [image, changeImage] = React.useState<string>('')
+  const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    changeImage(e.target.value)
   }
 
   return (
@@ -58,7 +60,7 @@ const EditorTools: React.FC<EditorToolsProps> = props => {
         <button onClick={() => changeStyle('header-six')}>H6</button>
       </div>
       <div>
-        <TextField id="standard-basic" label="image url" value={image} onChange={changeImage} />
+        <TextField id="standard-basic" label="image url" value={image} onChange={handleChangeImage} />
         <Button color="primary" onClick={insertImage}>
           Insert Image
         </Button>

@@ -8,8 +8,9 @@ export const saveRequest = async (blogs: BlogsState) => {
   try {
     const content = convertToRaw(blogs.editorState.getCurrentContent())
     const res = await axios.post(`${API_ENDPOINT}/blogs`, {
+      id: blogs.id || '',
       title: blogs.title,
-      ogImage: blogs.ogImage,
+      og_image: blogs.ogImage,
       description: blogs.description,
       content: JSON.stringify(content)
     })
@@ -22,10 +23,10 @@ export const saveRequest = async (blogs: BlogsState) => {
 export const updateRequest = async (blogs: BlogsState) => {
   try {
     const content = convertToRaw(blogs.editorState.getCurrentContent())
-    const res = await axios.put(`${API_ENDPOINT}/blogs/${blogs.id}`, {
-      id: blogs.id,
+    const res = await axios.post(`${API_ENDPOINT}/blogs/${blogs.id}`, {
+      id: blogs.id || '',
       title: blogs.title,
-      image: blogs.image,
+      og_image: blogs.ogImage,
       description: blogs.description,
       content: JSON.stringify(content)
     })
@@ -35,10 +36,9 @@ export const updateRequest = async (blogs: BlogsState) => {
   }
 }
 
-export const fetchRequest = async () => {
+export const fetchRequest = async (blogs: BlogsState) => {
   try {
-    const id = window.location.pathname.split('/').pop()
-    const res = await axios.get(`${API_ENDPOINT}/blogs/${id}`)
+    const res = await axios.get(`${API_ENDPOINT}/blogs/${blogs.id}`)
     return { data: res.data, isSuccess: true }
   } catch (error) {
     return { data: null, isSuccess: false }

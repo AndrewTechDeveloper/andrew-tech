@@ -5,8 +5,8 @@ import * as blogsActions from 'store/blogs/actions'
 import { saveRequest, updateRequest, fetchRequest, fetchAllRequest } from 'store/blogs/api'
 
 function* handleSave() {
-  const state = yield select()
   try {
+    const state = yield select()
     yield saveRequest(state.blogs)
     yield put(blogsActions.createToast({ message: 'ブログが作成されました！', severity: 'success', isOpen: true }))
   } catch (err) {
@@ -14,8 +14,8 @@ function* handleSave() {
   }
 }
 function* handleUpdate() {
-  const state = yield select()
   try {
+    const state = yield select()
     yield updateRequest(state.blogs)
     yield put(blogsActions.createToast({ message: 'ブログが更新されました！', severity: 'success', isOpen: true }))
   } catch (err) {
@@ -24,7 +24,8 @@ function* handleUpdate() {
 }
 function* handleFetch() {
   try {
-    const res = yield fetchRequest()
+    const state = yield select()
+    const res = yield fetchRequest(state.blogs)
     if (res.isSuccess) {
       const content = convertFromRaw(JSON.parse(res.data.blog.content))
       res.data.blog.content = EditorState.createWithContent(content)

@@ -7,12 +7,10 @@ export const selectBlog = (event: React.ChangeEvent<{ value: unknown }>) =>
 export const selectStatus = (event: React.ChangeEvent<{ value: unknown }>) =>
   action(BlogsActionTypes.SELECT_STATUS, event.target.value as number)
 export const changeEditorState = (editorState: EditorState) => action(BlogsActionTypes.CHANGE_EDITOR_STATE, editorState)
-export const changeStyle = (style: string) => action(BlogsActionTypes.CHANGE_STYLE, style)
 export const changeTitle = (event: React.ChangeEvent<HTMLInputElement>) => action(BlogsActionTypes.CHANGE_TITLE, event.target.value)
 export const changeDescription = (event: React.ChangeEvent<HTMLInputElement>) =>
   action(BlogsActionTypes.CHANGE_DESCRIPTION, event.target.value)
 export const changeOgImage = (event: React.ChangeEvent<HTMLInputElement>) => action(BlogsActionTypes.CHANGE_OG_IMAGE, event.target.value)
-export const changeImage = (event: React.ChangeEvent<HTMLInputElement>) => action(BlogsActionTypes.CHANGE_IMAGE, event.target.value)
 export const createToast = (toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }) =>
   action(BlogsActionTypes.CREATE_TOAST, toast)
 export const deleteToast = () => action(BlogsActionTypes.DELETE_TOAST)

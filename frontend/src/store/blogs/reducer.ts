@@ -6,7 +6,6 @@ export const initialState: BlogsState = {
   id: 0,
   title: '',
   ogImage: '',
-  image: '',
   description: '',
   editorState: EditorState.createEmpty(),
   style: '',
@@ -42,9 +41,6 @@ const reducer: Reducer<BlogsState> = (state = initialState, action) => {
     case BlogsActionTypes.CHANGE_EDITOR_STATE: {
       return { ...state, editorState: action.payload }
     }
-    case BlogsActionTypes.CHANGE_STYLE: {
-      return { ...state, style: action.payload }
-    }
     case BlogsActionTypes.CHANGE_TITLE: {
       return { ...state, title: action.payload }
     }
@@ -53,9 +49,6 @@ const reducer: Reducer<BlogsState> = (state = initialState, action) => {
     }
     case BlogsActionTypes.CHANGE_OG_IMAGE: {
       return { ...state, ogImage: action.payload }
-    }
-    case BlogsActionTypes.CHANGE_IMAGE: {
-      return { ...state, image: action.payload }
     }
     case BlogsActionTypes.SELECT_STATUS: {
       return { ...state, status: action.payload }
