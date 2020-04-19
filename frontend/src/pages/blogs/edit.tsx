@@ -1,15 +1,13 @@
 import * as React from 'react'
-import Editor from 'draft-js-plugins-editor'
-import createImagePlugin from 'draft-js-image-plugin'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import { EditorState, RichUtils } from 'draft-js'
+import { EditorState } from 'draft-js'
 import Container from '@material-ui/core/Container'
-import EditorTools from 'components/blogs/EditorTools'
 import Typography from '@material-ui/core/Typography'
 import { UpdateButton } from 'components/blogs/Button'
+import { TitleForm } from 'components/blogs/Form'
 import Toast from 'components/layouts/Toast'
 
 interface PropsFromState {
@@ -22,10 +20,8 @@ interface PropsFromState {
 }
 interface PropsFromDispatch {
   changeEditorState: typeof blogsActions.changeEditorState
-  changeStyle: typeof blogsActions.changeStyle
   changeTitle: typeof blogsActions.changeTitle
   changeImage: typeof blogsActions.changeImage
-  insertImageRequest: typeof blogsActions.insertImageRequest
   selectBlog: typeof blogsActions.selectBlog
   fetchRequest: typeof blogsActions.fetchRequest
   fetchAllRequest: typeof blogsActions.fetchAllRequest
@@ -44,11 +40,8 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   toast: blogs.toast
 })
 const mapDispatchToProps = {
-  changeEditorState: blogsActions.changeEditorState,
-  changeStyle: blogsActions.changeStyle,
   changeTitle: blogsActions.changeTitle,
   changeImage: blogsActions.changeImage,
-  insertImageRequest: blogsActions.insertImageRequest,
   selectBlog: blogsActions.selectBlog,
   fetchRequest: blogsActions.fetchRequest,
   fetchAllRequest: blogsActions.fetchAllRequest,
@@ -63,33 +56,20 @@ class BlogsEditPage extends React.Component<AllProps> {
   }
 
   render() {
-    const { editorState, title, changeEditorState } = this.props
-    const imagePlugin = createImagePlugin()
-    const handleKeyCommand = (command: string, editorState: EditorState) => {
-      const newState = RichUtils.handleKeyCommand(editorState, command)
-      if (newState) {
-        return 'handled'
-      }
-      return 'not-handled'
-    }
+    const { title } = this.props
     return (
       <>
         <Toast {...this.props} />
         <Container maxWidth="md" className="my-4">
-          <Typography variant="h2" gutterBottom>
-            {title}
-          </Typography>
           <div className="my-4">
-            <EditorTools {...this.props} />
+            <TitleForm {...this.props} />
+            <Typography variant="h2" gutterBottom>
+              {title}
+            </Typography>
+          </div>
+          <div className="my-4">
             <UpdateButton {...this.props} />
           </div>
-          <Editor
-            editorState={editorState}
-            onChange={changeEditorState}
-            handleKeyCommand={handleKeyCommand}
-            placeholder="Enter some text..."
-            plugins={[imagePlugin]}
-          />
         </Container>
       </>
     )

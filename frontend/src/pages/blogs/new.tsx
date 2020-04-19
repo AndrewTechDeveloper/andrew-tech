@@ -1,33 +1,37 @@
 import * as React from 'react'
-import Editor from 'draft-js-plugins-editor'
-import createImagePlugin from 'draft-js-image-plugin'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import { EditorState, RichUtils } from 'draft-js'
+import { EditorState } from 'draft-js'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
-import EditorTools from 'components/blogs/EditorTools'
-import { BlogsSelect, TitleForm } from 'components/blogs/Form'
+import Draft from 'components/blogs/EditorBody'
+import DraftTools from 'components/blogs/EditorTools'
+import Divider from '@material-ui/core/Divider'
+import { BlogsSelect, OgImageForm, TitleForm, DescriptionForm, StatusSelect } from 'components/blogs/Form'
 import { JumpToEditButton, SaveButton } from 'components/blogs/Button'
 import Toast from 'components/layouts/Toast'
 
 interface PropsFromState {
   id: number
   title: string
+  description: string
+  ogImage: string
   image: string
+  status: number
   data: Blog[]
   editorState: EditorState
   toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }
 }
 interface PropsFromDispatch {
   changeEditorState: typeof blogsActions.changeEditorState
-  changeStyle: typeof blogsActions.changeStyle
   changeTitle: typeof blogsActions.changeTitle
+  changeDescription: typeof blogsActions.changeDescription
   changeImage: typeof blogsActions.changeImage
-  insertImageRequest: typeof blogsActions.insertImageRequest
+  changeOgImage: typeof blogsActions.changeOgImage
   selectBlog: typeof blogsActions.selectBlog
+  selectStatus: typeof blogsActions.selectStatus
   fetchRequest: typeof blogsActions.fetchRequest
   fetchAllRequest: typeof blogsActions.fetchAllRequest
   saveRequest: typeof blogsActions.saveRequest
@@ -37,19 +41,23 @@ type AllProps = PropsFromState & PropsFromDispatch
 
 const mapStateToProps = ({ blogs }: AppState) => ({
   id: blogs.id,
+  ogImage: blogs.ogImage,
   image: blogs.image,
   title: blogs.title,
+  description: blogs.description,
+  status: blogs.status,
   data: blogs.data,
   editorState: blogs.editorState,
   toast: blogs.toast
 })
 const mapDispatchToProps = {
   changeEditorState: blogsActions.changeEditorState,
-  changeStyle: blogsActions.changeStyle,
   changeTitle: blogsActions.changeTitle,
+  changeDescription: blogsActions.changeDescription,
+  changeOgImage: blogsActions.changeOgImage,
   changeImage: blogsActions.changeImage,
-  insertImageRequest: blogsActions.insertImageRequest,
   selectBlog: blogsActions.selectBlog,
+  selectStatus: blogsActions.selectStatus,
   fetchRequest: blogsActions.fetchRequest,
   fetchAllRequest: blogsActions.fetchAllRequest,
   saveRequest: blogsActions.saveRequest,
@@ -60,42 +68,41 @@ class BlogsIndexPage extends React.Component<AllProps> {
   componentDidMount() {
     this.props.fetchAllRequest()
   }
-
   render() {
-    const { editorState, title, changeEditorState } = this.props
-    const imagePlugin = createImagePlugin()
-    const handleKeyCommand = (command: string, editorState: EditorState) => {
-      const newState = RichUtils.handleKeyCommand(editorState, command)
-      if (newState) {
-        return 'handled'
-      }
-      return 'not-handled'
-    }
+    const { title, description, ogImage } = this.props
     return (
       <>
         <Toast {...this.props} />
         <Container maxWidth="md" className="my-4">
-          <div className="my-4">
-            <TitleForm {...this.props} />
-          </div>
-          <Typography variant="h2" gutterBottom>
-            {title}
-          </Typography>
-          <div>
+          <div className="my-4 d-flex">
             <BlogsSelect {...this.props} />
             <JumpToEditButton {...this.props} />
           </div>
+          <Divider />
           <div className="my-4">
-            <EditorTools {...this.props} />
+            <TitleForm {...this.props} />
+            <Typography variant="h2" gutterBottom>
+              {title}
+            </Typography>
+          </div>
+          <div className="my-4">
+            <DescriptionForm {...this.props} />
+            <Typography variant="subtitle1" gutterBottom>
+              {description}
+            </Typography>
+          </div>
+          <div className="my-4 d-flex">
+            <OgImageForm {...this.props} />
+            <img src={ogImage} />
+          </div>
+          <div className="my-4 d-flex">
+            <StatusSelect {...this.props} />
+          </div>
+          <div className="my-4">
+            <DraftTools {...this.props} />
             <SaveButton {...this.props} />
           </div>
-          <Editor
-            editorState={editorState}
-            onChange={changeEditorState}
-            handleKeyCommand={handleKeyCommand}
-            placeholder="Enter some text..."
-            plugins={[imagePlugin]}
-          />
+          <Draft {...this.props} />
         </Container>
       </>
     )

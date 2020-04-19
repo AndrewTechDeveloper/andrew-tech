@@ -17,6 +17,11 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
+import Slide from '@material-ui/core/Slide'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
+import Fab from '@material-ui/core/Fab'
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
+import Zoom from '@material-ui/core/Zoom'
 
 const drawerWidth = 240
 
@@ -26,8 +31,8 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex'
     },
     appBar: {
-      backgroundColor: '#2196f3',
-      color: '#fff',
+      backgroundColor: '#fff',
+      color: '#202020',
       transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen
@@ -75,48 +80,89 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.enteringScreen
       }),
       marginLeft: 0
+    },
+    scrollTop: {
+      position: 'fixed',
+      bottom: theme.spacing(2),
+      right: theme.spacing(2)
     }
   })
 )
 
-export const NavBar = () => {
+interface Props {
+  window?: () => Window
+  children?: React.ReactElement
+}
+function HideOnScroll(props: Props) {
+  const { children, window } = props
+  const trigger = useScrollTrigger({ target: window ? window() : undefined })
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  )
+}
+function ScrollTop(props: Props) {
+  const { children, window } = props
+  const classes = useStyles()
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    disableHysteresis: true,
+    threshold: 100
+  })
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const anchor = ((event.target as HTMLDivElement).ownerDocument || document).querySelector('#back-to-top-anchor')
+    if (anchor) {
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+  return (
+    <Zoom in={trigger}>
+      <div onClick={handleClick} role="presentation" className={classes.scrollTop}>
+        {children}
+      </div>
+    </Zoom>
+  )
+}
+
+export const NavBar = (props: Props) => {
   const classes = useStyles()
   const theme = useTheme()
   const [open, setOpen] = React.useState(false)
-
   const handleDrawerOpen = () => {
     setOpen(true)
   }
-
   const handleDrawerClose = () => {
     setOpen(false)
   }
-
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        color="transparent"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Andrew Tech
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <HideOnScroll {...props}>
+        <AppBar
+          position="fixed"
+          color="transparent"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open
+          })}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap>
+              Andrew Tech
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
+      <Toolbar id="back-to-top-anchor" />
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -130,6 +176,16 @@ export const NavBar = () => {
           <IconButton onClick={handleDrawerClose}>{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}</IconButton>
         </div>
         <Divider />
+        <Link to={'/blogs'}>
+          <List>
+            <ListItem button onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText>Index</ListItemText>
+            </ListItem>
+          </List>
+        </Link>
         <Link to={'/blogs/new'}>
           <List>
             <ListItem button onClick={handleDrawerClose}>
@@ -149,6 +205,11 @@ export const NavBar = () => {
       >
         <div className={classes.drawerHeader} />
       </main>
+      <ScrollTop {...props}>
+        <Fab color="default" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
     </div>
   )
 }

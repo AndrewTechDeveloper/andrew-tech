@@ -10,6 +10,7 @@ export const initialState: BlogsState = {
   description: '',
   editorState: EditorState.createEmpty(),
   style: '',
+  status: 0,
   data: [],
   toast: { message: '', severity: 'info', isOpen: false },
   loading: false
@@ -24,10 +25,19 @@ const reducer: Reducer<BlogsState> = (state = initialState, action) => {
       return { ...state, loading: true }
     }
     case BlogsActionTypes.FETCH_SUCCESS: {
-      return { ...state, id: action.payload.id, editorState: action.payload.content, title: action.payload.title }
+      return {
+        ...state,
+        id: action.payload.id,
+        editorState: action.payload.content,
+        title: action.payload.title,
+        description: action.payload.description,
+        ogImage: action.payload.og_image,
+        status: action.payload.status,
+        loading: false
+      }
     }
     case BlogsActionTypes.FETCH_ALL_SUCCESS: {
-      return { ...state, data: action.payload }
+      return { ...state, data: action.payload, loading: false }
     }
     case BlogsActionTypes.CHANGE_EDITOR_STATE: {
       return { ...state, editorState: action.payload }
@@ -38,8 +48,17 @@ const reducer: Reducer<BlogsState> = (state = initialState, action) => {
     case BlogsActionTypes.CHANGE_TITLE: {
       return { ...state, title: action.payload }
     }
+    case BlogsActionTypes.CHANGE_DESCRIPTION: {
+      return { ...state, description: action.payload }
+    }
+    case BlogsActionTypes.CHANGE_OG_IMAGE: {
+      return { ...state, ogImage: action.payload }
+    }
     case BlogsActionTypes.CHANGE_IMAGE: {
       return { ...state, image: action.payload }
+    }
+    case BlogsActionTypes.SELECT_STATUS: {
+      return { ...state, status: action.payload }
     }
     case BlogsActionTypes.SELECT_BLOG: {
       return { ...state, id: action.payload }

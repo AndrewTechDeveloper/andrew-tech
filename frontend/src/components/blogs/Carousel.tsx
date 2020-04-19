@@ -3,7 +3,7 @@ import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDB
 
 export const CarouselTitle = () => {
   return (
-    <MDBContainer className="p-0">
+    <MDBContainer className="p-0 m-0">
       <MDBCarousel activeItem={1} length={3} showControls={true} showIndicators={true} className="z-depth-1">
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">

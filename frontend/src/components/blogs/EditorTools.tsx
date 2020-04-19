@@ -1,20 +1,38 @@
 import * as React from 'react'
 import * as blogsActions from 'store/blogs/actions'
-import { EditorState } from 'draft-js'
-import { InsertImageButton } from 'components/blogs/Button'
-import { ImageForm } from 'components/blogs/Form'
+import { EditorState, RichUtils, AtomicBlockUtils } from 'draft-js'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
-interface EditorToolsStateProps {
+interface EditorToolsProps {
   image: string
   editorState: EditorState
   changeEditorState: typeof blogsActions.changeEditorState
-  changeStyle: typeof blogsActions.changeStyle
   changeImage: typeof blogsActions.changeImage
-  insertImageRequest: typeof blogsActions.insertImageRequest
 }
 
-const EditorTools: React.FC<EditorToolsStateProps> = props => {
-  const { changeStyle } = props
+const EditorTools: React.FC<EditorToolsProps> = props => {
+  const { image, editorState, changeEditorState, changeImage } = props
+
+  const changeStyle = (style: string) => {
+    let newEditorState
+    if (style === 'BOLD' || style === 'ITALIC' || style === 'UNDERLINE') {
+      newEditorState = RichUtils.toggleInlineStyle(editorState, style)
+    } else {
+      newEditorState = RichUtils.toggleBlockType(editorState, style)
+    }
+    changeEditorState(newEditorState)
+  }
+
+  const insertImage = () => {
+    const contentState = editorState.getCurrentContent()
+    const contentStateWithEntity = contentState.createEntity('image', 'IMMUTABLE', { src: image })
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
+    const setEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity })
+    const newEditorState = AtomicBlockUtils.insertAtomicBlock(setEditorState, entityKey, ' ')
+    changeEditorState(newEditorState)
+  }
+
   return (
     <div className="my-4">
       <div>
@@ -40,8 +58,10 @@ const EditorTools: React.FC<EditorToolsStateProps> = props => {
         <button onClick={() => changeStyle('header-six')}>H6</button>
       </div>
       <div>
-        <ImageForm {...props} />
-        <InsertImageButton {...props} />
+        <TextField id="standard-basic" label="image url" value={image} onChange={changeImage} />
+        <Button color="primary" onClick={insertImage}>
+          Insert Image
+        </Button>
       </div>
     </div>
   )

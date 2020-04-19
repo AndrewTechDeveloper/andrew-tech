@@ -9,7 +9,7 @@ export const saveRequest = async (blogs: BlogsState) => {
     const content = convertToRaw(blogs.editorState.getCurrentContent())
     const res = await axios.post(`${API_ENDPOINT}/blogs`, {
       title: blogs.title,
-      image: blogs.image,
+      ogImage: blogs.ogImage,
       description: blogs.description,
       content: JSON.stringify(content)
     })

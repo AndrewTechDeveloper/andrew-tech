@@ -13,7 +13,10 @@ export enum BlogsActionTypes {
   CHANGE_BLOCK_TYPE_REQUEST = '@@blogs/CHANGE_BLOCK_TYPE_REQUEST',
   INSERT_IMAGE_REQUEST = '@@blogs/INSERT_IMAGE_REQUEST',
   CHANGE_TITLE = '@@blogs/CHANGE_TITLE',
+  CHANGE_DESCRIPTION = '@@blogs/CHANGE_DESCRIPTION',
+  CHANGE_OG_IMAGE = '@@blogs/CHANGE_OG_IMAGE',
   CHANGE_IMAGE = '@@blogs/CHANGE_IMAGE',
+  SELECT_STATUS = '@@blogs/SELECT_STATUS',
   SELECT_BLOG = '@@blogs/SELECT_BLOG',
   CREATE_TOAST = '@@blogs/CREATE_TOAST',
   DELETE_TOAST = '@@blogs/DELETE_TOAST'
@@ -22,7 +25,7 @@ export enum BlogsActionTypes {
 export interface Blog extends ApiResponse {
   id: number
   title: string
-  ogImage: string
+  og_image: string
   description: string
   content: string
   status: number
@@ -40,6 +43,7 @@ export interface BlogsState {
   readonly image: string
   readonly title: string
   readonly description: string
+  readonly status: number
   readonly data: Blog[]
   readonly loading: boolean
   readonly toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }

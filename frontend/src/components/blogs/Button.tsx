@@ -3,9 +3,6 @@ import * as blogsActions from 'store/blogs/actions'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 
-interface InsertImageButtonProps {
-  insertImageRequest: typeof blogsActions.insertImageRequest
-}
 interface JumpButtonProps {
   id: number
 }
@@ -15,12 +12,6 @@ interface SaveButtonProps {
 interface UpdateButtonProps {
   updateRequest: typeof blogsActions.updateRequest
 }
-
-export const InsertImageButton: React.FC<InsertImageButtonProps> = ({ insertImageRequest }) => (
-  <Button variant="contained" color="primary" onClick={insertImageRequest}>
-    Insert Image
-  </Button>
-)
 
 export const JumpToEditButton: React.FC<JumpButtonProps> = ({ id }) => (
   <Button variant="contained" color="primary">
