@@ -9,7 +9,7 @@ export const initialState: BlogsState = {
   description: '',
   editorState: EditorState.createEmpty(),
   style: '',
-  status: 0,
+  status: '',
   data: [],
   toast: { message: '', severity: 'info', isOpen: false },
   loading: false

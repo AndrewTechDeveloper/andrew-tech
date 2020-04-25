@@ -3,10 +3,14 @@ import { EditorState } from 'draft-js'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
+import {
+  Typography,
+  Container,
+  Grid,
+} from '@material-ui/core'
 import { CarouselTitle } from 'components/blogs/Carousel'
 import { TrendList } from 'components/blogs/List'
+import { Timeline } from 'react-twitter-widgets'
 
 interface PropsFromState {
   editorState: EditorState
@@ -28,9 +32,19 @@ class BlogsIndexPage extends React.Component<AllProps> {
     return (
       <>
         <CarouselTitle />
-        <Container maxWidth="md" className="mt-4">
-          <Typography variant="h4">人気の記事</Typography>
-          <TrendList />
+        <Container maxWidth="md" className="my-5">
+          <Grid container direction='row' justify='space-between'>
+            <Grid item xs={12} sm={8} className='mb-2'>
+              <Typography variant="h4">人気の記事</Typography>
+              <TrendList />
+            </Grid>
+            <Grid item xs={12} sm={3} className='mb-2'>
+              <Timeline
+                dataSource={{ sourceType: 'profile', screenName: 'andrewdayoooo' }}
+                options={{ username: 'andrewdayoooo', height: '400', theme: 'dark' }}
+              />
+            </Grid>
+          </Grid>
         </Container>
       </>
     )

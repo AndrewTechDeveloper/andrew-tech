@@ -1,7 +1,7 @@
 import React from 'react'
 import * as blogsActions from 'store/blogs/actions'
-import Snackbar from '@material-ui/core/Snackbar'
-import Alert from '@material-ui/lab/Alert'
+import { Snackbar } from '@material-ui/core'
+import { Alert } from '@material-ui/lab'
 
 interface AlertProps {
   toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }

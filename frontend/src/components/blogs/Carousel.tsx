@@ -1,9 +1,17 @@
 import React from 'react'
-import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from 'mdbreact'
+import {
+  MDBCarousel,
+  MDBCarouselCaption,
+  MDBCarouselInner,
+  MDBCarouselItem,
+  MDBView,
+  MDBMask,
+  MDBContainer
+} from 'mdbreact'
 
 export const CarouselTitle = () => {
   return (
-    <MDBContainer className="p-0 m-0">
+    <MDBContainer className="p-0 m-0 mw-100">
       <MDBCarousel activeItem={1} length={3} showControls={true} showIndicators={true} className="z-depth-1">
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">

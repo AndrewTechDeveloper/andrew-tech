@@ -1,34 +1,51 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import List from '@material-ui/core/List'
-import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import Slide from '@material-ui/core/Slide'
-import useScrollTrigger from '@material-ui/core/useScrollTrigger'
-import Fab from '@material-ui/core/Fab'
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
-import Zoom from '@material-ui/core/Zoom'
+import {
+  makeStyles,
+  useTheme,
+  Theme,
+  createStyles
+} from '@material-ui/core/styles'
+import {
+  Drawer,
+  CssBaseline,
+  AppBar,
+  Toolbar,
+  List,
+  Typography,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Slide,
+  useScrollTrigger,
+  Fab,
+  Tooltip,
+  Zoom
+} from '@material-ui/core'
+import {
+  Twitter as TwitterIcon,
+  Menu as MenuIcon,
+  Home as HomeIcon,
+  Link as LinkIcon,
+  Person as PersonIcon,
+  AssignmentTurnedIn as AssignmentTurnedInIcon,
+  AlternateEmail as AlternateEmailIcon,
+  KeyboardArrowUp as KeyboardArrowUpIcon,
+  Create as CreateIcon,
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+} from '@material-ui/icons'
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 const drawerWidth = 240
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex'
+      display: 'flex',
     },
     appBar: {
       backgroundColor: '#fff',
@@ -48,6 +65,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     menuButton: {
       marginRight: theme.spacing(2)
+    },
+    logo: {
+      maxHeight: '48px',
+      flexGrow: 1
     },
     hide: {
       display: 'none'
@@ -84,7 +105,8 @@ const useStyles = makeStyles((theme: Theme) =>
     scrollTop: {
       position: 'fixed',
       bottom: theme.spacing(2),
-      right: theme.spacing(2)
+      right: theme.spacing(2),
+      zIndex: 10
     }
   })
 )
@@ -135,6 +157,9 @@ export const NavBar = (props: Props) => {
   const handleDrawerClose = () => {
     setOpen(false)
   }
+  const currentUrl = window.location.href
+  const twitterLink = `https://twitter.com/intent/tweet?text=${currentUrl}`
+  const logo = "https://s3-ap-northeast-1.amazonaws.com/konpeki.site/logo/andrew-tech.png"
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -156,9 +181,19 @@ export const NavBar = (props: Props) => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap>
-              Andrew Tech
-            </Typography>
+            <div className={classes.logo}>
+              <img src={logo} className={classes.logo}/>
+            </div>
+            <a href={twitterLink}>
+              <IconButton color="default" edge="end" className='ml-2'>
+                <TwitterIcon />
+              </IconButton>
+            </a>
+            <CopyToClipboard text={currentUrl} onCopy={() => console.log('copy')}>
+              <IconButton edge="end" color="default" className='ml-2'>
+                <LinkIcon />
+              </IconButton>
+            </CopyToClipboard>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
@@ -180,9 +215,9 @@ export const NavBar = (props: Props) => {
           <List>
             <ListItem button onClick={handleDrawerClose}>
               <ListItemIcon>
-                <InboxIcon />
+                <HomeIcon />
               </ListItemIcon>
-              <ListItemText>Index</ListItemText>
+              <ListItemText>Home</ListItemText>
             </ListItem>
           </List>
         </Link>
@@ -190,9 +225,29 @@ export const NavBar = (props: Props) => {
           <List>
             <ListItem button onClick={handleDrawerClose}>
               <ListItemIcon>
-                <InboxIcon />
+                <CreateIcon />
               </ListItemIcon>
               <ListItemText>New</ListItemText>
+            </ListItem>
+          </List>
+        </Link>
+        <Link to={'/accounts/profile'}>
+          <List>
+            <ListItem button onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <PersonIcon />
+              </ListItemIcon>
+              <ListItemText>Profile</ListItemText>
+            </ListItem>
+          </List>
+        </Link>
+        <Link to={'/accounts/contact'}>
+          <List>
+            <ListItem button onClick={handleDrawerClose}>
+              <ListItemIcon>
+                <AlternateEmailIcon />
+              </ListItemIcon>
+              <ListItemText>Contact</ListItemText>
             </ListItem>
           </List>
         </Link>
@@ -206,7 +261,7 @@ export const NavBar = (props: Props) => {
         <div className={classes.drawerHeader} />
       </main>
       <ScrollTop {...props}>
-        <Fab color="default" aria-label="scroll back to top">
+        <Fab color="default" aria-label="scroll back to top" className='fab'>
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>

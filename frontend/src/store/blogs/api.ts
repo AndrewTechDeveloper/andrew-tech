@@ -12,23 +12,8 @@ export const saveRequest = async (blogs: BlogsState) => {
       title: blogs.title,
       og_image: blogs.ogImage,
       description: blogs.description,
-      content: JSON.stringify(content)
-    })
-    return { data: res.data, isSuccess: true }
-  } catch (error) {
-    return { data: null, isSuccess: false }
-  }
-}
-
-export const updateRequest = async (blogs: BlogsState) => {
-  try {
-    const content = convertToRaw(blogs.editorState.getCurrentContent())
-    const res = await axios.post(`${API_ENDPOINT}/blogs/${blogs.id}`, {
-      id: blogs.id || '',
-      title: blogs.title,
-      og_image: blogs.ogImage,
-      description: blogs.description,
-      content: JSON.stringify(content)
+      content: JSON.stringify(content),
+      status: blogs.status
     })
     return { data: res.data, isSuccess: true }
   } catch (error) {

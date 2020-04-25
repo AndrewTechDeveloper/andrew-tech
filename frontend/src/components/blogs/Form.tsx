@@ -1,11 +1,13 @@
 import * as React from 'react'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import InputLabel from '@material-ui/core/InputLabel'
-import FormControl from '@material-ui/core/FormControl'
-import TextField from '@material-ui/core/TextField'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
+import {
+  InputLabel,
+  FormControl,
+  TextField,
+  Select,
+  MenuItem
+} from '@material-ui/core'
 
 interface BlogsSelectProps {
   data: Blog[]
@@ -13,7 +15,7 @@ interface BlogsSelectProps {
   selectBlog: typeof blogsActions.selectBlog
 }
 interface StatusSelectProps {
-  status: number
+  status: string
   selectStatus: typeof blogsActions.selectStatus
 }
 interface TitleFormProps {
@@ -46,17 +48,17 @@ export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, selectBlog }
 )
 export const StatusSelect: React.FC<StatusSelectProps> = ({ status, selectStatus }) => {
   const options = [
-    { name: 'editing', status: 1 },
-    { name: 'publish', status: 2 },
-    { name: 'hidden', status: 3 }
+    { status: 'editing' },
+    { status: 'publish' },
+    { status: 'hidden' }
   ]
   return (
     <FormControl style={{ minWidth: 120 }}>
       <InputLabel id="status-select">Select Status</InputLabel>
-      <Select labelId="status-select" id="status-select" value={status || ''} onChange={selectStatus}>
+      <Select labelId="status-select" id="status-select" value={status} onChange={selectStatus}>
         {options.map(option => (
           <MenuItem value={option.status} key={option.status}>
-            {option.name}
+            {option.status}
           </MenuItem>
         ))}
       </Select>

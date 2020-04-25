@@ -20,4 +20,3 @@ export const fetchAllSuccess = (data: Blog[]) => action(BlogsActionTypes.FETCH_A
 export const fetchRequest = () => action(BlogsActionTypes.FETCH_REQUEST)
 export const fetchAllRequest = () => action(BlogsActionTypes.FETCH_ALL_REQUEST)
 export const saveRequest = () => action(BlogsActionTypes.SAVE_REQUEST)
-export const updateRequest = () => action(BlogsActionTypes.UPDATE_REQUEST)

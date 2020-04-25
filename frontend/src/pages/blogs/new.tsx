@@ -4,22 +4,25 @@ import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
 import { EditorState } from 'draft-js'
-import Container from '@material-ui/core/Container'
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography'
-import EditorBody from 'components/blogs/EditorBody'
-import EditorTools from 'components/blogs/EditorTools'
-import Divider from '@material-ui/core/Divider'
 import { BlogsSelect, OgImageForm, TitleForm, DescriptionForm, StatusSelect } from 'components/blogs/Form'
 import { FetchButton, SaveButton } from 'components/blogs/Button'
 import Toast from 'components/layouts/Toast'
+import EditorBody from 'components/blogs/EditorBody'
+import EditorTools from 'components/blogs/EditorTools'
+import {
+  Container,
+  Card,
+  Typography,
+  Divider,
+  Chip,
+} from '@material-ui/core'
 
 interface PropsFromState {
   id: number
   title: string
   description: string
   ogImage: string
-  status: number
+  status: string
   data: Blog[]
   editorState: EditorState
   toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }
@@ -66,38 +69,47 @@ class BlogsIndexPage extends React.Component<AllProps> {
     this.props.fetchAllRequest()
   }
   render() {
-    const { title, description, ogImage } = this.props
+    const { id, title, description, ogImage, status } = this.props
     return (
       <>
         <Toast {...this.props} />
-        <Card className='w-25 position-fixed fixed-bottom float-right'>
-          <div className="my-4">
+        <Container maxWidth="md" className="my-4 w-25 h-75 d-md-flex position-fixed">
+          <Card className='overflow-auto p-2'>
+            <div className="my-4 d-flex">
+              <BlogsSelect {...this.props} />
+              <FetchButton {...this.props} />
+            </div>
+            <Divider />
+            <div className="my-4">
+              <Typography variant="subtitle1" gutterBottom>
+                ID: { id || '未選択' }
+              </Typography>
+            </div>
+            <div className="my-4">
+              <TitleForm {...this.props} />
+            </div>
+            <div className="my-4">
+              <DescriptionForm {...this.props} />
+            </div>
+            <div className="my-4 d-flex">
+              <OgImageForm {...this.props} />
+            </div>
+            <div className="my-4 d-flex">
+              <StatusSelect {...this.props} />
+            </div>
             <EditorTools {...this.props} />
-            <SaveButton {...this.props} />
-          </div>
-        </Card>
-        <div className="my-4 d-flex">
-          <BlogsSelect {...this.props} />
-          <FetchButton {...this.props} />
-        </div>
-        <Divider />
-        <div className="my-4">
-          <TitleForm {...this.props} />
-          <Typography variant="h2" gutterBottom>
+          </Card>
+        </Container>
+        <Container maxWidth="md" className="my-4 blog-create">
+          <Typography variant="h4" gutterBottom>
             {title}
           </Typography>
-        </div>
-        <div className="my-4">
-          <DescriptionForm {...this.props} />
-        </div>
-        <div className="my-4 d-flex">
-          <OgImageForm {...this.props} />
+          <Chip variant="outlined" label={status} />
+          <Typography variant="subtitle1" gutterBottom>
+            {description}
+          </Typography>
           <img src={ogImage} />
-        </div>
-        <div className="my-4 d-flex">
-          <StatusSelect {...this.props} />
-        </div>
-        <Container maxWidth="md" className="my-4">
+          <Divider className='my-4' />
           <EditorBody {...this.props} />
         </Container>
       </>

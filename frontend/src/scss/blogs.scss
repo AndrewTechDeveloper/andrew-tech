@@ -1,14 +1,39 @@
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: normal !important;
+@font-face {
+  font-family: 'Righteous-Regular';
+  src: URL('Righteous-Regular.ttf') format('truetype');
 }
 
-pre {
-  background-color: #ccc;
-  font-size: 100% !important;
-  padding: 4px;
+.editor {
+  span {
+    line-height: 1.5rem;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: normal !important;
+  }
+  h6 {
+    font-size: 18px;
+  }
+  pre {
+    background-color: #ccc;
+    font-size: 14px;
+    padding: 4px;
+    margin: 0;
+  }
+  blockquote {
+    font-size: 18px;
+    border-left: 8px solid #333;
+    padding: 8px 12px;
+    margin: 0;
+    color: #333;
+  }
+  ol, ul {
+    font-size: 18px;
+  }
 }
 
-img {
-  max-width: 200px;;
+.blog-create {
+  img {
+    max-height: 200px;
+  }
 }

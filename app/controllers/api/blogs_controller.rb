@@ -11,12 +11,12 @@ class Api::BlogsController < Api::ApplicationController
 
   def create
     blog = Blog.find_or_initialize_by(id: params[:id])
-    blog.update_attributes(blog_params)
+    blog.update(blog_params)
   end
 
   private
   def blog_params
-    params.require(:blog).permit(:title, :og_image, :description, :content)
+    params.require(:blog).permit(:title, :og_image, :description, :content, :status)
   end
 end
 

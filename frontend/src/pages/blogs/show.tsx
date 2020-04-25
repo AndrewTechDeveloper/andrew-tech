@@ -3,8 +3,10 @@ import { EditorState } from 'draft-js'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
-import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
+import {
+  Container,
+  Typography,
+} from '@material-ui/core'
 
 interface PropsFromState {
   editorState: EditorState

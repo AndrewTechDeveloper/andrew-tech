@@ -12,17 +12,23 @@ const EditorBody: React.FC<EditorBodyProps> = props => {
   const { editorState, changeEditorState } = props
   const imagePlugin = createImagePlugin()
   const handleKeyCommand = (command: string, editorState: EditorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command)
+    let state = editorState;
+    if (command === 'backspace-word') {
+      state = RichUtils.toggleBlockType(editorState, 'unstyled')
+    }
+    const newState = RichUtils.handleKeyCommand(state, command)
     return newState ? 'handled' : 'not-handled'
   }
   return (
-    <Editor
-      editorState={editorState}
-      onChange={changeEditorState}
-      handleKeyCommand={handleKeyCommand}
-      placeholder="Enter some text..."
-      plugins={[imagePlugin]}
-    />
+    <div className='editor'>
+      <Editor
+        editorState={editorState}
+        onChange={changeEditorState}
+        handleKeyCommand={handleKeyCommand}
+        placeholder="Enter some text..."
+        plugins={[imagePlugin]}
+      />
+    </div>
   )
 }
 

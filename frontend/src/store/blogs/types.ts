@@ -6,7 +6,6 @@ export enum BlogsActionTypes {
   FETCH_SUCCESS = '@@blogs/FETCH_SUCCESS',
   FETCH_ALL_SUCCESS = '@@blogs/FETCH_ALL_SUCCESS',
   SAVE_REQUEST = '@@blogs/SAVE_REQUEST',
-  UPDATE_REQUEST = '@@blogs/UPDATE_REQUEST',
   CHANGE_EDITOR_STATE = '@@blogs/CHANGE_EDITOR_STATE',
   CHANGE_TITLE = '@@blogs/CHANGE_TITLE',
   CHANGE_DESCRIPTION = '@@blogs/CHANGE_DESCRIPTION',
@@ -23,7 +22,7 @@ export interface Blog extends ApiResponse {
   og_image: string
   description: string
   content: string
-  status: number
+  status: string
   updated_at: string
   created_at: string
 }
@@ -37,7 +36,7 @@ export interface BlogsState {
   readonly ogImage: string
   readonly title: string
   readonly description: string
-  readonly status: number
+  readonly status: string
   readonly data: Blog[]
   readonly loading: boolean
   readonly toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }
