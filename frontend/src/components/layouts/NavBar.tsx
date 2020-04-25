@@ -151,12 +151,12 @@ export const NavBar = (props: Props) => {
   const classes = useStyles()
   const theme = useTheme()
   const [open, setOpen] = React.useState(false)
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
-  const handleDrawerClose = () => {
-    setOpen(false)
-  }
+  const [copy, setCopy] = React.useState(false)
+  const handleDrawerOpen = () => setOpen(true)
+  const handleDrawerClose = () => setOpen(false)
+  const handleClipboardCopy = () => setCopy(true)
+  const handleClipboardReset = () => setCopy(false)
+
   const currentUrl = window.location.href
   const twitterLink = `https://twitter.com/intent/tweet?text=${currentUrl}`
   const logo = "https://s3-ap-northeast-1.amazonaws.com/konpeki.site/logo/andrew-tech.png"
@@ -185,14 +185,18 @@ export const NavBar = (props: Props) => {
               <img src={logo} className={classes.logo}/>
             </div>
             <a href={twitterLink}>
-              <IconButton color="default" edge="end" className='ml-2'>
-                <TwitterIcon />
-              </IconButton>
+              <Tooltip title="twitterでシェア" placement="bottom">
+                <IconButton color="default" edge="end" className='ml-2'>
+                  <TwitterIcon />
+                </IconButton>
+              </Tooltip>
             </a>
-            <CopyToClipboard text={currentUrl} onCopy={() => console.log('copy')}>
+            <CopyToClipboard text={currentUrl} onCopy={handleClipboardCopy}>
+              <Tooltip title={copy ? 'コピーしました' : 'URLをコピー'} placement="bottom">
               <IconButton edge="end" color="default" className='ml-2'>
-                <LinkIcon />
+                {copy ? <AssignmentTurnedInIcon /> : <LinkIcon />}
               </IconButton>
+              </Tooltip>
             </CopyToClipboard>
           </Toolbar>
         </AppBar>
@@ -200,7 +204,7 @@ export const NavBar = (props: Props) => {
       <Toolbar id="back-to-top-anchor" />
       <Drawer
         className={classes.drawer}
-        variant="persistent"
+        variant="temporary"
         anchor="left"
         open={open}
         classes={{
@@ -213,7 +217,7 @@ export const NavBar = (props: Props) => {
         <Divider />
         <Link to={'/blogs'}>
           <List>
-            <ListItem button onClick={handleDrawerClose}>
+            <ListItem button onClick={() => { handleDrawerClose();  handleClipboardReset() }}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
@@ -223,7 +227,7 @@ export const NavBar = (props: Props) => {
         </Link>
         <Link to={'/blogs/new'}>
           <List>
-            <ListItem button onClick={handleDrawerClose}>
+            <ListItem button onClick={() => { handleDrawerClose();  handleClipboardReset() }}>
               <ListItemIcon>
                 <CreateIcon />
               </ListItemIcon>
@@ -233,7 +237,7 @@ export const NavBar = (props: Props) => {
         </Link>
         <Link to={'/accounts/profile'}>
           <List>
-            <ListItem button onClick={handleDrawerClose}>
+            <ListItem button onClick={() => { handleDrawerClose();  handleClipboardReset() }}>
               <ListItemIcon>
                 <PersonIcon />
               </ListItemIcon>
@@ -243,7 +247,7 @@ export const NavBar = (props: Props) => {
         </Link>
         <Link to={'/accounts/contact'}>
           <List>
-            <ListItem button onClick={handleDrawerClose}>
+            <ListItem button onClick={() => { handleDrawerClose();  handleClipboardReset() }}>
               <ListItemIcon>
                 <AlternateEmailIcon />
               </ListItemIcon>
