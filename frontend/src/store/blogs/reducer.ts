@@ -8,6 +8,8 @@ export const initialState: BlogsState = {
   ogImage: '',
   description: '',
   editorState: EditorState.createEmpty(),
+  createdAt: '',
+  updatedAt: '',
   style: '',
   status: '',
   data: [],
@@ -16,7 +18,6 @@ export const initialState: BlogsState = {
 }
 
 const reducer: Reducer<BlogsState> = (state = initialState, action) => {
-  console.log(action)
   switch (action.type) {
     case BlogsActionTypes.FETCH_REQUEST:
     case BlogsActionTypes.FETCH_ALL_REQUEST:
@@ -32,6 +33,8 @@ const reducer: Reducer<BlogsState> = (state = initialState, action) => {
         description: action.payload.description,
         ogImage: action.payload.og_image,
         status: action.payload.status,
+        createdAt: action.payload.created_at,
+        updatedAt: action.payload.updated_at,
         loading: false
       }
     }

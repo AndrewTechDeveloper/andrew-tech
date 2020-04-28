@@ -3,12 +3,12 @@ import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import { EditorState } from 'draft-js'
 import { BlogsSelect, OgImageForm, TitleForm, DescriptionForm, StatusSelect } from 'components/blogs/Form'
 import { FetchButton, SaveButton } from 'components/blogs/Button'
+import { Editor } from 'react-draft-wysiwyg';
+import { EditorState } from 'draft-js'
 import Toast from 'components/layouts/Toast'
-import EditorBody from 'components/blogs/EditorBody'
-import EditorTools from 'components/blogs/EditorTools'
+import { ImageCard } from 'components/blogs/Card'
 import {
   Container,
   Card,
@@ -25,6 +25,7 @@ interface PropsFromState {
   status: string
   data: Blog[]
   editorState: EditorState
+  updatedAt: string
   toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }
 }
 interface PropsFromDispatch {
@@ -49,6 +50,7 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   status: blogs.status,
   data: blogs.data,
   editorState: blogs.editorState,
+  updatedAt: blogs.updatedAt,
   toast: blogs.toast
 })
 const mapDispatchToProps = {
@@ -69,7 +71,7 @@ class BlogsIndexPage extends React.Component<AllProps> {
     this.props.fetchAllRequest()
   }
   render() {
-    const { id, title, description, ogImage, status } = this.props
+    const { id, title, description, ogImage, status, editorState, updatedAt, changeEditorState } = this.props
     return (
       <>
         <Toast {...this.props} />
@@ -91,26 +93,34 @@ class BlogsIndexPage extends React.Component<AllProps> {
             <div className="my-4">
               <DescriptionForm {...this.props} />
             </div>
-            <div className="my-4 d-flex">
+            <div className="my-4">
               <OgImageForm {...this.props} />
             </div>
-            <div className="my-4 d-flex">
+            <div className="my-4">
               <StatusSelect {...this.props} />
             </div>
-            <EditorTools {...this.props} />
+            <div className="my-4">
+              <SaveButton {...this.props} />
+            </div>
           </Card>
         </Container>
-        <Container maxWidth="md" className="my-4 blog-create">
+        <Container maxWidth="md" className="my-4 blog min-vh-100">
           <Typography variant="h4" gutterBottom>
             {title}
+          </Typography>
+          <Typography variant="subtitle1" color='textSecondary' gutterBottom>
+            {updatedAt}
           </Typography>
           <Chip variant="outlined" label={status} />
           <Typography variant="subtitle1" gutterBottom>
             {description}
           </Typography>
-          <img src={ogImage} />
+          <ImageCard {...this.props} />
           <Divider className='my-4' />
-          <EditorBody {...this.props} />
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={changeEditorState}
+          />
         </Container>
       </>
     )

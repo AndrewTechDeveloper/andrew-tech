@@ -23,7 +23,9 @@ export const saveRequest = async (blogs: BlogsState) => {
 
 export const fetchRequest = async (blogs: BlogsState) => {
   try {
-    const res = await axios.get(`${API_ENDPOINT}/blogs/${blogs.id}`)
+    const idParam = window.location.href.split('/').pop()
+    console.log(idParam)
+    const res = await axios.get(`${API_ENDPOINT}/blogs/${blogs.id || idParam}`)
     return { data: res.data, isSuccess: true }
   } catch (error) {
     return { data: null, isSuccess: false }
@@ -33,7 +35,6 @@ export const fetchRequest = async (blogs: BlogsState) => {
 export const fetchAllRequest = async () => {
   try {
     const res = await axios.get(`${API_ENDPOINT}/blogs`)
-    console.log(res)
     return { data: res.data, isSuccess: true }
   } catch (error) {
     return { data: null, isSuccess: false }

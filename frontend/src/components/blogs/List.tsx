@@ -1,4 +1,6 @@
 import React from 'react'
+import { Blog } from 'store/blogs/types'
+import { History } from 'history';
 import {
   List,
   ListItem,
@@ -9,59 +11,64 @@ import {
   Typography,
 } from '@material-ui/core'
 
-export const TrendList = () => {
-  return (
-    <List>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Brunch this weekend?"
-          secondary={
-            <React.Fragment>
-              <Typography component="span" variant="body2" color="textPrimary">
-                Ali Connors
-              </Typography>
-              {" — I'll be in your neighborhood doing errands this…"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Summer BBQ"
-          secondary={
-            <React.Fragment>
-              <Typography component="span" variant="body2" color="textPrimary">
-                to Scott, Alex, Jennifer
-              </Typography>
-              {" — Wish I could come, but I'm out of town this…"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Oui Oui"
-          secondary={
-            <React.Fragment>
-              <Typography component="span" variant="body2" color="textPrimary">
-                Sandra Adams
-              </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-    </List>
-  )
+interface TrendListProps {
+  data: Blog[]
+  history: History
 }
+interface RecentListProps {
+  data: Blog[]
+  history: History
+}
+
+export const TrendList: React.FC<TrendListProps> = ({ data, history }) => (
+  <>
+    <Typography variant="h4">人気の記事</Typography>
+    <List>
+      {data.map(blog =>
+        <div key={blog.id}>
+          <ListItem alignItems="flex-start" button onClick={() => history.push(`blogs/${blog.id}`)}>
+            <ListItemAvatar>
+              <Avatar src={blog.og_image} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={blog.title}
+              secondary={
+                <Typography component="span" variant="caption" color="textSecondary">
+                  {blog.updated_at}
+                </Typography>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+        </div>
+      )}
+    </List>
+  </>
+)
+
+export const RecentList: React.FC<RecentListProps> = ({ data, history }) => (
+  <>
+    <Typography variant="h4">最新の記事</Typography>
+    <List>
+      {data.map(blog =>
+        <div key={blog.id}>
+          <ListItem alignItems="flex-start" button onClick={() => history.push(`blogs/${blog.id}`)}>
+            <ListItemAvatar>
+              <Avatar src={blog.og_image} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={blog.title}
+              secondary={
+                <Typography component="span" variant="caption" color="textSecondary">
+                  {blog.updated_at}
+                </Typography>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+        </div>
+      )}
+    </List>
+  </>
+)
+

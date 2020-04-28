@@ -1,11 +1,10 @@
-import * as React from 'react'
+import React, { Suspense } from 'react'
 import { RouteComponentProps, Route, Switch } from 'react-router-dom'
-import BlogsIndexPage from 'pages/blogs/index'
-import BlogsNewPage from 'pages/blogs/new'
-import BlogsShowPage from 'pages/blogs/show'
-import 'draft-js-image-plugin/lib/plugin.css'
-import 'draft-js/dist/Draft.css'
-import 'scss/blogs.scss'
+import Spinner from 'components/layouts/Spinner'
+
+const BlogsIndexPage = React.lazy(() => import('pages/blogs/index'));
+const BlogsShowPage = React.lazy(() => import('pages/blogs/show'));
+const BlogsNewPage = React.lazy(() => import('pages/blogs/new'));
 
 interface PropsFromState {
   editorState: number
@@ -14,16 +13,14 @@ interface PropsFromState {
 
 type AllProps = PropsFromState & RouteComponentProps
 
-const BlogsPage: React.FC<AllProps> = ({ match }) => {
-  return (
-    <>
-      <Switch>
-        <Route exact path={`${match.path}`} component={BlogsIndexPage} />
-        <Route path={`${match.path}/new`} component={BlogsNewPage} />
-        <Route path={`${match.path}/:id`} component={BlogsShowPage} />
-      </Switch>
-    </>
-  )
-}
+const BlogsPage: React.FC<AllProps> = ({ match }) => (
+  <Suspense fallback={<Spinner />}>
+    <Switch>
+      <Route exact path={`${match.path}`} component={BlogsIndexPage} />
+      <Route path={`${match.path}/new`} component={BlogsNewPage} />
+      <Route path={`${match.path}/:id`} component={BlogsShowPage} />
+    </Switch>
+  </Suspense>
+)
 
 export default BlogsPage

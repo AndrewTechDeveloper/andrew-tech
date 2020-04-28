@@ -14,11 +14,12 @@ interface AppProps {
   history: History
 }
 
-const App: React.FC<AppProps> = ({ store, history }) => {
+const App: React.FC<AppProps> = props => {
+  const { store, history } = props
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <NavBar />
+        <NavBar {...props} />
         <Routes />
       </ConnectedRouter>
       <Footer />

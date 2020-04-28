@@ -23,8 +23,8 @@ export interface Blog extends ApiResponse {
   description: string
   content: string
   status: string
-  updated_at: string
   created_at: string
+  updated_at: string
 }
 
 export type ApiResponse = Record<string, any>
@@ -38,6 +38,8 @@ export interface BlogsState {
   readonly description: string
   readonly status: string
   readonly data: Blog[]
+  readonly createdAt: string
+  readonly updatedAt: string
   readonly loading: boolean
   readonly toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }
 }

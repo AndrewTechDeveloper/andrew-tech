@@ -1,17 +1,18 @@
-import * as React from 'react'
+import React, { Component, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom'
+import Spinner from 'components/layouts/Spinner'
 
-import BlogsPage from 'pages/blogs'
-import AccountsPage from 'pages/accounts'
+const BlogsPage = React.lazy(() => import('pages/blogs'));
+const AccountsPage = React.lazy(() => import('pages/accounts'));
 
 const Routes: React.FC = () => (
-  <div>
+  <Suspense fallback={<Spinner />}>
     <Switch>
       <Route path="/blogs" component={BlogsPage} />
       <Route path="/accounts" component={AccountsPage} />
       <Route component={() => <div>Not Found</div>} />
     </Switch>
-  </div>
+  </Suspense>
 )
 
 export default Routes

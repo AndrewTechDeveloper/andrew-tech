@@ -5,6 +5,6 @@ json.blog do
   json.description(@blog.description)
   json.content(@blog.content)
   json.status(@blog.status)
-  json.updated_at(@blog.updated_at)
-  json.created_at(@blog.created_at)
+  json.updated_at(@blog.updated_at.strftime("%F"))
+  json.created_at(@blog.created_at.strftime("%F"))
 end

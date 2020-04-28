@@ -8,6 +8,7 @@ import {
   ListItemText,
   ListItemAvatar,
 } from '@material-ui/core'
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 export const PortfolioList = () => {
   const projects = [
@@ -103,7 +104,7 @@ export const SkillSetList = () => {
       skills: 'Docker, Selenium, Github, Git Flow, Mackerel'
     },
     {
-      title: 'others',
+      title: 'Others',
       color: 'indigo',
       logoLetter: 'O',
       skills: 'Vimmer, TOEIC 920, TOEFLibt 99'

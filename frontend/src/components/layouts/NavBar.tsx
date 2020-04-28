@@ -1,4 +1,5 @@
 import React from 'react'
+import { History } from 'history';
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 import {
@@ -67,8 +68,11 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(2)
     },
     logo: {
+      flexGrow: 1,
+    },
+    logoImg: {
       maxHeight: '48px',
-      flexGrow: 1
+      cursor: 'pointer'
     },
     hide: {
       display: 'none'
@@ -86,6 +90,9 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(0, 1),
       ...theme.mixins.toolbar,
       justifyContent: 'flex-end'
+    },
+    drawerLink: {
+      color: '#202020'
     },
     content: {
       flexGrow: 1,
@@ -147,7 +154,11 @@ function ScrollTop(props: Props) {
   )
 }
 
-export const NavBar = (props: Props) => {
+interface NavBarProps {
+  history: History
+}
+export const NavBar: React.FC<NavBarProps> = props => {
+  const { history } = props
   const classes = useStyles()
   const theme = useTheme()
   const [open, setOpen] = React.useState(false)
@@ -159,7 +170,7 @@ export const NavBar = (props: Props) => {
 
   const currentUrl = window.location.href
   const twitterLink = `https://twitter.com/intent/tweet?text=${currentUrl}`
-  const logo = "https://s3-ap-northeast-1.amazonaws.com/konpeki.site/logo/andrew-tech.png"
+  const logo = `${process.env.REACT_APP_S3_ENDPOINT}/logo/andrew-tech.png`
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -182,7 +193,7 @@ export const NavBar = (props: Props) => {
               <MenuIcon />
             </IconButton>
             <div className={classes.logo}>
-              <img src={logo} className={classes.logo}/>
+              <img src={logo} className={classes.logoImg} onClick={() => history.push('/blogs')} />
             </div>
             <a href={twitterLink}>
               <Tooltip title="twitterでシェア" placement="bottom">
@@ -207,6 +218,7 @@ export const NavBar = (props: Props) => {
         variant="temporary"
         anchor="left"
         open={open}
+        onClose={handleDrawerClose}
         classes={{
           paper: classes.drawerPaper
         }}
@@ -221,7 +233,7 @@ export const NavBar = (props: Props) => {
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
-              <ListItemText>Home</ListItemText>
+              <ListItemText className={classes.drawerLink}>Home</ListItemText>
             </ListItem>
           </List>
         </Link>
@@ -231,7 +243,7 @@ export const NavBar = (props: Props) => {
               <ListItemIcon>
                 <CreateIcon />
               </ListItemIcon>
-              <ListItemText>New</ListItemText>
+              <ListItemText className={classes.drawerLink}>New</ListItemText>
             </ListItem>
           </List>
         </Link>
@@ -241,17 +253,7 @@ export const NavBar = (props: Props) => {
               <ListItemIcon>
                 <PersonIcon />
               </ListItemIcon>
-              <ListItemText>Profile</ListItemText>
-            </ListItem>
-          </List>
-        </Link>
-        <Link to={'/accounts/contact'}>
-          <List>
-            <ListItem button onClick={() => { handleDrawerClose();  handleClipboardReset() }}>
-              <ListItemIcon>
-                <AlternateEmailIcon />
-              </ListItemIcon>
-              <ListItemText>Contact</ListItemText>
+              <ListItemText className={classes.drawerLink}>Profile</ListItemText>
             </ListItem>
           </List>
         </Link>
