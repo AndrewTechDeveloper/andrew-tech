@@ -1,20 +1,14 @@
 import React from 'react'
-import { History } from 'history';
+import { History } from 'history'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
-import {
-  makeStyles,
-  useTheme,
-  Theme,
-  createStyles
-} from '@material-ui/core/styles'
+import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles'
 import {
   Drawer,
   CssBaseline,
   AppBar,
   Toolbar,
   List,
-  Typography,
   Divider,
   IconButton,
   ListItem,
@@ -33,20 +27,19 @@ import {
   Link as LinkIcon,
   Person as PersonIcon,
   AssignmentTurnedIn as AssignmentTurnedInIcon,
-  AlternateEmail as AlternateEmailIcon,
   KeyboardArrowUp as KeyboardArrowUpIcon,
   Create as CreateIcon,
   ChevronLeft as ChevronLeftIcon,
-  ChevronRight as ChevronRightIcon,
+  ChevronRight as ChevronRightIcon
 } from '@material-ui/icons'
-import CopyToClipboard from 'react-copy-to-clipboard';
+import CopyToClipboard from 'react-copy-to-clipboard'
 
 const drawerWidth = 240
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
+      display: 'flex'
     },
     appBar: {
       backgroundColor: '#fff',
@@ -68,7 +61,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(2)
     },
     logo: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     logoImg: {
       maxHeight: '48px',
@@ -197,16 +190,16 @@ export const NavBar: React.FC<NavBarProps> = props => {
             </div>
             <a href={twitterLink}>
               <Tooltip title="twitterでシェア" placement="bottom">
-                <IconButton color="default" edge="end" className='ml-2'>
+                <IconButton color="default" edge="end" className="ml-2">
                   <TwitterIcon />
                 </IconButton>
               </Tooltip>
             </a>
             <CopyToClipboard text={currentUrl} onCopy={handleClipboardCopy}>
               <Tooltip title={copy ? 'コピーしました' : 'URLをコピー'} placement="bottom">
-              <IconButton edge="end" color="default" className='ml-2'>
-                {copy ? <AssignmentTurnedInIcon /> : <LinkIcon />}
-              </IconButton>
+                <IconButton edge="end" color="default" className="ml-2">
+                  {copy ? <AssignmentTurnedInIcon /> : <LinkIcon />}
+                </IconButton>
               </Tooltip>
             </CopyToClipboard>
           </Toolbar>
@@ -229,7 +222,13 @@ export const NavBar: React.FC<NavBarProps> = props => {
         <Divider />
         <Link to={'/blogs'}>
           <List>
-            <ListItem button onClick={() => { handleDrawerClose();  handleClipboardReset() }}>
+            <ListItem
+              button
+              onClick={() => {
+                handleDrawerClose()
+                handleClipboardReset()
+              }}
+            >
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
@@ -239,7 +238,13 @@ export const NavBar: React.FC<NavBarProps> = props => {
         </Link>
         <Link to={'/blogs/new'}>
           <List>
-            <ListItem button onClick={() => { handleDrawerClose();  handleClipboardReset() }}>
+            <ListItem
+              button
+              onClick={() => {
+                handleDrawerClose()
+                handleClipboardReset()
+              }}
+            >
               <ListItemIcon>
                 <CreateIcon />
               </ListItemIcon>
@@ -249,7 +254,13 @@ export const NavBar: React.FC<NavBarProps> = props => {
         </Link>
         <Link to={'/accounts/profile'}>
           <List>
-            <ListItem button onClick={() => { handleDrawerClose();  handleClipboardReset() }}>
+            <ListItem
+              button
+              onClick={() => {
+                handleDrawerClose()
+                handleClipboardReset()
+              }}
+            >
               <ListItemIcon>
                 <PersonIcon />
               </ListItemIcon>
@@ -267,7 +278,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
         <div className={classes.drawerHeader} />
       </main>
       <ScrollTop {...props}>
-        <Fab color="default" aria-label="scroll back to top" className='fab'>
+        <Fab color="default" aria-label="scroll back to top" className="fab">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>

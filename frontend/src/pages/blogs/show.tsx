@@ -3,13 +3,8 @@ import { EditorState } from 'draft-js'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
-import { Editor } from 'react-draft-wysiwyg';
-import {
-  Container,
-  Typography,
-  Divider,
-  Grid,
-} from '@material-ui/core'
+import { Editor } from 'react-draft-wysiwyg'
+import { Container, Typography, Divider, Grid } from '@material-ui/core'
 import { ImageCard } from 'components/blogs/Card'
 import { Timeline } from 'react-twitter-widgets'
 import { HeadHelmet } from 'components/layouts/Helmet'
@@ -32,7 +27,7 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   title: blogs.title,
   description: blogs.description,
   ogImage: blogs.ogImage,
-  updatedAt: blogs.updatedAt,
+  updatedAt: blogs.updatedAt
 })
 const mapDispatchToProps = {
   changeEditorState: blogsActions.changeEditorState,
@@ -52,20 +47,15 @@ class BlogsShowPage extends React.Component<AllProps> {
           <Typography variant="h4" gutterBottom>
             {title}
           </Typography>
-          <Typography variant="subtitle1" color='textSecondary' gutterBottom>
+          <Typography variant="subtitle1" color="textSecondary" gutterBottom>
             {updatedAt}
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
             {description}
           </Typography>
           <ImageCard {...this.props} />
-          <Divider className='my-4' />
-          <Editor
-            editorState={editorState}
-            onEditorStateChange={changeEditorState}
-            readOnly
-            toolbarHidden
-          />
+          <Divider className="my-4" />
+          <Editor editorState={editorState} onEditorStateChange={changeEditorState} readOnly toolbarHidden />
         </Container>
       </>
     )

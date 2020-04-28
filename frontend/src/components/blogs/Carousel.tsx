@@ -1,15 +1,7 @@
 import React from 'react'
-import { History } from 'history';
+import { History } from 'history'
 import { Blog } from 'store/blogs/types'
-import {
-  MDBCarousel,
-  MDBCarouselCaption,
-  MDBCarouselInner,
-  MDBCarouselItem,
-  MDBView,
-  MDBMask,
-  MDBContainer
-} from 'mdbreact'
+import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from 'mdbreact'
 
 interface CarouselProps {
   data: Blog[]
@@ -28,7 +20,7 @@ export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => (
     <MDBCarousel activeItem={1} length={data.length} showControls={true} showIndicators={true} className="z-depth-1">
       <MDBCarouselInner>
         {data.map(blog => (
-          <MDBCarouselItem type='button' itemId="1" key={blog.id} onClick={() => history.push(`blogs/${blog.id}`)}>
+          <MDBCarouselItem type="button" itemId="1" key={blog.id} onClick={() => history.push(`blogs/${blog.id}`)}>
             <MDBView>
               <img className="d-block m-auto" src={blog.og_image} style={style.carousel.img} />
               <MDBMask overlay="black-light" />

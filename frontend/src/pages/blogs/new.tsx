@@ -5,17 +5,11 @@ import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
 import { BlogsSelect, OgImageForm, TitleForm, DescriptionForm, StatusSelect } from 'components/blogs/Form'
 import { FetchButton, SaveButton } from 'components/blogs/Button'
-import { Editor } from 'react-draft-wysiwyg';
+import { Editor } from 'react-draft-wysiwyg'
 import { EditorState } from 'draft-js'
 import Toast from 'components/layouts/Toast'
 import { ImageCard } from 'components/blogs/Card'
-import {
-  Container,
-  Card,
-  Typography,
-  Divider,
-  Chip,
-} from '@material-ui/core'
+import { Container, Card, Typography, Divider, Chip } from '@material-ui/core'
 
 interface PropsFromState {
   id: number
@@ -71,12 +65,12 @@ class BlogsIndexPage extends React.Component<AllProps> {
     this.props.fetchAllRequest()
   }
   render() {
-    const { id, title, description, ogImage, status, editorState, updatedAt, changeEditorState } = this.props
+    const { id, title, description, status, editorState, updatedAt, changeEditorState } = this.props
     return (
       <>
         <Toast {...this.props} />
         <Container maxWidth="md" className="my-4 w-25 h-75 d-md-flex position-fixed">
-          <Card className='overflow-auto p-2'>
+          <Card className="overflow-auto p-2">
             <div className="my-4 d-flex">
               <BlogsSelect {...this.props} />
               <FetchButton {...this.props} />
@@ -84,7 +78,7 @@ class BlogsIndexPage extends React.Component<AllProps> {
             <Divider />
             <div className="my-4">
               <Typography variant="subtitle1" gutterBottom>
-                ID: { id || '未選択' }
+                ID: {id || '未選択'}
               </Typography>
             </div>
             <div className="my-4">
@@ -108,7 +102,7 @@ class BlogsIndexPage extends React.Component<AllProps> {
           <Typography variant="h4" gutterBottom>
             {title}
           </Typography>
-          <Typography variant="subtitle1" color='textSecondary' gutterBottom>
+          <Typography variant="subtitle1" color="textSecondary" gutterBottom>
             {updatedAt}
           </Typography>
           <Chip variant="outlined" label={status} />
@@ -116,11 +110,8 @@ class BlogsIndexPage extends React.Component<AllProps> {
             {description}
           </Typography>
           <ImageCard {...this.props} />
-          <Divider className='my-4' />
-          <Editor
-            editorState={editorState}
-            onEditorStateChange={changeEditorState}
-          />
+          <Divider className="my-4" />
+          <Editor editorState={editorState} onEditorStateChange={changeEditorState} />
         </Container>
       </>
     )

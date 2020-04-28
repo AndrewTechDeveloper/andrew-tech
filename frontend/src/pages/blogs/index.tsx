@@ -1,15 +1,11 @@
 import * as React from 'react'
-import { History } from 'history';
+import { History } from 'history'
 import { EditorState } from 'draft-js'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import {
-  Typography,
-  Container,
-  Grid,
-} from '@material-ui/core'
+import { Container, Grid } from '@material-ui/core'
 import { CarouselTitle } from 'components/blogs/Carousel'
 import { TrendList, RecentList } from 'components/blogs/List'
 import { Timeline } from 'react-twitter-widgets'
@@ -27,11 +23,11 @@ type AllProps = PropsFromState & PropsFromDispatch
 
 const mapStateToProps = ({ blogs }: AppState) => ({
   editorState: blogs.editorState,
-  data: blogs.data,
+  data: blogs.data
 })
 const mapDispatchToProps = {
   changeEditorState: blogsActions.changeEditorState,
-  fetchAllRequest: blogsActions.fetchAllRequest,
+  fetchAllRequest: blogsActions.fetchAllRequest
 }
 
 class BlogsIndexPage extends React.Component<AllProps> {
@@ -43,16 +39,16 @@ class BlogsIndexPage extends React.Component<AllProps> {
       <>
         <CarouselTitle {...this.props} />
         <Container maxWidth="md" className="my-5">
-          <Grid container direction='row' justify='space-between'>
-            <Grid item xs={12} sm={8} className='mb-2'>
-              <div className='mb-5'>
+          <Grid container direction="row" justify="space-between">
+            <Grid item xs={12} sm={8} className="mb-2">
+              <div className="mb-5">
                 <TrendList {...this.props} />
               </div>
-              <div className='mb-5'>
+              <div className="mb-5">
                 <RecentList {...this.props} />
               </div>
             </Grid>
-            <Grid item xs={12} sm={3} className='mb-2'>
+            <Grid item xs={12} sm={3} className="mb-2">
               <Timeline
                 dataSource={{ sourceType: 'profile', screenName: 'andrewdayoooo' }}
                 options={{ username: 'andrewdayoooo', height: '400', theme: 'dark' }}

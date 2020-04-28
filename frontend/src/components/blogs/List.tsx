@@ -1,15 +1,7 @@
 import React from 'react'
 import { Blog } from 'store/blogs/types'
-import { History } from 'history';
-import {
-  List,
-  ListItem,
-  Divider,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
-  Typography,
-} from '@material-ui/core'
+import { History } from 'history'
+import { List, ListItem, Divider, ListItemText, ListItemAvatar, Avatar, Typography } from '@material-ui/core'
 
 interface TrendListProps {
   data: Blog[]
@@ -24,7 +16,7 @@ export const TrendList: React.FC<TrendListProps> = ({ data, history }) => (
   <>
     <Typography variant="h4">人気の記事</Typography>
     <List>
-      {data.map(blog =>
+      {data.map(blog => (
         <div key={blog.id}>
           <ListItem alignItems="flex-start" button onClick={() => history.push(`blogs/${blog.id}`)}>
             <ListItemAvatar>
@@ -41,7 +33,7 @@ export const TrendList: React.FC<TrendListProps> = ({ data, history }) => (
           </ListItem>
           <Divider variant="inset" component="li" />
         </div>
-      )}
+      ))}
     </List>
   </>
 )
@@ -50,7 +42,7 @@ export const RecentList: React.FC<RecentListProps> = ({ data, history }) => (
   <>
     <Typography variant="h4">最新の記事</Typography>
     <List>
-      {data.map(blog =>
+      {data.map(blog => (
         <div key={blog.id}>
           <ListItem alignItems="flex-start" button onClick={() => history.push(`blogs/${blog.id}`)}>
             <ListItemAvatar>
@@ -67,8 +59,7 @@ export const RecentList: React.FC<RecentListProps> = ({ data, history }) => (
           </ListItem>
           <Divider variant="inset" component="li" />
         </div>
-      )}
+      ))}
     </List>
   </>
 )
-

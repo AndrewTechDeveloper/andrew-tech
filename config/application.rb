@@ -22,6 +22,7 @@ module AndrewTech
     config.middleware.use ActionDispatch::Flash
     config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :local
+    config.action_controller.default_protect_from_forgery = true
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'

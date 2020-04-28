@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet'
 
 interface HelmetProps {
   title: string
@@ -7,7 +7,6 @@ interface HelmetProps {
   ogImage: string
 }
 
-const S3_ENDPOINT = process.env.REACT_APP_S3_ENDPOINT
 export const HeadHelmet: React.FC<HelmetProps> = ({ title, description, ogImage }) => (
   <Helmet
     title="Home"
@@ -20,9 +19,7 @@ export const HeadHelmet: React.FC<HelmetProps> = ({ title, description, ogImage 
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: `${window.location.href}` },
       { property: 'og:image', content: `${ogImage}` },
-      { property: 'og:description', content: `${description}` },
+      { property: 'og:description', content: `${description}` }
     ]}
   />
 )
-
-

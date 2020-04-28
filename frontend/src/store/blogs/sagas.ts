@@ -8,7 +8,7 @@ function* handleSave() {
   try {
     const state = yield select()
     const blogs = state.blogs
-    if (blogs.title !== '' && blogs.description !== '' && blogs.status !== 0){
+    if (blogs.title !== '' && blogs.description !== '' && blogs.status !== 0) {
       yield saveRequest(blogs)
       yield put(blogsActions.createToast({ message: 'ブログが作成されました！', severity: 'success', isOpen: true }))
     } else {

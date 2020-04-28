@@ -1,13 +1,7 @@
 import * as React from 'react'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import {
-  InputLabel,
-  FormControl,
-  TextField,
-  Select,
-  MenuItem
-} from '@material-ui/core'
+import { InputLabel, FormControl, TextField, Select, MenuItem } from '@material-ui/core'
 
 interface BlogsSelectProps {
   data: Blog[]
@@ -47,11 +41,7 @@ export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, selectBlog }
   </FormControl>
 )
 export const StatusSelect: React.FC<StatusSelectProps> = ({ status, selectStatus }) => {
-  const options = [
-    { status: 'editing' },
-    { status: 'publish' },
-    { status: 'hidden' }
-  ]
+  const options = [{ status: 'editing' }, { status: 'publish' }, { status: 'hidden' }]
   return (
     <FormControl style={{ minWidth: 120 }}>
       <InputLabel id="status-select">Select Status</InputLabel>
