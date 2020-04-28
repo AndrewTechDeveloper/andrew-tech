@@ -5,10 +5,11 @@ import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import { Container, Grid } from '@material-ui/core'
 import { CarouselTitle } from 'components/blogs/Carousel'
 import { TrendList, RecentList } from 'components/blogs/List'
 import { Timeline } from 'react-twitter-widgets'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
 
 interface PropsFromState {
   editorState: EditorState

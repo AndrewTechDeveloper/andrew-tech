@@ -1,7 +1,11 @@
 import * as React from 'react'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import { InputLabel, FormControl, TextField, Select, MenuItem } from '@material-ui/core'
+import InputLabel from '@material-ui/core/InputLabel'
+import FormControl from '@material-ui/core/FormControl'
+import TextField from '@material-ui/core/TextField'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 
 interface BlogsSelectProps {
   data: Blog[]

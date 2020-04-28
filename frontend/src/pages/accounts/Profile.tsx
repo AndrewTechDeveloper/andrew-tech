@@ -1,7 +1,11 @@
 import * as React from 'react'
-import { Container, Card, CardContent, Typography, Grid } from '@material-ui/core'
 import { ProfileCard } from 'components/accounts/Card'
 import { PortfolioList, SkillSetList } from 'components/accounts/List'
+import Container from '@material-ui/core/Container'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 const ProfilePage = () => (
   <Container maxWidth="lg" className="p-4">

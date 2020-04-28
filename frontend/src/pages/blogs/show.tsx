@@ -4,10 +4,11 @@ import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Editor } from 'react-draft-wysiwyg'
-import { Container, Typography, Divider, Grid } from '@material-ui/core'
 import { ImageCard } from 'components/blogs/Card'
-import { Timeline } from 'react-twitter-widgets'
 import { HeadHelmet } from 'components/layouts/Helmet'
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
 
 interface PropsFromState {
   editorState: EditorState
@@ -39,7 +40,7 @@ class BlogsShowPage extends React.Component<AllProps> {
     this.props.fetchRequest()
   }
   public render() {
-    const { editorState, title, description, ogImage, updatedAt, changeEditorState } = this.props
+    const { editorState, title, description, updatedAt, changeEditorState } = this.props
     return (
       <>
         <HeadHelmet {...this.props} />

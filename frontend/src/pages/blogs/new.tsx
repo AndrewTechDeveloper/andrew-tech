@@ -9,7 +9,11 @@ import { Editor } from 'react-draft-wysiwyg'
 import { EditorState } from 'draft-js'
 import Toast from 'components/layouts/Toast'
 import { ImageCard } from 'components/blogs/Card'
-import { Container, Card, Typography, Divider, Chip } from '@material-ui/core'
+import Container from '@material-ui/core/Container'
+import Card from '@material-ui/core/Card'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
+import Chip from '@material-ui/core/Chip'
 
 interface PropsFromState {
   id: number

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as blogsActions from 'store/blogs/actions'
-import { Button } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
 
 interface FetchButtonProps {
   fetchRequest: typeof blogsActions.fetchRequest

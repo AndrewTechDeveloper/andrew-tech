@@ -1,12 +1,11 @@
 import * as React from 'react'
-import {
-  Avatar,
-  Card,
-  CardContent,
-  Divider,
-  Typography
-} from '@material-ui/core'
-import { Twitter as TwitterIcon, Email as EmailIcon } from '@material-ui/icons'
+import Avatar from '@material-ui/core/Avatar'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Divider from '@material-ui/core/Divider'
+import Typography from '@material-ui/core/Typography'
+import TwitterIcon from '@material-ui/icons/Twitter'
+import EmailIcon from '@material-ui/icons/Email'
 import { Follow } from 'react-twitter-widgets'
 
 const style = {

@@ -3,36 +3,32 @@ import { History } from 'history'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles'
-import {
-  Drawer,
-  CssBaseline,
-  AppBar,
-  Toolbar,
-  List,
-  Divider,
-  IconButton,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Slide,
-  useScrollTrigger,
-  Fab,
-  Tooltip,
-  Zoom
-} from '@material-ui/core'
-import {
-  Twitter as TwitterIcon,
-  Menu as MenuIcon,
-  Home as HomeIcon,
-  Link as LinkIcon,
-  Person as PersonIcon,
-  AssignmentTurnedIn as AssignmentTurnedInIcon,
-  KeyboardArrowUp as KeyboardArrowUpIcon,
-  Create as CreateIcon,
-  ChevronLeft as ChevronLeftIcon,
-  ChevronRight as ChevronRightIcon
-} from '@material-ui/icons'
 import CopyToClipboard from 'react-copy-to-clipboard'
+import Drawer from '@material-ui/core/Drawer'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import List from '@material-ui/core/List'
+import Divider from '@material-ui/core/Divider'
+import Tooltip from '@material-ui/core/Tooltip'
+import IconButton from '@material-ui/core/IconButton'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Slide from '@material-ui/core/Slide'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
+import Fab from '@material-ui/core/Fab'
+import Zoom from '@material-ui/core/Zoom'
+import MenuIcon from '@material-ui/icons/Menu'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
+import LinkIcon from '@material-ui/icons/Link'
+import HomeIcon from '@material-ui/icons/Home'
+import CreateIcon from '@material-ui/icons/Create'
+import PersonIcon from '@material-ui/icons/Person'
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn'
+import TwitterIcon from '@material-ui/icons/Twitter'
 
 const drawerWidth = 240
 

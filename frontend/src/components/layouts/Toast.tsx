@@ -1,6 +1,6 @@
 import React from 'react'
 import * as blogsActions from 'store/blogs/actions'
-import { Snackbar } from '@material-ui/core'
+import Snackbar from '@material-ui/core/Snackbar'
 import { Alert } from '@material-ui/lab'
 
 interface AlertProps {
