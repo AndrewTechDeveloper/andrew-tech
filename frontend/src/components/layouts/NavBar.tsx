@@ -3,6 +3,7 @@ import { History } from 'history'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles'
+import smoothscroll from 'smoothscroll-polyfill';
 import CopyToClipboard from 'react-copy-to-clipboard'
 import Drawer from '@material-ui/core/Drawer'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -160,6 +161,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
   const currentUrl = window.location.href
   const twitterLink = `https://twitter.com/intent/tweet?text=${currentUrl}`
   const logo = `${process.env.REACT_APP_S3_ENDPOINT}/logo/andrew-tech.png`
+  smoothscroll.polyfill();
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -184,13 +186,11 @@ export const NavBar: React.FC<NavBarProps> = props => {
             <div className={classes.logo}>
               <img alt='logo' src={logo} className={classes.logoImg} onClick={() => history.push('/blogs')} />
             </div>
-            <a href={twitterLink}>
-              <Tooltip title="twitterでシェア" placement="bottom">
-                <IconButton color="default" edge="end" className="ml-2">
-                  <TwitterIcon />
-                </IconButton>
-              </Tooltip>
-            </a>
+            <Tooltip title="twitterでシェア" placement="bottom">
+              <IconButton color="default" edge="end" className="ml-2" onClick={() => window.open(twitterLink, '_blank')}>
+                <TwitterIcon />
+              </IconButton>
+            </Tooltip>
             <CopyToClipboard text={currentUrl} onCopy={handleClipboardCopy}>
               <Tooltip title={copy ? 'コピーしました' : 'URLをコピー'} placement="bottom">
                 <IconButton edge="end" color="default" className="ml-2">
