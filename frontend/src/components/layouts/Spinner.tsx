@@ -3,7 +3,7 @@ import Loader from 'react-loader-spinner'
 
 const style = {
   spinner: {
-    height: '100vh',
+    height: '90vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

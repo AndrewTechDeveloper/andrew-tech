@@ -62,9 +62,6 @@ const useStyles = makeStyles((theme: Theme) =>
       maxHeight: '48px',
       cursor: 'pointer'
     },
-    link: {
-      zIndex: 1
-    },
     hide: {
       display: 'none'
     },
@@ -187,7 +184,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
             <div className={classes.logo}>
               <img alt='logo' src={logo} className={classes.logoImg} onClick={() => history.push('/blogs')} />
             </div>
-            <a href={twitterLink} className={classes.link}>
+            <a href={twitterLink}>
               <Tooltip title="twitterでシェア" placement="bottom">
                 <IconButton color="default" edge="end" className="ml-2">
                   <TwitterIcon />
