@@ -9,11 +9,21 @@ import { AppState, createRootReducer, rootSaga } from 'store'
 export default function configureStore(history: History, initialState: AppState): Store<AppState> {
   const composeEnhancers = composeWithDevTools({})
   const sagaMiddleware = createSagaMiddleware()
-  const store = createStore(
-    createRootReducer(history),
-    initialState,
-    composeEnhancers(applyMiddleware(routerMiddleware(history), logger, sagaMiddleware))
-  )
-  sagaMiddleware.run(rootSaga)
-  return store
+  if(process.env.NODE_ENV === 'development'){
+    const store = createStore(
+      createRootReducer(history),
+      initialState,
+      composeEnhancers(applyMiddleware(routerMiddleware(history), logger, sagaMiddleware))
+    )
+    sagaMiddleware.run(rootSaga)
+    return store
+  } else {
+    const store = createStore(
+      createRootReducer(history),
+      initialState,
+      composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware))
+    )
+    sagaMiddleware.run(rootSaga)
+    return store
+  }
 }

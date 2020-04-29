@@ -15,7 +15,7 @@ const style = {
 export const ImageCard: React.FC<ImageCardProps> = ({ ogImage }) => (
   <Card>
     <CardActionArea>
-      <CardMedia image={ogImage} title="blog image" style={style.media} />
+      <CardMedia image={ogImage || 'image'} title="blog image" style={style.media} />
     </CardActionArea>
   </Card>
 )

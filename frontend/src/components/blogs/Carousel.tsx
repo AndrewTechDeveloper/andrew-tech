@@ -19,10 +19,10 @@ export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => (
   <MDBContainer className="p-0 m-0 mw-100">
     <MDBCarousel activeItem={1} length={data.length} showControls={true} showIndicators={true} className="z-depth-1">
       <MDBCarouselInner>
-        {data.map(blog => (
+        {data && data.map(blog => (
           <MDBCarouselItem type="button" itemId="1" key={blog.id} onClick={() => history.push(`blogs/${blog.id}`)}>
             <MDBView>
-              <img className="d-block m-auto" src={blog.og_image} style={style.carousel.img} />
+              <img alt='carousel' className="d-block m-auto" src={blog.og_image} style={style.carousel.img} />
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>

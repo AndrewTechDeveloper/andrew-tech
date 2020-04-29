@@ -36,7 +36,7 @@ export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, selectBlog }
       <MenuItem value={0} key={0}>
         新しく作成
       </MenuItem>
-      {data.map(blog => (
+      {data && data.map(blog => (
         <MenuItem value={blog.id} key={blog.id}>
           {blog.title}
         </MenuItem>

@@ -25,7 +25,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import LinkIcon from '@material-ui/icons/Link'
 import HomeIcon from '@material-ui/icons/Home'
-import CreateIcon from '@material-ui/icons/Create'
 import PersonIcon from '@material-ui/icons/Person'
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn'
 import TwitterIcon from '@material-ui/icons/Twitter'
@@ -182,7 +181,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
               <MenuIcon />
             </IconButton>
             <div className={classes.logo}>
-              <img src={logo} className={classes.logoImg} onClick={() => history.push('/blogs')} />
+              <img alt='logo' src={logo} className={classes.logoImg} onClick={() => history.push('/blogs')} />
             </div>
             <a href={twitterLink}>
               <Tooltip title="twitterでシェア" placement="bottom">
@@ -229,22 +228,6 @@ export const NavBar: React.FC<NavBarProps> = props => {
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText className={classes.drawerLink}>Home</ListItemText>
-            </ListItem>
-          </List>
-        </Link>
-        <Link to={'/blogs/new'}>
-          <List>
-            <ListItem
-              button
-              onClick={() => {
-                handleDrawerClose()
-                handleClipboardReset()
-              }}
-            >
-              <ListItemIcon>
-                <CreateIcon />
-              </ListItemIcon>
-              <ListItemText className={classes.drawerLink}>New</ListItemText>
             </ListItem>
           </List>
         </Link>
