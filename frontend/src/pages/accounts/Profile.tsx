@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid'
 const ProfilePage = () => (
   <Container maxWidth="lg" className="p-4">
     <Grid container direction="row" justify="space-evenly">
-      <Grid item xs={12} sm={4} className="mr-2">
+      <Grid item xs={12} sm={4}>
         <ProfileCard />
       </Grid>
       <Grid item xs={12} sm={7}>

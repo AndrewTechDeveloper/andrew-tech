@@ -5,9 +5,9 @@ import { Store } from 'redux'
 import { History } from 'history'
 import Routes from 'routes'
 import { AppState } from 'store'
-import 'App.scss'
 import { NavBar } from 'components/layouts/NavBar'
 import { Footer } from 'components/layouts/Footer'
+import 'App.scss'
 
 interface AppProps {
   store: Store<AppState>

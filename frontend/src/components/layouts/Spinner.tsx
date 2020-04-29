@@ -3,14 +3,10 @@ import Loader from 'react-loader-spinner'
 
 const style = {
   spinner: {
-    position: 'absolute' as 'absolute',
-    top: '0',
-    right: '0',
-    left: '0',
-    bottom: '0',
-    margin: 'auto',
-    width: '140px',
-    height: '0px'
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 }
 const Spinner: React.FC = () => (
