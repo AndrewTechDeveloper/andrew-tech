@@ -11,7 +11,8 @@ interface CarouselProps {
 const style = {
   carousel: {
     img: {
-      height: '64vh'
+      height: '40vh',
+      width: 'auto'
     }
   }
 }

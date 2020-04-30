@@ -20,7 +20,7 @@ interface RecentListProps {
 
 export const TrendList: React.FC<TrendListProps> = ({ data, history }) => (
   <>
-    <Typography variant="h4">人気の記事</Typography>
+    <Typography variant="h5">人気の記事</Typography>
     <List>
       {data && data.map(blog => (
         <div key={blog.id}>
@@ -46,7 +46,7 @@ export const TrendList: React.FC<TrendListProps> = ({ data, history }) => (
 
 export const RecentList: React.FC<RecentListProps> = ({ data, history }) => (
   <>
-    <Typography variant="h4">最新の記事</Typography>
+    <Typography variant="h5">最新の記事</Typography>
     <List>
       {data && data.map(blog => (
         <div key={blog.id}>

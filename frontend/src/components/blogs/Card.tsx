@@ -8,7 +8,8 @@ interface ImageCardProps {
 }
 const style = {
   media: {
-    height: '60vh',
+    height: '40vh',
+    width: 'auto',
     backgroundSize: 'contain'
   }
 }

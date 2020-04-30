@@ -64,7 +64,7 @@ const mapDispatchToProps = {
   deleteToast: blogsActions.deleteToast
 }
 
-class BlogsIndexPage extends React.Component<AllProps> {
+class BlogsNewPage extends React.Component<AllProps> {
   componentDidMount() {
     this.props.fetchAllRequest()
   }
@@ -73,35 +73,6 @@ class BlogsIndexPage extends React.Component<AllProps> {
     return (
       <>
         <Toast {...this.props} />
-        <Container maxWidth="md" className="my-4 w-25 h-75 d-md-flex position-fixed">
-          <Card className="overflow-auto p-2">
-            <div className="my-4 d-flex">
-              <BlogsSelect {...this.props} />
-              <FetchButton {...this.props} />
-            </div>
-            <Divider />
-            <div className="my-4">
-              <Typography variant="subtitle1" gutterBottom>
-                ID: {id || '未選択'}
-              </Typography>
-            </div>
-            <div className="my-4">
-              <TitleForm {...this.props} />
-            </div>
-            <div className="my-4">
-              <DescriptionForm {...this.props} />
-            </div>
-            <div className="my-4">
-              <OgImageForm {...this.props} />
-            </div>
-            <div className="my-4">
-              <StatusSelect {...this.props} />
-            </div>
-            <div className="my-4">
-              <SaveButton {...this.props} />
-            </div>
-          </Card>
-        </Container>
         <Container maxWidth="md" className="my-4 blog min-vh-100">
           <Typography variant="h4" gutterBottom>
             {title}
@@ -115,6 +86,16 @@ class BlogsIndexPage extends React.Component<AllProps> {
           </Typography>
           <ImageCard {...this.props} />
           <Divider className="my-4" />
+          <Card className='m-2'>
+            <BlogsSelect {...this.props} />
+            <FetchButton {...this.props} />
+            <Typography variant="subtitle1" gutterBottom>ID: {id || '未選択'}</Typography>
+            <TitleForm {...this.props} />
+            <DescriptionForm {...this.props} />
+            <OgImageForm {...this.props} />
+            <StatusSelect {...this.props} />
+            <SaveButton {...this.props} />
+          </Card>
           <Editor editorState={editorState} onEditorStateChange={changeEditorState} />
         </Container>
       </>
@@ -122,4 +103,4 @@ class BlogsIndexPage extends React.Component<AllProps> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlogsIndexPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BlogsNewPage)

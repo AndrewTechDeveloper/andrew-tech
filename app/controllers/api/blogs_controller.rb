@@ -1,6 +1,6 @@
 class Api::BlogsController < Api::ApplicationController
   def index
-    @blogs = Blog.all
+    @blogs = Blog.where(status: "publish")
     render 'index', formats: :json, handlers: 'jbuilder'
   end
 
