@@ -14,6 +14,7 @@ import Card from '@material-ui/core/Card'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Chip from '@material-ui/core/Chip'
+import Grid from '@material-ui/core/Grid'
 
 interface PropsFromState {
   id: number
@@ -86,15 +87,33 @@ class BlogsNewPage extends React.Component<AllProps> {
           </Typography>
           <ImageCard {...this.props} />
           <Divider className="my-4" />
-          <Card className='m-2'>
-            <BlogsSelect {...this.props} />
-            <FetchButton {...this.props} />
-            <Typography variant="subtitle1" gutterBottom>ID: {id || '未選択'}</Typography>
-            <TitleForm {...this.props} />
-            <DescriptionForm {...this.props} />
-            <OgImageForm {...this.props} />
-            <StatusSelect {...this.props} />
-            <SaveButton {...this.props} />
+          <Card className='p-2'>
+            <Grid container spacing={3}>
+              <Grid item xs className="align-items-center d-flex">
+                <div className="p-2 m-0">
+                <Typography variant="subtitle1" gutterBottom>ID: {id || '未選択'}</Typography>
+                </div>
+                <BlogsSelect {...this.props} />
+                <FetchButton {...this.props} />
+              </Grid>
+            </Grid>
+            <Grid container spacing={3}>
+              <Grid item xs>
+                <TitleForm {...this.props} />
+              </Grid>
+              <Grid item xs>
+                <DescriptionForm {...this.props} />
+              </Grid>
+              <Grid item xs>
+                <OgImageForm {...this.props} />
+              </Grid>
+              <Grid item xs>
+                <StatusSelect {...this.props} />
+              </Grid>
+              <Grid item xs>
+                <SaveButton {...this.props} />
+              </Grid>
+            </Grid>
           </Card>
           <Editor editorState={editorState} onEditorStateChange={changeEditorState} />
         </Container>
