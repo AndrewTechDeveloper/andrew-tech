@@ -31,9 +31,13 @@ export const fetchRequest = async (blogs: BlogsState) => {
   }
 }
 
-export const fetchAllRequest = async () => {
+export const fetchAllRequest = async (blogs: BlogsState) => {
   try {
-    const res = await axios.get(`${API_ENDPOINT}/blogs`)
+    const res = await axios.get(`${API_ENDPOINT}/blogs`, {
+      params: {
+        status: blogs.status || null
+      }
+    })
     return { data: res.data, isSuccess: true }
   } catch (error) {
     return { data: null, isSuccess: false }

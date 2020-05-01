@@ -28,16 +28,15 @@ interface PropsFromState {
   toast: { message: string; severity: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen: boolean }
 }
 interface PropsFromDispatch {
-  changeEditorState: typeof blogsActions.changeEditorState
-  changeTitle: typeof blogsActions.changeTitle
-  changeDescription: typeof blogsActions.changeDescription
-  changeOgImage: typeof blogsActions.changeOgImage
-  selectBlog: typeof blogsActions.selectBlog
-  selectStatus: typeof blogsActions.selectStatus
+  setEditorState: typeof blogsActions.setEditorState
+  setTitle: typeof blogsActions.setTitle
+  setDescription: typeof blogsActions.setDescription
+  setOgImage: typeof blogsActions.setOgImage
+  setId: typeof blogsActions.setId
+  setStatus: typeof blogsActions.setStatus
   fetchRequest: typeof blogsActions.fetchRequest
   fetchAllRequest: typeof blogsActions.fetchAllRequest
   saveRequest: typeof blogsActions.saveRequest
-  deleteToast: typeof blogsActions.deleteToast
 }
 type AllProps = PropsFromState & PropsFromDispatch
 
@@ -53,16 +52,15 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   toast: blogs.toast
 })
 const mapDispatchToProps = {
-  changeEditorState: blogsActions.changeEditorState,
-  changeTitle: blogsActions.changeTitle,
-  changeDescription: blogsActions.changeDescription,
-  changeOgImage: blogsActions.changeOgImage,
-  selectBlog: blogsActions.selectBlog,
-  selectStatus: blogsActions.selectStatus,
+  setEditorState: blogsActions.setEditorState,
+  setTitle: blogsActions.setTitle,
+  setDescription: blogsActions.setDescription,
+  setOgImage: blogsActions.setOgImage,
+  setId: blogsActions.setId,
+  setStatus: blogsActions.setStatus,
   fetchRequest: blogsActions.fetchRequest,
   fetchAllRequest: blogsActions.fetchAllRequest,
   saveRequest: blogsActions.saveRequest,
-  deleteToast: blogsActions.deleteToast
 }
 
 class BlogsNewPage extends React.Component<AllProps> {
@@ -70,7 +68,7 @@ class BlogsNewPage extends React.Component<AllProps> {
     this.props.fetchAllRequest()
   }
   render() {
-    const { id, title, description, status, editorState, updatedAt, changeEditorState } = this.props
+    const { id, title, description, status, editorState, updatedAt, setEditorState } = this.props
     return (
       <>
         <Toast {...this.props} />
@@ -115,7 +113,7 @@ class BlogsNewPage extends React.Component<AllProps> {
               </Grid>
             </Grid>
           </Card>
-          <Editor editorState={editorState} onEditorStateChange={changeEditorState} />
+          <Editor editorState={editorState} onEditorStateChange={setEditorState} />
         </Container>
       </>
     )

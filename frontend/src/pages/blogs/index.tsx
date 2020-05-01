@@ -17,7 +17,8 @@ interface PropsFromState {
   history: History
 }
 interface PropsFromDispatch {
-  changeEditorState: typeof blogsActions.changeEditorState
+  setEditorState: typeof blogsActions.setEditorState
+  setStatus: typeof blogsActions.setStatus
   fetchAllRequest: typeof blogsActions.fetchAllRequest
 }
 type AllProps = PropsFromState & PropsFromDispatch
@@ -27,12 +28,14 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   data: blogs.data
 })
 const mapDispatchToProps = {
-  changeEditorState: blogsActions.changeEditorState,
+  setEditorState: blogsActions.setEditorState,
+  setStatus: blogsActions.setStatus,
   fetchAllRequest: blogsActions.fetchAllRequest
 }
 
 class BlogsIndexPage extends React.Component<AllProps> {
   componentDidMount() {
+    this.props.setStatus('publish')
     this.props.fetchAllRequest()
   }
   render() {

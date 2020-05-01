@@ -10,29 +10,29 @@ import MenuItem from '@material-ui/core/MenuItem'
 interface BlogsSelectProps {
   data: Blog[]
   id: number
-  selectBlog: typeof blogsActions.selectBlog
+  setId: typeof blogsActions.setId
 }
 interface StatusSelectProps {
   status: string
-  selectStatus: typeof blogsActions.selectStatus
+  setStatus: typeof blogsActions.setStatus
 }
 interface TitleFormProps {
   title: string
-  changeTitle: typeof blogsActions.changeTitle
+  setTitle: typeof blogsActions.setTitle
 }
 interface DescriptionFormProps {
   description: string
-  changeDescription: typeof blogsActions.changeDescription
+  setDescription: typeof blogsActions.setDescription
 }
 interface OgImageFormProps {
   ogImage: string
-  changeOgImage: typeof blogsActions.changeOgImage
+  setOgImage: typeof blogsActions.setOgImage
 }
 
-export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, selectBlog }) => (
+export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, setId }) => (
   <FormControl style={{ minWidth: 120 }}>
-    <InputLabel id="blog-select">Select Blog</InputLabel>
-    <Select labelId="blog-select" id="blog-select" value={id || ''} onChange={selectBlog}>
+    <InputLabel id="blog-set">Select Blog</InputLabel>
+    <Select labelId="blog-set" id="blog-set" value={id || ''} onChange={e => setId(e.target.value)}>
       <MenuItem value={0} key={0}>
         新しく作成
       </MenuItem>
@@ -44,12 +44,12 @@ export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, selectBlog }
     </Select>
   </FormControl>
 )
-export const StatusSelect: React.FC<StatusSelectProps> = ({ status, selectStatus }) => {
+export const StatusSelect: React.FC<StatusSelectProps> = ({ status, setStatus }) => {
   const options = [{ status: 'editing' }, { status: 'publish' }, { status: 'hidden' }]
   return (
     <FormControl style={{ minWidth: 120 }}>
-      <InputLabel id="status-select">Select Status</InputLabel>
-      <Select labelId="status-select" id="status-select" value={status} onChange={selectStatus}>
+      <InputLabel id="status-set">Select Status</InputLabel>
+      <Select labelId="status-set" id="status-set" value={status} onChange={e => setStatus(e.target.value)}>
         {options.map(option => (
           <MenuItem value={option.status} key={option.status}>
             {option.status}
@@ -59,12 +59,12 @@ export const StatusSelect: React.FC<StatusSelectProps> = ({ status, selectStatus
     </FormControl>
   )
 }
-export const TitleForm: React.FC<TitleFormProps> = ({ title, changeTitle }) => (
-  <TextField id="title-form" label="title" value={title} onChange={changeTitle} />
+export const TitleForm: React.FC<TitleFormProps> = ({ title, setTitle }) => (
+  <TextField id="title-form" label="title" value={title} onChange={e => setTitle(e.target.value)} />
 )
-export const DescriptionForm: React.FC<DescriptionFormProps> = ({ description, changeDescription }) => (
-  <TextField id="description-form" label="description" value={description} onChange={changeDescription} />
+export const DescriptionForm: React.FC<DescriptionFormProps> = ({ description, setDescription }) => (
+  <TextField id="description-form" label="description" value={description} onChange={e => setDescription(e.target.value)} />
 )
-export const OgImageForm: React.FC<OgImageFormProps> = ({ ogImage, changeOgImage }) => (
-  <TextField id="og_image_form" label="og_image url" value={ogImage} onChange={changeOgImage} />
+export const OgImageForm: React.FC<OgImageFormProps> = ({ ogImage, setOgImage }) => (
+  <TextField id="og_image_form" label="og_image url" value={ogImage} onChange={e => setOgImage(e.target.value)} />
 )

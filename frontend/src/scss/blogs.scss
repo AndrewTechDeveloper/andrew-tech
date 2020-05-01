@@ -13,6 +13,9 @@ pre {
   font-size: 14px;
   padding: 4px;
   margin: 0;
+  .public-DraftStyleDefault-ltr {
+    margin: 0;
+  }
 }
 blockquote {
   font-size: 18px;
@@ -20,6 +23,9 @@ blockquote {
   padding: 8px 12px;
   margin: 0;
   color: #333;
+  .public-DraftStyleDefault-ltr {
+    margin: 0.2em;
+  }
 }
 ol, ul {
   font-size: 18px;
@@ -87,8 +93,19 @@ a:hover {
 }
 
 .rdw-editor-toolbar {
-  position: fixed;
-  top: 100px;
-  width: 60vw;
   background-color: #202020;
+  z-index: 2;
+}
+pre {
+  .public-DraftStyleDefault-ltr {
+    margin: 0;
+  }
+}
+@media screen and (min-width:1024px) {
+  .rdw-editor-toolbar {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 220px;
+  }
 }

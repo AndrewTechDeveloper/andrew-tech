@@ -1,11 +1,19 @@
 class Api::BlogsController < Api::ApplicationController
   def index
-    @blogs = Blog.where(status: "publish")
+    if params[:status].present?
+      @blogs = Blog.where(status: params[:status])
+    else
+      @blogs = Blog.all
+    end
     render 'index', formats: :json, handlers: 'jbuilder'
   end
 
   def show
-    @blog = Blog.find(params[:id])
+    if params[:status].present?
+      @blog = Blog.find_by(id: params[:id], status: params[:status])
+    else
+      @blog = Blog.find(params[:id])
+    end
     render 'show', formats: :json, handlers: 'jbuilder'
   end
 

@@ -41,29 +41,26 @@ const reducer: Reducer<BlogsState> = (state = initialState, action) => {
     case BlogsActionTypes.FETCH_ALL_SUCCESS: {
       return { ...state, data: action.payload, loading: false }
     }
-    case BlogsActionTypes.CHANGE_EDITOR_STATE: {
+    case BlogsActionTypes.SET_EDITOR_STATE: {
       return { ...state, editorState: action.payload }
     }
-    case BlogsActionTypes.CHANGE_TITLE: {
+    case BlogsActionTypes.SET_TITLE: {
       return { ...state, title: action.payload }
     }
-    case BlogsActionTypes.CHANGE_DESCRIPTION: {
+    case BlogsActionTypes.SET_DESCRIPTION: {
       return { ...state, description: action.payload }
     }
-    case BlogsActionTypes.CHANGE_OG_IMAGE: {
+    case BlogsActionTypes.SET_OG_IMAGE: {
       return { ...state, ogImage: action.payload }
     }
-    case BlogsActionTypes.SELECT_STATUS: {
+    case BlogsActionTypes.SET_STATUS: {
       return { ...state, status: action.payload }
     }
-    case BlogsActionTypes.SELECT_BLOG: {
+    case BlogsActionTypes.SET_ID: {
       return { ...state, id: action.payload }
     }
-    case BlogsActionTypes.CREATE_TOAST: {
+    case BlogsActionTypes.SET_TOAST: {
       return { ...state, toast: action.payload }
-    }
-    case BlogsActionTypes.DELETE_TOAST: {
-      return { ...state, toast: { isOpen: false } }
     }
     default: {
       return state

@@ -6,14 +6,13 @@ export enum BlogsActionTypes {
   FETCH_SUCCESS = '@@blogs/FETCH_SUCCESS',
   FETCH_ALL_SUCCESS = '@@blogs/FETCH_ALL_SUCCESS',
   SAVE_REQUEST = '@@blogs/SAVE_REQUEST',
-  CHANGE_EDITOR_STATE = '@@blogs/CHANGE_EDITOR_STATE',
-  CHANGE_TITLE = '@@blogs/CHANGE_TITLE',
-  CHANGE_DESCRIPTION = '@@blogs/CHANGE_DESCRIPTION',
-  CHANGE_OG_IMAGE = '@@blogs/CHANGE_OG_IMAGE',
-  SELECT_STATUS = '@@blogs/SELECT_STATUS',
-  SELECT_BLOG = '@@blogs/SELECT_BLOG',
-  CREATE_TOAST = '@@blogs/CREATE_TOAST',
-  DELETE_TOAST = '@@blogs/DELETE_TOAST'
+  SET_TOAST = '@@blogs/SET_TOAST',
+  SET_EDITOR_STATE = '@@blogs/SET_EDITOR_STATE',
+  SET_TITLE = '@@blogs/SET_TITLE',
+  SET_DESCRIPTION = '@@blogs/SET_DESCRIPTION',
+  SET_OG_IMAGE = '@@blogs/SET_OG_IMAGE',
+  SET_STATUS = '@@blogs/SET_STATUS',
+  SET_ID = '@@blogs/SET_ID',
 }
 
 export interface Blog extends ApiResponse {

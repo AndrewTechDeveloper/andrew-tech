@@ -18,7 +18,7 @@ interface PropsFromState {
   updatedAt: string
 }
 interface PropsFromDispatch {
-  changeEditorState: typeof blogsActions.changeEditorState
+  setEditorState: typeof blogsActions.setEditorState
   fetchRequest: typeof blogsActions.fetchRequest
 }
 type AllProps = PropsFromState & PropsFromDispatch
@@ -31,7 +31,7 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   updatedAt: blogs.updatedAt
 })
 const mapDispatchToProps = {
-  changeEditorState: blogsActions.changeEditorState,
+  setEditorState: blogsActions.setEditorState,
   fetchRequest: blogsActions.fetchRequest
 }
 
@@ -40,7 +40,7 @@ class BlogsShowPage extends React.Component<AllProps> {
     this.props.fetchRequest()
   }
   public render() {
-    const { editorState, title, description, updatedAt, changeEditorState } = this.props
+    const { editorState, title, description, updatedAt, setEditorState } = this.props
     return (
       <>
         <HeadHelmet {...this.props} />
@@ -56,7 +56,7 @@ class BlogsShowPage extends React.Component<AllProps> {
           </Typography>
           <ImageCard {...this.props} />
           <Divider className="my-4" />
-          <Editor editorState={editorState} onEditorStateChange={changeEditorState} readOnly toolbarHidden />
+          <Editor editorState={editorState} onEditorStateChange={setEditorState} readOnly toolbarHidden />
         </Container>
       </>
     )
