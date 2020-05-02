@@ -9,13 +9,14 @@ import { HeadHelmet } from 'components/layouts/Helmet'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
+import Avatar from '@material-ui/core/Avatar';
 
 interface PropsFromState {
   editorState: EditorState
   title: string
   description: string
   ogImage: string
-  updatedAt: string
+  createdAt: string
 }
 interface PropsFromDispatch {
   setEditorState: typeof blogsActions.setEditorState
@@ -28,7 +29,7 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   title: blogs.title,
   description: blogs.description,
   ogImage: blogs.ogImage,
-  updatedAt: blogs.updatedAt
+  createdAt: blogs.createdAt
 })
 const mapDispatchToProps = {
   setEditorState: blogsActions.setEditorState,
@@ -39,22 +40,32 @@ class BlogsShowPage extends React.Component<AllProps> {
   componentDidMount() {
     this.props.fetchRequest()
   }
-  public render() {
-    const { editorState, title, description, updatedAt, setEditorState } = this.props
+  render() {
+    const style = {
+      image: {
+        width: '60px',
+        height: '60px'
+      }
+    }
+    const { editorState, title, description, ogImage, createdAt, setEditorState } = this.props
     return (
       <>
         <HeadHelmet {...this.props} />
         <Container maxWidth="md" className="my-5 blog min-vh-100">
-          <Typography variant="h4" gutterBottom>
-            {title}
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary" gutterBottom>
-            {updatedAt}
-          </Typography>
-          <Typography variant="subtitle1" gutterBottom>
+          <div className='d-flex align-items-center'>
+            <Avatar alt="og image" src={ogImage} className='mr-4' style={style.image} />
+            <div>
+              <Typography variant="h4">
+                {title}
+              </Typography>
+              <Typography variant="subtitle1" color="textSecondary" gutterBottom>
+                {createdAt}
+              </Typography>
+            </div>
+          </div>
+          <Typography variant="subtitle1" gutterBottom className='mt-4'>
             {description}
           </Typography>
-          <ImageCard {...this.props} />
           <Divider className="my-4" />
           <Editor editorState={editorState} onEditorStateChange={setEditorState} readOnly toolbarHidden />
         </Container>
