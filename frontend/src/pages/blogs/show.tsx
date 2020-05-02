@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Editor } from 'react-draft-wysiwyg'
 import { ImageCard } from 'components/blogs/Card'
-import { HeadHelmet } from 'components/layouts/Helmet'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
@@ -50,7 +49,6 @@ class BlogsShowPage extends React.Component<AllProps> {
     const { editorState, title, description, ogImage, createdAt, setEditorState } = this.props
     return (
       <>
-        <HeadHelmet {...this.props} />
         <Container maxWidth="md" className="my-5 blog min-vh-100">
           <div className='d-flex align-items-center'>
             <Avatar alt="og image" src={ogImage} className='mr-4' style={style.image} />

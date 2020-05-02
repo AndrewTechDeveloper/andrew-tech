@@ -17,6 +17,33 @@
       gtag('js', new Date());
       gtag('config', 'UA-165305356-1');
     </script>
+    <script>
+      const title = 'metaのタイトル';
+      const description = 'metaの説明文';
+      const keywords = 'metaのキーワード';
+      // title
+      document.title = title;
+      // title以外のmeta
+      const headData = document.head.children;
+      for (let i = 0; i < headData.length; i++) {
+        const nameVal = headData[i].getAttribute('name');
+        if (nameVal !== null) {
+          if (nameVal.indexOf('keywords') != -1) {
+            headData[i].setAttribute('content', keywords);
+          }
+          if (nameVal.indexOf('description') != -1) {
+            headData[i].setAttribute('content', description);
+          }
+          // OGP(twitter)の設定
+          if (nameVal.indexOf('twitter:title') != -1) {
+            headData[i].setAttribute('content', title);
+          }
+          if (nameVal.indexOf('twitter:description') != -1) {
+            headData[i].setAttribute('content', description);
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
