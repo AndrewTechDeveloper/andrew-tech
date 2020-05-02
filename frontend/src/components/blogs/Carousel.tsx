@@ -10,13 +10,8 @@ interface CarouselProps {
 }
 
 export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
-  const outer = css`
-    @media(max-width: 1000px){
-      display: contents;
-    }
-  }`;
   return (
-    <MDBCarousel activeItem={1} length={data && data.length} showControls={true} showIndicators={true} css={outer}>
+    <MDBCarousel activeItem={1} length={data && data.length} showControls={true} showIndicators={true}>
       <MDBCarouselInner>
         {data && data.map(blog => (
           <MDBCarouselItem type="button" itemId="1" key={blog.id} onClick={() => history.push(`blogs/${blog.id}`)}>
