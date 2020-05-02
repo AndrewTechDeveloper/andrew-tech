@@ -11,10 +11,8 @@ export const HeadHelmet: React.FC<HelmetProps> = ({ title, description, ogImage 
   <Helmet
     title="Home"
     meta={[
-      { name: 'twitter:card', content: 'summary_large_card' },
-      { name: 'twitter:title', content: `${title}` },
-      { name: 'twitter:description', content: `${description}` },
-      { name: 'twitter:image', content: `${ogImage}` },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@andrewdayoooo' },
       { property: 'og:title', content: `${title}` },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: `${window.location.href}` },
