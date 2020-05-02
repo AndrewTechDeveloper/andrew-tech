@@ -8,7 +8,7 @@ pre {
   }
 }
 .carousel-fade .carousel-item.active {
-  display: contents;
+  display: contents !important;
 }
 @media screen and (min-width:1024px) {
   .rdw-editor-toolbar {
