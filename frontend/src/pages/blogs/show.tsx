@@ -55,7 +55,7 @@ class BlogsShowPage extends React.Component<AllProps> {
           <div className='d-flex align-items-center'>
             <Avatar alt="og image" src={ogImage} className='mr-4' style={style.image} />
             <div>
-              <Typography variant="h4">
+              <Typography variant="h5">
                 {title}
               </Typography>
               <Typography variant="subtitle1" color="textSecondary" gutterBottom>
