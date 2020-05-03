@@ -30,6 +30,12 @@ const ProfilePage = () => (
           </CardContent>
           <SkillSetList />
         </Card>
+        <Typography gutterBottom variant="caption">
+          <div className='mt-2'>
+            Logo made by
+            <a href="https://www.designevo.com/logo-maker/" title="Free Online Logo Maker">DesignEvo free logo creator</a>
+          </div>
+        </Typography>
       </Grid>
     </Grid>
   </Container>
