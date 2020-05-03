@@ -1,8 +1,7 @@
 import React from 'react'
-/** @jsx jsx */ import { jsx, css } from '@emotion/core'
 import { History } from 'history'
 import { Blog } from 'store/blogs/types'
-import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from 'mdbreact'
+import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask } from 'mdbreact'
 
 interface CarouselProps {
   data: Blog[]
