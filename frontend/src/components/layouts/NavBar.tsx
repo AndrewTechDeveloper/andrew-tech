@@ -158,7 +158,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
   const handleClipboardCopy = () => setCopy(true)
   const handleClipboardReset = () => setCopy(false)
 
-  const currentUrl = window.location.href
+  const currentUrl = window.location.origin + props.history.location.pathname
   const twitterLink = `https://twitter.com/intent/tweet?text=${currentUrl}`
   const logo = `${process.env.REACT_APP_S3_ENDPOINT}/logo/andrew-tech.png`
   smoothscroll.polyfill();
