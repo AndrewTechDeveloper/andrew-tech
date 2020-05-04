@@ -1,9 +1,9 @@
 class Api::BlogsController < Api::ApplicationController
   def index
     if params[:status].present?
-      @blogs = Blog.where(status: params[:status])
+      @blogs = Blog.where(status: params[:status]).order(created_at: :desc)
     else
-      @blogs = Blog.all
+      @blogs = Blog.all.order(created_at: :desc)
     end
     render 'index', formats: :json, handlers: 'jbuilder'
   end

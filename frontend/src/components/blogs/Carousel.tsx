@@ -1,4 +1,5 @@
 import React from 'react'
+import { css, jsx  } from '@emotion/core';
 import { History } from 'history'
 import { Blog } from 'store/blogs/types'
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask } from 'mdbreact'
@@ -9,14 +10,22 @@ interface CarouselProps {
 }
 
 export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
+  /** @jsx jsx */
+  const item = css`
+    height: 60vh;
+  `
+  const image = css`
+    min-height: 60vh;
+    object-fit: cover;
+  `
   return (
-    <MDBCarousel activeItem={1} length={data && data.length} showControls={true} showIndicators={true}>
+    <MDBCarousel activeItem={1} css={item} length={2} showControls={true} showIndicators={true} className="z-depth-1">
       <MDBCarouselInner>
-        {data && data.map(blog => (
-          <MDBCarouselItem type="button" itemId="1" key={blog.id} onClick={() => history.push(`blogs/${blog.id}`)}>
+        {data.map((blog, index) => (
+          <MDBCarouselItem type="button" itemId={index + 1} key={index + 1} onClick={() => history.push(`blogs/${blog.id}`)}>
             <MDBView>
-              <img alt='carousel' className="d-block m-auto" src={blog.og_image} />
-              <MDBMask overlay="black-strong" />
+              <img alt='carousel' className="d-block m-auto" src={blog.og_image} css={image} />
+              <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive">{blog.title}</h3>
