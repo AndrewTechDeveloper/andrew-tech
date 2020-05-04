@@ -28,7 +28,6 @@ import LinkIcon from '@material-ui/icons/Link'
 import HomeIcon from '@material-ui/icons/Home'
 import PersonIcon from '@material-ui/icons/Person'
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn'
-import TwitterIcon from '@material-ui/icons/Twitter'
 
 const drawerWidth = 240
 
@@ -159,7 +158,6 @@ export const NavBar: React.FC<NavBarProps> = props => {
   const handleClipboardReset = () => setCopy(false)
 
   const shareUrl = window.location.origin + props.history.location.pathname
-  const twitterLink = `https://twitter.com/intent/tweet?text=${shareUrl}`
   const logo = `${process.env.REACT_APP_S3_ENDPOINT}/logo/andrew-tech.png`
   smoothscroll.polyfill();
   return (
@@ -211,7 +209,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
           <IconButton onClick={handleDrawerClose}>{theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}</IconButton>
         </div>
         <Divider />
-        <Link to={'/blogs'}>
+        <Link to={'/'}>
           <List>
             <ListItem
               button
