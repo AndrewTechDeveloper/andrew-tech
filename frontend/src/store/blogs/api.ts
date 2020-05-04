@@ -23,8 +23,7 @@ export const saveRequest = async (blogs: BlogsState) => {
 
 export const fetchRequest = async (blogs: BlogsState) => {
   try {
-    const idParam = window.location.href.split('/').pop()
-    const res = await axios.get(`${API_ENDPOINT}/blogs/${blogs.id || idParam}`)
+    const res = await axios.get(`${API_ENDPOINT}/blogs/${blogs.id}`)
     return { data: res.data, isSuccess: true }
   } catch (error) {
     return { data: null, isSuccess: false }

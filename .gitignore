@@ -5,6 +5,7 @@
 /frontend/package-lock.json
 /frontend/.next
 /frontend/.env
+/frontend/public/index.html
 
 # Ignore all logfiles and tempfiles.
 /log/*

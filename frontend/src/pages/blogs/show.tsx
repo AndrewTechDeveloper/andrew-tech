@@ -30,6 +30,7 @@ interface PropsFromState {
 }
 interface PropsFromDispatch {
   setEditorState: typeof blogsActions.setEditorState
+  setId: typeof blogsActions.setId
   fetchRequest: typeof blogsActions.fetchRequest
 }
 type AllProps = PropsFromState & PropsFromDispatch
@@ -43,11 +44,13 @@ const mapStateToProps = ({ blogs }: AppState) => ({
 })
 const mapDispatchToProps = {
   setEditorState: blogsActions.setEditorState,
+  setId: blogsActions.setId,
   fetchRequest: blogsActions.fetchRequest
 }
 
 class BlogsShowPage extends React.Component<AllProps> {
   componentDidMount() {
+    this.props.setId(this.props.history.location.pathname.split('/').pop())
     this.props.fetchRequest()
   }
   render() {
