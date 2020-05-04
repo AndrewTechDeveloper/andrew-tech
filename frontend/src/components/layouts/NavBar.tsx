@@ -158,8 +158,8 @@ export const NavBar: React.FC<NavBarProps> = props => {
   const handleClipboardCopy = () => setCopy(true)
   const handleClipboardReset = () => setCopy(false)
 
-  const currentUrl = window.location.origin + props.history.location.pathname
-  const twitterLink = `https://twitter.com/intent/tweet?text=${currentUrl}`
+  const shareUrl = window.location.origin + props.history.location.pathname
+  const twitterLink = `https://twitter.com/intent/tweet?text=${shareUrl}`
   const logo = `${process.env.REACT_APP_S3_ENDPOINT}/logo/andrew-tech.png`
   smoothscroll.polyfill();
   return (
@@ -191,7 +191,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
                 <TwitterIcon />
               </IconButton>
             </Tooltip>
-            <CopyToClipboard text={currentUrl} onCopy={handleClipboardCopy}>
+            <CopyToClipboard text={shareUrl} onCopy={handleClipboardCopy}>
               <Tooltip title={copy ? 'コピーしました' : 'URLをコピー'} placement="bottom">
                 <IconButton edge="end" color="default" className="ml-2">
                   {copy ? <AssignmentTurnedInIcon /> : <LinkIcon />}

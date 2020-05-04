@@ -1,4 +1,15 @@
 import * as React from 'react'
+import { History } from 'history'
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LineShareButton,
+  TwitterShareButton,
+  EmailIcon,
+  FacebookIcon,
+  LineIcon,
+  TwitterIcon,
+} from "react-share";
 import { EditorState } from 'draft-js'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
@@ -15,6 +26,7 @@ interface PropsFromState {
   description: string
   ogImage: string
   createdAt: string
+  history: History
 }
 interface PropsFromDispatch {
   setEditorState: typeof blogsActions.setEditorState
@@ -45,6 +57,7 @@ class BlogsShowPage extends React.Component<AllProps> {
         height: '60px'
       }
     }
+    const shareUrl = window.location.origin + this.props.history.location.pathname
     const { editorState, title, description, ogImage, createdAt, setEditorState } = this.props
     return (
       <>
@@ -64,6 +77,20 @@ class BlogsShowPage extends React.Component<AllProps> {
             {description}
           </Typography>
           <Divider className="my-4" />
+          <div className='my-2'>
+            <TwitterShareButton url={shareUrl}>
+              <TwitterIcon round size={32} />
+            </TwitterShareButton>
+            <FacebookShareButton url={shareUrl}>
+              <FacebookIcon round size={32} />
+            </FacebookShareButton>
+            <EmailShareButton url={shareUrl}>
+              <EmailIcon round size={32} />
+            </EmailShareButton>
+            <LineShareButton url={shareUrl}>
+              <LineIcon round size={32} />
+            </LineShareButton>
+          </div>
           <Editor editorState={editorState} onEditorStateChange={setEditorState} readOnly toolbarHidden />
         </Container>
       </>
