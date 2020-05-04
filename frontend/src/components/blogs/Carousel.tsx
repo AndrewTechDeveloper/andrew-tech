@@ -34,7 +34,7 @@ export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
               <MDBMask overlay="black-strong" />
             </MDBView>
             <MDBCarouselCaption>
-              <h3 className="h3-responsive">{blog.title}</h3>
+              <h1 className="h3-responsive">{blog.title}</h1>
               <p>{blog.description}</p>
             </MDBCarouselCaption>
           </MDBCarouselItem>
