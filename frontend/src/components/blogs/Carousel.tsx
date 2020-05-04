@@ -31,7 +31,7 @@ export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
           <MDBCarouselItem type="button" itemId={index + 1} key={index + 1} onClick={() => history.push(`blogs/${blog.id}`)}>
             <MDBView>
               <img alt='carousel' className="d-block m-auto" src={blog.og_image} css={image} />
-              <MDBMask overlay="black-light" />
+              <MDBMask overlay="black-strong" />
             </MDBView>
             <MDBCarouselCaption>
               <h3 className="h3-responsive">{blog.title}</h3>

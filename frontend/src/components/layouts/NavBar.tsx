@@ -186,11 +186,6 @@ export const NavBar: React.FC<NavBarProps> = props => {
             <div className={classes.logo}>
               <img alt='logo' src={logo} className={classes.logoImg} onClick={() => history.push('/blogs')} />
             </div>
-            <Tooltip title="twitterでシェア" placement="bottom">
-              <IconButton color="default" edge="end" className="ml-2" onClick={() => window.open(twitterLink, '_blank')}>
-                <TwitterIcon />
-              </IconButton>
-            </Tooltip>
             <CopyToClipboard text={shareUrl} onCopy={handleClipboardCopy}>
               <Tooltip title={copy ? 'コピーしました' : 'URLをコピー'} placement="bottom">
                 <IconButton edge="end" color="default" className="ml-2">
