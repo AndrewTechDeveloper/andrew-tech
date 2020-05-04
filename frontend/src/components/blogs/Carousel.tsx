@@ -13,10 +13,16 @@ export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
   /** @jsx jsx */
   const item = css`
     height: 60vh;
+    @media (max-width: 960px) {
+      height: 40vh;
+    }
   `
   const image = css`
     min-height: 60vh;
     object-fit: cover;
+    @media (max-width: 960px) {
+      min-height: 40vh;
+    }
   `
   return (
     <MDBCarousel activeItem={1} css={item} length={2} showControls={true} showIndicators={true} className="z-depth-1">

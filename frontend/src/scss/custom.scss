@@ -56,6 +56,7 @@ input:hover {
 button {
   border: none !important;
   outline: none !important;
+  -webkit-appearance: initial;
 }
 button:hover {
   text-decoration: none;
