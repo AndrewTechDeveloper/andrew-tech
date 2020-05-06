@@ -6,7 +6,7 @@ const style = {
     height: '90vh',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   }
 }
 const Spinner: React.FC = () => (

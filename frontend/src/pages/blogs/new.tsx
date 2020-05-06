@@ -60,7 +60,7 @@ const mapDispatchToProps = {
   setStatus: blogsActions.setStatus,
   fetchRequest: blogsActions.fetchRequest,
   fetchAllRequest: blogsActions.fetchAllRequest,
-  saveRequest: blogsActions.saveRequest,
+  saveRequest: blogsActions.saveRequest
 }
 
 class BlogsNewPage extends React.Component<AllProps> {
@@ -85,11 +85,13 @@ class BlogsNewPage extends React.Component<AllProps> {
           </Typography>
           <ImageCard {...this.props} />
           <Divider className="my-4" />
-          <Card className='p-2'>
+          <Card className="p-2">
             <Grid container spacing={3}>
               <Grid item xs className="align-items-center d-flex">
                 <div className="p-2 m-0">
-                <Typography variant="subtitle1" gutterBottom>ID: {id || '未選択'}</Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                    ID: {id || '未選択'}
+                  </Typography>
                 </div>
                 <BlogsSelect {...this.props} />
                 <FetchButton {...this.props} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { css, jsx  } from '@emotion/core';
+import { css, jsx } from '@emotion/core'
 import { History } from 'history'
 import { Blog } from 'store/blogs/types'
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask } from 'mdbreact'
@@ -30,7 +30,7 @@ export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
         {data.map((blog, index) => (
           <MDBCarouselItem type="button" itemId={index + 1} key={index + 1} onClick={() => history.push(`blogs/${blog.id}`)}>
             <MDBView>
-              <img alt='carousel' className="d-block m-auto" src={blog.og_image} css={image} />
+              <img alt="carousel" className="d-block m-auto" src={blog.og_image} css={image} />
               <MDBMask overlay="black-strong" />
             </MDBView>
             <MDBCarouselCaption>
@@ -43,4 +43,3 @@ export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
     </MDBCarousel>
   )
 }
-

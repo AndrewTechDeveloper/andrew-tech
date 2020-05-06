@@ -12,7 +12,7 @@ export enum BlogsActionTypes {
   SET_DESCRIPTION = '@@blogs/SET_DESCRIPTION',
   SET_OG_IMAGE = '@@blogs/SET_OG_IMAGE',
   SET_STATUS = '@@blogs/SET_STATUS',
-  SET_ID = '@@blogs/SET_ID',
+  SET_ID = '@@blogs/SET_ID'
 }
 
 export interface Blog extends ApiResponse {

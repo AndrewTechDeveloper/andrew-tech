@@ -3,7 +3,7 @@ import { History } from 'history'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles'
-import smoothscroll from 'smoothscroll-polyfill';
+import smoothscroll from 'smoothscroll-polyfill'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import Drawer from '@material-ui/core/Drawer'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -28,8 +28,8 @@ import LinkIcon from '@material-ui/icons/Link'
 import HomeIcon from '@material-ui/icons/Home'
 import PersonIcon from '@material-ui/icons/Person'
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn'
-import ContactMailIcon from '@material-ui/icons/ContactMail';
-import PolicyIcon from '@material-ui/icons/Policy';
+import ContactMailIcon from '@material-ui/icons/ContactMail'
+import PolicyIcon from '@material-ui/icons/Policy'
 
 const drawerWidth = 240
 
@@ -134,7 +134,7 @@ function ScrollTop(props: Props) {
     if (anchor) {
       anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
-    event.preventDefault();
+    event.preventDefault()
   }
   return (
     <Zoom in={trigger}>
@@ -161,7 +161,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
 
   const shareUrl = window.location.origin + props.history.location.pathname
   const logo = `${process.env.REACT_APP_S3_ENDPOINT}/logo/andrew-tech.png`
-  smoothscroll.polyfill();
+  smoothscroll.polyfill()
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -184,7 +184,7 @@ export const NavBar: React.FC<NavBarProps> = props => {
               <MenuIcon />
             </IconButton>
             <div className={classes.logo}>
-              <img alt='logo' src={logo} className={classes.logoImg} onClick={() => history.push('/blogs')} />
+              <img alt="logo" src={logo} className={classes.logoImg} onClick={() => history.push('/blogs')} />
             </div>
             <CopyToClipboard text={shareUrl} onCopy={handleClipboardCopy}>
               <Tooltip title={copy ? 'コピーしました' : 'URLをコピー'} placement="bottom">

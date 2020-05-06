@@ -8,7 +8,8 @@ export const setEditorState = (editorState: EditorState) => action(BlogsActionTy
 export const setTitle = (title: string) => action(BlogsActionTypes.SET_TITLE, title)
 export const setDescription = (description: string) => action(BlogsActionTypes.SET_DESCRIPTION, description)
 export const setOgImage = (ogImage: string) => action(BlogsActionTypes.SET_OG_IMAGE, ogImage)
-export const setToast = (toast: { message?: string; severity?: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen?: boolean }) => action(BlogsActionTypes.SET_TOAST, toast)
+export const setToast = (toast: { message?: string; severity?: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen?: boolean }) =>
+  action(BlogsActionTypes.SET_TOAST, toast)
 
 export const fetchSuccess = (data: BlogsState) => action(BlogsActionTypes.FETCH_SUCCESS, data)
 export const fetchAllSuccess = (data: Blog[]) => action(BlogsActionTypes.FETCH_ALL_SUCCESS, data)

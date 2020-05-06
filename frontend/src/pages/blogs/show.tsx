@@ -8,8 +8,8 @@ import {
   EmailIcon,
   FacebookIcon,
   LineIcon,
-  TwitterIcon,
-} from "react-share";
+  TwitterIcon
+} from 'react-share'
 import { EditorState } from 'draft-js'
 import { AppState } from 'store'
 import { connect } from 'react-redux'
@@ -18,7 +18,7 @@ import { Editor } from 'react-draft-wysiwyg'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from '@material-ui/core/Avatar'
 
 interface PropsFromState {
   editorState: EditorState
@@ -65,8 +65,8 @@ class BlogsShowPage extends React.Component<AllProps> {
     return (
       <>
         <Container maxWidth="md" className="my-5 blog min-vh-100">
-          <div className='d-flex align-items-center'>
-            <Avatar alt="og image" src={ogImage} className='mr-4' style={style.image} />
+          <div className="d-flex align-items-center">
+            <Avatar alt="og image" src={ogImage} className="mr-4" style={style.image} />
             <div>
               <Typography variant="h5" component="h1">
                 {title}
@@ -76,11 +76,11 @@ class BlogsShowPage extends React.Component<AllProps> {
               </Typography>
             </div>
           </div>
-          <Typography variant="subtitle1" gutterBottom className='mt-4'>
+          <Typography variant="subtitle1" gutterBottom className="mt-4">
             {description}
           </Typography>
           <Divider className="my-4" />
-          <div className='my-2'>
+          <div className="my-2">
             <TwitterShareButton url={shareUrl}>
               <TwitterIcon round size={32} />
             </TwitterShareButton>
