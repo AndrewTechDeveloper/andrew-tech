@@ -28,6 +28,8 @@ import LinkIcon from '@material-ui/icons/Link'
 import HomeIcon from '@material-ui/icons/Home'
 import PersonIcon from '@material-ui/icons/Person'
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn'
+import ContactMailIcon from '@material-ui/icons/ContactMail';
+import PolicyIcon from '@material-ui/icons/Policy';
 
 const drawerWidth = 240
 
@@ -238,6 +240,38 @@ export const NavBar: React.FC<NavBarProps> = props => {
                 <PersonIcon />
               </ListItemIcon>
               <ListItemText className={classes.drawerLink}>Profile</ListItemText>
+            </ListItem>
+          </List>
+        </Link>
+        <Link to={'/accounts/contact'}>
+          <List>
+            <ListItem
+              button
+              onClick={() => {
+                handleDrawerClose()
+                handleClipboardReset()
+              }}
+            >
+              <ListItemIcon>
+                <ContactMailIcon />
+              </ListItemIcon>
+              <ListItemText className={classes.drawerLink}>Contact</ListItemText>
+            </ListItem>
+          </List>
+        </Link>
+        <Link to={'/accounts/privacy'}>
+          <List>
+            <ListItem
+              button
+              onClick={() => {
+                handleDrawerClose()
+                handleClipboardReset()
+              }}
+            >
+              <ListItemIcon>
+                <PolicyIcon />
+              </ListItemIcon>
+              <ListItemText className={classes.drawerLink}>Privacy</ListItemText>
             </ListItem>
           </List>
         </Link>
