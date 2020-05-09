@@ -29,7 +29,7 @@ services:
       dockerfile: ./frontend/Dockerfile
     volumes:
       - ./frontend:/app
-    command: sh -c " yarn --force && yarn lint && yarn start"
+    command: sh -c "yarn lint && yarn start"
     ports:
       - "8000:3000"
 

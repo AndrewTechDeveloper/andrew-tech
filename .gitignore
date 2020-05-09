@@ -1,6 +1,6 @@
 # Ignore bundler config.
-/.bundle
-/vendor/bundle
+/api/.bundle
+/api/vendor/bundle
 /frontend/node_modules
 /frontend/package-lock.json
 /frontend/.next
@@ -8,17 +8,18 @@
 /frontend/public/index.html
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/api/log/*
+/api/tmp/*
+!/api/log/.keep
+!/api/tmp/.keep
 
 # Ignore uploaded files in development.
 .DS_Store
 /storage/*
-!/storage/.keep
+!/api/storage/.keep
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
-.env
+/api/config/master.key
+/api/.env
+/frontend/.env
