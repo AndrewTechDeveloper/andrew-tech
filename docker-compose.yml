@@ -2,16 +2,19 @@ version: '3'
 services:
   db:
     image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
       MYSQL_DATABASE: andrew-tech_development
       MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - "3306:3306"
-  web:
+  api:
     build:
       context: .
-      dockerfile: Dockerfile
-    command: bundle exec rails s -p 3000
+      dockerfile: ./api/Dockerfile
+    command: bundle exec rails s -p 3000 -b "0.0.0.0"
     tty: true
     stdin_open: true
     depends_on:
@@ -19,6 +22,15 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ".:/workdir"
+      - ./api:/app
+  front:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    volumes:
+      - ./frontend:/app
+    command: sh -c " yarn --force && yarn lint && yarn start"
+    ports:
+      - "8000:3000"
 
 
