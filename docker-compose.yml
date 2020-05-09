@@ -14,6 +14,7 @@ services:
     build:
       context: .
       dockerfile: ./api/Dockerfile
+    working_dir: /app
     command: bundle exec rails s -p 3000 -b "0.0.0.0"
     tty: true
     stdin_open: true
@@ -22,14 +23,23 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./api:/app
+      - ./api:/app:cached
+      - ./api/.bundle:/usr/local/bundle:cached
+      - /app/vendor
+      - /app/tmp
+      - /app/log
+      - /app/.git
   front:
     build:
       context: .
       dockerfile: ./frontend/Dockerfile
     volumes:
-      - ./frontend:/app
-    command: sh -c "yarn lint && yarn start"
+      - ./frontend:/app/:rw,cached
+      - /app/node_modules
+    working_dir: /app
+    command: yarn start
+    tty: true
+    stdin_open: true
     ports:
       - "8000:3000"
 
