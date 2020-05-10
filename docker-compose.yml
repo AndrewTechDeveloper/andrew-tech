@@ -5,11 +5,13 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_DATABASE: andrew-tech_development
+      MYSQL_DATABASE: andrew_tech_development
       MYSQL_USER: root
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_ROOT_HOST: "%"
     ports:
-      - "3306:3306"
+      - "4306:3306"
   api:
     build:
       context: .
@@ -23,7 +25,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./api:/app:cached
+      - ./api:/app:delegated
       - ./api/.bundle:/usr/local/bundle:cached
       - /app/vendor
       - /app/tmp
@@ -34,7 +36,7 @@ services:
       context: .
       dockerfile: ./frontend/Dockerfile
     volumes:
-      - ./frontend:/app/:rw,cached
+      - ./frontend:/app/:delegated
       - /app/node_modules
       - /app/build
     working_dir: /app
