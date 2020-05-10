@@ -12,14 +12,14 @@ export const PortfolioList = () => {
     {
       name: 'Konpeki',
       period: '2019/08 ~ 2020/03',
-      image: 'https://s3-ap-northeast-1.amazonaws.com/konpeki.site/logo/konpeki-icon.png',
+      image: 'https://andrew-tech.s3-ap-northeast-1.amazonaws.com/logo/konpeki.png',
       description: '大学在学中に作成した早稲田生限定SNSコミュニティ。400名以上のユーザーを獲得、大学公認のサービスとなる。',
       skills: 'Frontend: React + Redux, Backend: Ruby on Rails, Scraper: Python + Selenium, Infrastructure: AWS(EC2, RDS, SES)'
     },
     {
       name: 'Ai-recruiter',
       period: '2019/09 ~ 2020/03',
-      image: 'https://s3-ap-northeast-1.amazonaws.com/konpeki.site/logo/ai-recruiter-logo.png',
+      image: 'https://andrew-tech.s3-ap-northeast-1.amazonaws.com/logo/ai-recruiter-logo.png',
       description: '大学の卒論で作成したランク学習による会社リコメンドサイト。機械学習を用い階層分析法とneural networkを比較した。',
       skills:
         'Front: React + Redux, Backend: Ruby on Rails, Scraper: Python + Selenium, NeuralNets: python + tensorflow(keras), Infrastructure: AWS(EC2, RDS)'
@@ -27,7 +27,7 @@ export const PortfolioList = () => {
     {
       name: 'Andrew-tech',
       period: '2020/04 ~',
-      image: 'https://s3-ap-northeast-1.amazonaws.com/konpeki.site/logo/andrew-tech-icon.png',
+      image: 'https://andrew-tech.s3-ap-northeast-1.amazonaws.com/logo/andrew-tech-icon.png',
       description: '技術発信ブログ(当サイト)。興味のある技術・言語について発信します。',
       skills: 'Frontend: Draft.js + React + Redux + Typescript, Backend: Ruby on Rails, Infrastructure: AWS(EC2 + RDS)'
     }

@@ -19,8 +19,8 @@ export const ProfileCard = () => (
   <Card className="p-2 mb-4">
     <CardContent>
       <Avatar
-        alt="Remy Sharp"
-        src="https://s3-ap-northeast-1.amazonaws.com/konpeki.site/logo/twitter-logo.JPG"
+        alt="icon image"
+        src="https://andrew-tech.s3-ap-northeast-1.amazonaws.com/logo/twitter-logo.jpg"
         className="mx-auto my-4"
         style={style.avatar}
       />

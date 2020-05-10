@@ -13,5 +13,6 @@ ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
 RUN gem install bundler
+RUN bundle config set path vendor/bundle
 RUN bundle install
 ADD . $APP_ROOT

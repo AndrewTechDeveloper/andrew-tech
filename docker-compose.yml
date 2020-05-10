@@ -36,11 +36,12 @@ services:
     volumes:
       - ./frontend:/app/:rw,cached
       - /app/node_modules
+      - /app/build
     working_dir: /app
     command: yarn start
     tty: true
     stdin_open: true
     ports:
-      - "8000:3000"
+      - "8000:8000"
 
 
