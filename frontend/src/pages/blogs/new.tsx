@@ -65,6 +65,7 @@ const mapDispatchToProps = {
 
 class BlogsNewPage extends React.Component<AllProps> {
   componentDidMount() {
+    this.props.setStatus('all')
     this.props.fetchAllRequest()
   }
   render() {

@@ -19,7 +19,6 @@ const BlogsPage: React.FC<AllProps> = ({ match }) => (
       <Route exact path={`${match.path}`} component={BlogsIndexPage} />
       <Route path={`${match.path}/new`} component={BlogsNewPage} />
       <Route path={`${match.path}/:id`} component={BlogsShowPage} />
-      <Route path={'/'} component={BlogsIndexPage} />
     </Switch>
   </Suspense>
 )
