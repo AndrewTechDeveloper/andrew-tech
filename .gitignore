@@ -6,6 +6,7 @@
 /frontend/.next
 /frontend/.env
 /frontend/public/index.html
+/frontend/build/*
 
 # Ignore all logfiles and tempfiles.
 /api/log/*
