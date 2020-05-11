@@ -1,229 +1,0 @@
-          ok  Starting unison for sync api-sync
-          ok  api-sync container still running, restarting unison in container
-       error  Error starting sync, exit code 0
-     message  - .bundle/doc             - .bundle/ruby/2.6.0/gems/activesupp...ve_support/core_ext/array/wrap.rb                                                                        - .bundle/ruby/2.6.0/gems/i18n-1.8.2...n/tests/localization/date_time.rb                                                                        - .bundle/ruby/2.6.0/gems/rb-inotify-0.10.1/spec/spec_helper.rb                                                               \ tmp/cache/bootsnap-compile-cache/48/dcc57d2df549f4                                                    \ tmp/cache/bootsnap-compile-cache/c3/93d58da2a57d98                                                    \ vendor/bundle/gems/actiontext-6.0.2.2/app/views/active_storage/blobs                                                                      \ vendor/bundle/gems/ffi-1.12.2/ext/...i/testsuite/libffi.call/struct4.c                                                                        \ vendor/bundle/gems/railties-6.0.2....emplates/config/environment.rb.tt                                                                        | vendor/bundle/ruby/2.7.0/gems/acti....0.2.1/lib/active_model/attribute                                                                        | vendor/bundle/ruby/2.7.0/gems/ffi-1.12.2/ext/ffi_c/Thread.o                                                             | vendor/bundle/ruby/2.7.0/gems/rail...lib/rails/generators/css/scaffold                                                                                 error            tmp/sockets/puma.sock  
-path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type
-No updates to propagate
-     message  Unison 2.51.2 (ocaml 4.08.1): Contacting server...
-Connected [//83119ea7032e//app_sync -> //andouryounoMacBook-Air.local//Users/andouryou/Desktop/andrew-tech/api]
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Synchronization complete at 00:16:35  (0 item transferred, 1 skipped, 0 failed)
-  skipped: tmp/sockets/puma.sock (path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type)
-     success  Unison server started
-       error  Error starting sync, exit code 0
-     message  / .bundle/doc             / .bundle/ruby/2.6.0/gems/activemode...lib/active_model/serialization.rb                                                                        / .bundle/ruby/2.6.0/gems/ffi-1.12.2...i_c/libffi/src/aarch64/internal.h                                                                        - .bundle/ruby/2.6.0/gems/rack-2.2.2/contrib/rack.png                                                     - .bundle/ruby/2.6.0/specifications/sprockets-4.0.0.gemspec                                                           - tmp/cache/bootsnap-compile-cache/42/efe9a0f29292e1                                                    - tmp/cache/bootsnap-compile-cache/a4/5b404877233e03                                                    - vendor/bundle/gems/actionview-6.0....n_view/helpers/tags/text_field.rb                                                                        \ vendor/bundle/gems/ffi-1.12.2/lib/ffi/platform/s390-linux                                                           \ vendor/bundle/gems/railties-6.0.2....es/config/databases/ibm_db.yml.tt                                                                        \ vendor/bundle/ruby/2.7.0/gems/acti...2.1/lib/active_job/serializers.rb                                                                        \ vendor/bundle/ruby/2.7.0/gems/ffi-...ex/cls_align_complex_longdouble.c                                                                        \ vendor/bundle/ruby/2.7.0/gems/rail...ication_controller_renderer.rb.tt                                                                                 error            tmp/sockets/puma.sock  
-path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type
-No updates to propagate
-     message  Unison 2.51.2 (ocaml 4.08.1): Contacting server...
-Connected [//83119ea7032e//app_sync -> //andouryounoMacBook-Air.local//Users/andouryou/Desktop/andrew-tech/api]
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Synchronization complete at 00:16:36  (0 item transferred, 1 skipped, 0 failed)
-  skipped: tmp/sockets/puma.sock (path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type)
-          ok  Starting unison for sync front-sync
-Unison 2.51.2 (ocaml 4.08.1): Contacting server...
-Connected [//83119ea7032e//app_sync -> //andouryounoMacBook-Air.local//Users/andouryou/Desktop/andrew-tech/api]
-Looking for changes
-          ok  front-sync container still running, restarting unison in container
-          ok  Synced /Users/andouryou/Desktop/andrew-tech/frontend/
-     success  Unison server started
-          ok  Synced /Users/andouryou/Desktop/andrew-tech/frontend/
-Unison 2.51.2 (ocaml 4.08.1): Contacting server...
-Connected [//140e03a8722f//app_sync -> //andouryounoMacBook-Air.local//Users/andouryou/Desktop/andrew-tech/frontend]
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Synchronization complete at 00:16:39  (0 item transferred, 1 skipped, 0 failed)
-  skipped: tmp/sockets/puma.sock (path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type)
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Fatal error: Lost connection with the server
-Terminated!
-    shutdown  Shutting down...
-          ok  Stopping sync container api-sync
-/Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/execution.rb:26:in ``': Interrupt
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/execution.rb:26:in `block in fork_exec'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/execution.rb:26:in `fork'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/execution.rb:26:in `fork_exec'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_strategy/unison.rb:70:in `watch'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/watch_strategy/unison.rb:26:in `run'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_process.rb:86:in `run'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:111:in `block in run'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:110:in `each'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:110:in `run'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:51:in `block in start'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:50:in `chdir'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:50:in `start'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/command.rb:27:in `run'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/invocation.rb:126:in `invoke_command'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor.rb:387:in `dispatch'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/base.rb:466:in `start'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/bin/docker-sync:14:in `<top (required)>'
-	from /Users/andouryou/.rbenv/gems/2.7.0/bin/docker-sync:23:in `load'
-	from /Users/andouryou/.rbenv/gems/2.7.0/bin/docker-sync:23:in `<main>'
-/Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/watch_strategy/unison.rb:32:in `kill': No such process (Errno::ESRCH)
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/watch_strategy/unison.rb:32:in `stop'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_process.rb:91:in `stop'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:129:in `block in join_threads'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:128:in `each'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:128:in `rescue in join_threads'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:115:in `join_threads'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:52:in `block in start'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:50:in `chdir'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:50:in `start'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/command.rb:27:in `run'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/invocation.rb:126:in `invoke_command'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor.rb:387:in `dispatch'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/base.rb:466:in `start'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/bin/docker-sync:14:in `<top (required)>'
-	from /Users/andouryou/.rbenv/gems/2.7.0/bin/docker-sync:23:in `load'
-	from /Users/andouryou/.rbenv/gems/2.7.0/bin/docker-sync:23:in `<main>'
-/Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:122:in `wait': Interrupt
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:122:in `block in join_threads'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:117:in `each'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/lib/docker-sync/sync_manager.rb:117:in `join_threads'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:52:in `block in start'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:50:in `chdir'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/tasks/sync/sync.thor:50:in `start'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/command.rb:27:in `run'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/invocation.rb:126:in `invoke_command'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor.rb:387:in `dispatch'
-	from /Users/andouryou/.rbenv/gems/2.7.0/gems/thor-0.20.3/lib/thor/base.rb:466:in `start'
-	from /Users/andouryou/.gem/ruby/2.7.0/gems/docker-sync-0.5.14/bin/docker-sync:14:in `<top (required)>'
-	from /Users/andouryou/.rbenv/gems/2.7.0/bin/docker-sync:23:in `load'
-	from /Users/andouryou/.rbenv/gems/2.7.0/bin/docker-sync:23:in `<main>'
-          ok  Starting unison for sync api-sync
-          ok  api-sync container still running, restarting unison in container
-       error  Error starting sync, exit code 0
-     message  - .bundle/doc             \ .bundle/ruby/2.6.0/gems/activestor...e_storage/service/disk_service.rb                                                                        \ .bundle/ruby/2.6.0/gems/i18n-1.8.2/lib/i18n/backend/pluralization.rb                                                                      \ .bundle/ruby/2.6.0/gems/tzinfo-1.2.7/lib/tzinfo                                                 \ tmp/cache/bootsnap-compile-cache/6a/5039a94da390b1                                                    \ tmp/cache/bootsnap-compile-cache/db/199980b76f048d                                                    | vendor/bundle/gems/activesupport-6...active_support/core_ext/date_time                                                                        | vendor/bundle/gems/mimemagic-0.3.4/test/files/application.x-tar                                                                 | vendor/bundle/ruby/2.7.0/gems/actioncable-6.0.2.1/lib/action_cable.rb                                                                       | vendor/bundle/ruby/2.7.0/gems/ffi-...e/libffi.closures/cls_ulonglong.c                                                                        | vendor/bundle/ruby/2.7.0/gems/rail...ib/%namespaced_name%/engine.rb.tt                                                                                 error            tmp/sockets/puma.sock  
-path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type
-No updates to propagate
-     message  Unison 2.51.2 (ocaml 4.08.1): Contacting server...
-Connected [//83119ea7032e//app_sync -> //andouryounoMacBook-Air.local//Users/andouryou/Desktop/andrew-tech/api]
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Synchronization complete at 00:17:54  (0 item transferred, 1 skipped, 0 failed)
-  skipped: tmp/sockets/puma.sock (path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type)
-     success  Unison server started
-       error  Error starting sync, exit code 0
-     message  / .bundle/doc             / .bundle/ruby/2.6.0/gems/activereco...2.2/lib/active_record/relation.rb                                                                        - .bundle/ruby/2.6.0/gems/ffi-1.12.2/lib/ffi/platform/sparc-linux                                                                 - .bundle/ruby/2.6.0/gems/railties-6.0.2.2/lib/rails/api/task.rb                                                                - tmp/cache/bootsnap-compile-cache/0f/c3ebb3475a2ef6                                                    - tmp/cache/bootsnap-compile-cache/96/e71ffba5692c7c                                                    - vendor/bundle/gems/actionpack-6.0.2.2/lib/abstract_controller/error.rb                                                                        \ vendor/bundle/gems/ffi-1.12.2/ext/...ffi/testsuite/libffi.call/many2.c                                                                        \ vendor/bundle/gems/rb-fsevent-0.10.3                                      \ vendor/bundle/ruby/2.7.0/gems/conc...p/atomic_reference_map_backend.rb                                                                        \ vendor/bundle/ruby/2.7.0/gems/rail...ced_name%/application.html.erb.tt                                                                                 error            tmp/sockets/puma.sock  
-path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type
-No updates to propagate
-     message  Unison 2.51.2 (ocaml 4.08.1): Contacting server...
-Connected [//83119ea7032e//app_sync -> //andouryounoMacBook-Air.local//Users/andouryou/Desktop/andrew-tech/api]
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Synchronization complete at 00:17:55  (0 item transferred, 1 skipped, 0 failed)
-  skipped: tmp/sockets/puma.sock (path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type)
-          ok  Starting unison for sync frontend-sync
-Unison 2.51.2 (ocaml 4.08.1): Contacting server...
-Connected [//83119ea7032e//app_sync -> //andouryounoMacBook-Air.local//Users/andouryou/Desktop/andrew-tech/api]
-Looking for changes
-          ok  frontend-sync container still running, restarting unison in container
-          ok  Synced /Users/andouryou/Desktop/andrew-tech/frontend/
-     success  Unison server started
-          ok  Synced /Users/andouryou/Desktop/andrew-tech/frontend/
-Unison 2.51.2 (ocaml 4.08.1): Contacting server...
-Connected [//05871a43e539//app_sync -> //andouryounoMacBook-Air.local//Users/andouryou/Desktop/andrew-tech/frontend]
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Synchronization complete at 00:18:00  (0 item transferred, 1 skipped, 0 failed)
-  skipped: tmp/sockets/puma.sock (path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type)
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Synchronization complete at 00:27:21  (0 item transferred, 1 skipped, 0 failed)
-  skipped: tmp/sockets/puma.sock (path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type)
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Synchronization complete at 00:31:45  (0 item transferred, 1 skipped, 0 failed)
-  skipped: tmp/sockets/puma.sock (path /Users/andouryou/Desktop/andrew-tech/api/tmp/sockets/puma.sock has unknown file type)
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Looking for changes
-  Waiting for changes from server
-Reconciling changes
-Nothing to do: replicas have not changed since last sync.
-Fatal error: Lost connection with the server
-Fatal error: Lost connection with the server

@@ -1,0 +1,2 @@
+(this["webpackJsonpandrew-tech"]=this["webpackJsonpandrew-tech"]||[]).push([[9],{677:function(e,a,t){"use strict";t.r(a);var n=t(0),c=t.n(n),l=t(36),r=t(117);const s=c.a.lazy(()=>Promise.all([t.e(0),t.e(8)]).then(t.bind(null,655)));a.default=({match:e})=>c.a.createElement(n.Suspense,{fallback:c.a.createElement(r.a,null)},c.a.createElement(l.c,null,c.a.createElement(l.a,{path:"".concat(e.path,"/profile"),component:s})))}}]);
+//# sourceMappingURL=9.a56e69eb.chunk.js.map

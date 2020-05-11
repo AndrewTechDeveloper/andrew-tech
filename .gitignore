@@ -12,6 +12,8 @@
 /api/tmp/*
 !/api/log/.keep
 !/api/tmp/.keep
+*.log
+*.keep
 
 # Ignore uploaded files in development.
 .DS_Store

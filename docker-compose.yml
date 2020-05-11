@@ -9,7 +9,8 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: "password"
       MYSQL_ROOT_PASSWORD: "password"
-      MYSQL_ROOT_HOST: "%"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
     ports:
       - "4306:3306"
   api:
@@ -23,15 +24,17 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - api-sync:/api
-    command: bundle exec rails s -b 0.0.0.0
+      - api-sync:/app:nocopy
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
   front:
     build:
       context: .
       dockerfile: ./frontend/Dockerfile
     volumes:
-      - frontend-sync:/frontend
-    command: yarn start
+      - frontend-sync:/app:nocopy
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: sh -c "yarn && yarn start"
     tty: true
     stdin_open: true
     ports:
