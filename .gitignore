@@ -25,4 +25,4 @@
 /api/config/master.key
 /api/.env
 /frontend/.env
-/mysql
+/mysql/*
