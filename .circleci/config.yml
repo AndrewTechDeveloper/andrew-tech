@@ -1,17 +1,17 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  deploy:
+    machine:
+      image: circleci/classic:edge
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
+      - add_ssh_keys:
+      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd apps/andrew-tech && git pull && cd frontend && yarn build && cd ./api && pkill -f puma && bundle exec rails s -e production'
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
