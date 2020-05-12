@@ -11,11 +11,4 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
 
 COPY frontend/package.json .
 COPY frontend/yarn.lock .
-RUN yarn install
 RUN npm rebuild node-sass
-
-COPY ./frontend .
-
-EXPOSE 8000
-
-CMD yarn start

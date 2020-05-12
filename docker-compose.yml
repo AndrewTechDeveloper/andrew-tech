@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: "password"
       MYSQL_ROOT_PASSWORD: "password"
     volumes:
-      - ./mysql/data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     ports:
       - "4306:3306"
   api:
@@ -25,6 +25,7 @@ services:
       - "3000:3000"
     volumes:
       - api-sync:/app:nocopy
+      - gem_data:/usr/local/bundle
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
   front:
     build:
@@ -34,7 +35,7 @@ services:
       - frontend-sync:/app:nocopy
     environment:
       - CHOKIDAR_USEPOLLING=true
-    command: sh -c "yarn && yarn start"
+    command: sh -c "yarn start"
     tty: true
     stdin_open: true
     ports:
@@ -44,5 +45,7 @@ volumes:
     external: true
   frontend-sync:
     external: true
+  gem_data:
+  mysql_data:
 
 
