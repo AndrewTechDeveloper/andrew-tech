@@ -35,13 +35,20 @@ jobs:
           command: ssh ${USER_NAME}@${HOST_NAME}
       - run:
           name: git pull
-          command: cd apps/andrew-tech && git pull
+          command: |
+            cd apps/andrew-tech
+            git pull
       - run:
           name: frontend build
-          command: cd frontend && yarn build
+          command: |
+            cd frontend
+            yarn build
       - run:
           name: api restart
-          command: cd ./api && pkill -f puma && bundle exec rails s -e production
+          command: |
+            cd ./api
+            pkill -f puma
+            bundle exec rails s -e production
       - run:
           name: revoke-security-group-ingress
           command: |
