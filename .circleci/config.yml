@@ -27,10 +27,10 @@ jobs:
             bash ./sg.sh
       - run:
           name: Avoid hosts unknown for github
-          command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+          command: touch ~/.ssh/config && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
           name: ssh log_in
-          command: ssh ${USER_NAME}@${HOST_NAME} 'yes'
+          command: ssh ${USER_NAME}@${HOST_NAME}
       - run:
           name: git pull
           command: cd 'apps/andrew-tech && git pull'
