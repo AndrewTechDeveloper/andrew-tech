@@ -27,7 +27,7 @@ jobs:
             bash ./sg.sh
       - run:
           name: Avoid hosts unknown for github
-          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+          command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
           name: ssh log_in
           command: ssh ${USER_NAME}@${HOST_NAME} 'yes'
