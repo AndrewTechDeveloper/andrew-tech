@@ -9,8 +9,9 @@ jobs:
             name: Echo Test
             command: echo "CircleCI Test"
   deploy:
-    machine:
-      image: circleci/python:3.6-jessie
+    docker:
+      - image: circleci/python:3.6-jessie
+      - image: buildpack-deps:trusty
     working_directory: ~/
     steps:
       - checkout
