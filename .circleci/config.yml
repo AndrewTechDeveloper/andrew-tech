@@ -35,7 +35,7 @@ jobs:
           command: ssh ${USER_NAME}@${HOST_NAME}
       - run:
           name: git pull
-          command: cd 'apps/andrew-tech && git pull'
+          command: 'cd apps/andrew-tech && git pull'
       - run:
           name: frontend
           command: 'cd frontend && yarn build'
