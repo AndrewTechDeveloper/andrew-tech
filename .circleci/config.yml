@@ -26,7 +26,7 @@ jobs:
             echo "aws ec2 authorize-security-group-ingress --group-id sg-091f73172ab5bbe18 --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
             bash ./sg.sh
       - run:
-          name: Avoid hosts unknown for github
+          name: Avoid hosts unknown for ec2
           command: |
             touch ~/.ssh/config
             echo -e "Host 52.198.226.72\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
@@ -35,13 +35,13 @@ jobs:
           command: ssh ${USER_NAME}@${HOST_NAME}
       - run:
           name: git pull
-          command: 'cd apps/andrew-tech && git pull'
+          command: cd apps/andrew-tech && git pull
       - run:
-          name: frontend
-          command: 'cd frontend && yarn build'
+          name: frontend build
+          command: cd frontend && yarn build
       - run:
-          name: api
-          command: 'cd ./api && pkill -f puma && bundle exec rails s -e production'
+          name: api restart
+          command: cd ./api && pkill -f puma && bundle exec rails s -e production
       - run:
           name: revoke-security-group-ingress
           command: |
