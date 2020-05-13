@@ -13,9 +13,7 @@ jobs:
       - image: circleci/python:3.6-jessie
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "ab:07:c6:4f:db:63:65:bf:18:11:f9:3d:7d:01:88:35"
+      - add_ssh_keys
       - run:
           name: install awscli
           command: sudo pip install awscli
@@ -27,6 +25,9 @@ jobs:
             echo "aws configure set region ap-northeast-1" >> ./sg.sh
             echo "aws ec2 authorize-security-group-ingress --group-id sg-091f73172ab5bbe18 --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
             bash ./sg.sh
+      - run:
+          name: Avoid hosts unknown for github
+          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
           name: ssh log_in
           command: ssh ${USER_NAME}@${HOST_NAME} 'yes'
