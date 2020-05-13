@@ -11,12 +11,11 @@ jobs:
   deploy:
     docker:
       - image: circleci/python:3.6-jessie
-      - image: buildpack-deps:trusty
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "ab:07:c6:4f:db:63:65:bf:18:11:f9:3d:7d:01:88:35"
+            - "f9:c5:28:81:a3:7b:df:2f:35:f9:47:cc:47:6c:69:3f"
       - run:
           name: install awscli
           command: sudo pip install awscli
