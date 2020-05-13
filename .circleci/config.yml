@@ -14,11 +14,9 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints:
-            ${KEY_FINGERPRINT}
       - run:
-          name: ssh loging
-          command: ssh ${USER_NAME}@${HOST_NAME}.ap-northeast-1.compute.amazonaws.com
+          name: ssh login
+          command: ssh ${USER_NAME}@${HOST_NAME}
       - run:
           name: git pull
           command: cd 'apps/andrew-tech && git pull'
