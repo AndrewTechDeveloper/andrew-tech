@@ -1,4 +1,5 @@
 #!/bin/bash
+git pull origin master
 cd frontend
 yarn build
 cd ../api
