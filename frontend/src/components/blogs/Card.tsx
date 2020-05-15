@@ -1,5 +1,6 @@
 import React from 'react'
 import { Blog } from 'store/blogs/types'
+import { History } from 'history'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -8,6 +9,7 @@ import Typography from '@material-ui/core/Typography'
 
 interface DeckCardProps {
   data: Blog[]
+  history: History
 }
 interface ImageCardProps {
   ogImage: string
@@ -34,7 +36,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({ ogImage }) => (
   </Card>
 )
 
-export const TrendDecksCard: React.FC<DeckCardProps> = ({ data }) => {
+export const TrendDecksCard: React.FC<DeckCardProps> = ({ data, history }) => {
   return (
     <div>
       <Typography gutterBottom variant="h5" component="h2">
@@ -52,7 +54,7 @@ export const TrendDecksCard: React.FC<DeckCardProps> = ({ data }) => {
               <MDBCardText>
                 {blog.description}
               </MDBCardText>
-              <MDBBtn color="primary" size="sm">
+              <MDBBtn color="primary" size="sm" onClick={() => history.push(`blogs/${blog.id}`)}>
                 read more
               </MDBBtn>
             </MDBCardBody>
@@ -63,7 +65,7 @@ export const TrendDecksCard: React.FC<DeckCardProps> = ({ data }) => {
   )
 }
 
-export const RecentDecksCard: React.FC<DeckCardProps> = ({ data }) => {
+export const RecentDecksCard: React.FC<DeckCardProps> = ({ data, history }) => {
   const latestOrderBlogs = data.sort((a,b) => {
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
   });
@@ -84,7 +86,7 @@ export const RecentDecksCard: React.FC<DeckCardProps> = ({ data }) => {
               <MDBCardText>
                 {blog.description}
               </MDBCardText>
-              <MDBBtn color="primary" size="sm">
+              <MDBBtn color="primary" size="sm" onClick={() => history.push(`blogs/${blog.id}`)}>
                 read more
               </MDBBtn>
             </MDBCardBody>
