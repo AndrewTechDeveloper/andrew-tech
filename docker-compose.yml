@@ -47,5 +47,3 @@ volumes:
     external: true
   gem_data:
   mysql_data:
-
-

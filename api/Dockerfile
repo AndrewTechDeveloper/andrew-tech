@@ -5,15 +5,8 @@ RUN apt-get update -qq && \
       libpq-dev \
       nodejs
 
-RUN apt-get update -qq && apt-get install -y nodejs wget vim
-
 RUN mkdir /app
-ENV APP_ROOT /app
-WORKDIR $APP_ROOT
-
-ADD ./api/Gemfile $APP_ROOT/Gemfile
-ADD ./api/Gemfile.lock $APP_ROOT/Gemfile.lock
+WORKDIR /app
 
 RUN gem install bundler
-RUN bundle config set path vendor/bundle
-RUN bundle install
+RUN bundle config set path 'vendor/bundle'

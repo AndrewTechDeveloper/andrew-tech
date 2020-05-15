@@ -9,52 +9,18 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 
-interface TrendListProps {
-  data: Blog[]
-  history: History
-}
-interface RecentListProps {
+interface AllListProps {
   data: Blog[]
   history: History
 }
 
-export const TrendList: React.FC<TrendListProps> = ({ data, history }) => (
+export const AllList: React.FC<AllListProps> = ({ data, history }) => (
   <>
     <Typography variant="h5" component="h2">
-      人気の記事
+      記事一覧
     </Typography>
     <List>
-      {data &&
-        data.map(blog => (
-          <div key={blog.id}>
-            <ListItem alignItems="flex-start" button onClick={() => history.push(`blogs/${blog.id}`)}>
-              <ListItemAvatar>
-                <Avatar src={blog.og_image} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={blog.title}
-                secondary={
-                  <Typography component="span" variant="caption" color="textSecondary">
-                    {blog.updated_at}
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-          </div>
-        ))}
-    </List>
-  </>
-)
-
-export const RecentList: React.FC<RecentListProps> = ({ data, history }) => (
-  <>
-    <Typography variant="h5" component="h2">
-      最新の記事
-    </Typography>
-    <List>
-      {data &&
-        data.map(blog => (
+      {data.map(blog => (
           <div key={blog.id}>
             <ListItem alignItems="flex-start" button onClick={() => history.push(`blogs/${blog.id}`)}>
               <ListItemAvatar>

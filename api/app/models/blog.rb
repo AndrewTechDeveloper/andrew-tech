@@ -3,6 +3,6 @@ class Blog < ApplicationRecord
 
   scope :search, -> (params) {
     status = params[:status] === 'all' ? ['editing', 'publish', 'hidden'] : params[:status]
-    where(status: status).limit(5)
+    where(status: status).order('RAND()')
   }
 end

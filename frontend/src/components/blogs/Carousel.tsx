@@ -25,7 +25,15 @@ export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
     }
   `
   return (
-    <MDBCarousel activeItem={1} css={item} length={3} showControls={true} showIndicators={true} className="z-depth-1">
+    <MDBCarousel
+      activeItem={1}
+      css={item}
+      length={5}
+      showControls={true}
+      showIndicators={true}
+      className="z-depth-1"
+      slide
+    >
       <MDBCarouselInner>
         {data.map((blog, index) => (
           <MDBCarouselItem type="button" itemId={index + 1} key={index + 1} onClick={() => history.push(`blogs/${blog.id}`)}>
