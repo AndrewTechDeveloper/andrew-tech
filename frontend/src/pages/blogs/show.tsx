@@ -15,43 +15,65 @@ import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Editor } from 'react-draft-wysiwyg'
+import { Blog } from 'store/blogs/types'
+import { RelatedDecksCard } from 'components/blogs/Card'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Avatar from '@material-ui/core/Avatar'
 
 interface PropsFromState {
+  id: number
   editorState: EditorState
   title: string
   description: string
   ogImage: string
   createdAt: string
+  data: Blog[]
   history: History
 }
 interface PropsFromDispatch {
   setEditorState: typeof blogsActions.setEditorState
   setId: typeof blogsActions.setId
   fetchRequest: typeof blogsActions.fetchRequest
+  setStatus: typeof blogsActions.setStatus
+  fetchAllRequest: typeof blogsActions.fetchAllRequest
 }
 type AllProps = PropsFromState & PropsFromDispatch
 
 const mapStateToProps = ({ blogs }: AppState) => ({
+  id: blogs.id,
   editorState: blogs.editorState,
   title: blogs.title,
   description: blogs.description,
   ogImage: blogs.ogImage,
-  createdAt: blogs.createdAt
+  createdAt: blogs.createdAt,
+  data: blogs.data
 })
 const mapDispatchToProps = {
   setEditorState: blogsActions.setEditorState,
   setId: blogsActions.setId,
-  fetchRequest: blogsActions.fetchRequest
+  fetchRequest: blogsActions.fetchRequest,
+  setStatus: blogsActions.setStatus,
+  fetchAllRequest: blogsActions.fetchAllRequest,
 }
 
 class BlogsShowPage extends React.Component<AllProps> {
   componentDidMount() {
+    window.scrollTo(0, 0)
     this.props.setId(this.props.history.location.pathname.split('/').pop())
     this.props.fetchRequest()
+    this.props.setStatus('publish')
+    this.props.fetchAllRequest()
+  }
+  componentDidUpdate() {
+    if(this.props.id !== Number(window.location.href.split('/').pop())){
+      window.scrollTo(0, 0)
+      this.props.setId(this.props.history.location.pathname.split('/').pop())
+      this.props.fetchRequest()
+      this.props.setStatus('publish')
+      this.props.fetchAllRequest()
+    }
   }
   render() {
     const style = {
@@ -95,6 +117,8 @@ class BlogsShowPage extends React.Component<AllProps> {
             </LineShareButton>
           </div>
           <Editor editorState={editorState} onEditorStateChange={setEditorState} readOnly toolbarHidden />
+          <Divider className="my-4" />
+          <RelatedDecksCard {...this.props} />
         </Container>
       </>
     )

@@ -5,7 +5,7 @@ import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import { CarouselTitle } from 'components/blogs/Carousel'
+import { BlogsCarousel } from 'components/blogs/Carousel'
 import { AllList } from 'components/blogs/List'
 import { TrendDecksCard, RecentDecksCard } from 'components/blogs/Card'
 import { Timeline } from 'react-twitter-widgets'
@@ -13,6 +13,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 
 interface PropsFromState {
+  id: number
   editorState: EditorState
   data: Blog[]
   history: History
@@ -25,6 +26,7 @@ interface PropsFromDispatch {
 type AllProps = PropsFromState & PropsFromDispatch
 
 const mapStateToProps = ({ blogs }: AppState) => ({
+  id: blogs.id,
   editorState: blogs.editorState,
   data: blogs.data
 })
@@ -42,7 +44,7 @@ class BlogsIndexPage extends React.Component<AllProps> {
   render() {
     return (
       <>
-        <CarouselTitle {...this.props} />
+        <BlogsCarousel {...this.props} />
         <Container maxWidth="lg" className="my-5">
           <Grid container direction="row" justify="space-between">
             <Grid item xs={12} sm={8} className="mb-2">

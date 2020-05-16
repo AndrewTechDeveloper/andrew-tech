@@ -18,7 +18,7 @@ const BlogsPage: React.FC<AllProps> = ({ match }) => (
     <Switch>
       <Route exact path={`${match.path}`} component={BlogsIndexPage} />
       <Route path={`${match.path}/new`} component={BlogsNewPage} />
-      <Route path={`${match.path}/:id`} component={BlogsShowPage} />
+      <Route path={`${match.path}/:id`} component={BlogsShowPage} key={match.path}/>
     </Switch>
   </Suspense>
 )

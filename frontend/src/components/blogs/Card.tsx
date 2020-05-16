@@ -4,10 +4,11 @@ import { History } from 'history'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardMedia from '@material-ui/core/CardMedia'
-import { MDBCard, MDBCardTitle, MDBBtn, MDBCardGroup, MDBCardImage, MDBCardText, MDBCardBody } from "mdbreact";
+import { MDBCard, MDBCardTitle, MDBBtn, MDBCardGroup, MDBCardImage, MDBCardText, MDBCardBody, MDBCardFooter } from "mdbreact";
 import Typography from '@material-ui/core/Typography'
 
 interface DeckCardProps {
+  id: number
   data: Blog[]
   history: History
 }
@@ -42,7 +43,7 @@ export const TrendDecksCard: React.FC<DeckCardProps> = ({ data, history }) => {
       <Typography gutterBottom variant="h5" component="h2">
         人気の記事
       </Typography>
-      <MDBCardGroup>
+      <MDBCardGroup deck>
         {data.slice(0, 3).map(blog => (
           <MDBCard key={blog.id}>
             <MDBCardImage src={blog.og_image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
@@ -54,10 +55,12 @@ export const TrendDecksCard: React.FC<DeckCardProps> = ({ data, history }) => {
               <MDBCardText>
                 {blog.description}
               </MDBCardText>
-              <MDBBtn color="primary" size="sm" onClick={() => history.push(`blogs/${blog.id}`)}>
-                read more
-              </MDBBtn>
             </MDBCardBody>
+            <MDBCardFooter small transparent>
+              <MDBBtn color="primary" size="sm" onClick={() => history.push(`blogs/${blog.id}`)}>
+                記事を読む
+              </MDBBtn>
+            </MDBCardFooter>
           </MDBCard>
         ))}
       </MDBCardGroup>
@@ -74,7 +77,7 @@ export const RecentDecksCard: React.FC<DeckCardProps> = ({ data, history }) => {
       <Typography gutterBottom variant="h5" component="h2">
         最近の記事
       </Typography>
-      <MDBCardGroup>
+      <MDBCardGroup deck>
         {latestOrderBlogs.slice(0, 3).map(blog => (
           <MDBCard key={blog.id}>
             <MDBCardImage src={blog.og_image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
@@ -86,12 +89,66 @@ export const RecentDecksCard: React.FC<DeckCardProps> = ({ data, history }) => {
               <MDBCardText>
                 {blog.description}
               </MDBCardText>
-              <MDBBtn color="primary" size="sm" onClick={() => history.push(`blogs/${blog.id}`)}>
-                read more
-              </MDBBtn>
             </MDBCardBody>
+            <MDBCardFooter small transparent>
+              <MDBBtn color="primary" size="sm" onClick={() => history.push(`/blogs/${blog.id}`)}>
+                記事を読む
+              </MDBBtn>
+            </MDBCardFooter>
           </MDBCard>
         ))}
+      </MDBCardGroup>
+    </div>
+  )
+}
+
+export const RelatedDecksCard: React.FC<DeckCardProps> = ({ id, data, history }) => {
+  const nextBlog = data.filter(blog => blog.id === id + 1)[0]
+  const prevBlog = data.filter(blog => blog.id === id - 1)[0]
+  return (
+    <div>
+      <Typography gutterBottom variant="h5" component="h2">
+        関連の記事
+      </Typography>
+      <MDBCardGroup deck>
+        {prevBlog &&
+          <MDBCard>
+            <MDBCardImage src={prevBlog.og_image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">{prevBlog.title}</MDBCardTitle>
+              <MDBCardText small muted>
+                {prevBlog.created_at}
+              </MDBCardText>
+              <MDBCardText>
+                {prevBlog.description}
+              </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter small transparent>
+              <MDBBtn color="primary" size="sm" onClick={() => history.push(`/blogs/${prevBlog.id}`)}>
+                前の記事を読む
+              </MDBBtn>
+            </MDBCardFooter>
+          </MDBCard>
+        }
+        {nextBlog &&
+          <MDBCard>
+            <MDBCardImage src={nextBlog.og_image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">{nextBlog.title}</MDBCardTitle>
+              <MDBCardText small muted>
+                {nextBlog.created_at}
+              </MDBCardText>
+              <MDBCardText>
+                {nextBlog.description}
+              </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter small transparent>
+              <MDBBtn color="primary" size="sm" onClick={() => history.push(`/blogs/${nextBlog.id}`)}>
+                次の記事を読む
+              </MDBBtn>
+            </MDBCardFooter>
+          </MDBCard>
+        }
       </MDBCardGroup>
     </div>
   )

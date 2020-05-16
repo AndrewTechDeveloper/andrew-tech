@@ -29,22 +29,26 @@ interface OgImageFormProps {
   setOgImage: typeof blogsActions.setOgImage
 }
 
-export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, setId }) => (
-  <FormControl style={{ minWidth: 120 }}>
-    <InputLabel id="blog-set">Select Blog</InputLabel>
-    <Select labelId="blog-set" id="blog-set" value={id || ''} onChange={e => setId(e.target.value)}>
-      <MenuItem value={0} key={0}>
-        新しく作成
-      </MenuItem>
-      {data &&
-        data.map(blog => (
+export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, setId }) => {
+  const latestOrderBlogs = data.sort((a,b) => {
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  });
+  return (
+    <FormControl style={{ minWidth: 120 }}>
+      <InputLabel id="blog-set">Select Blog</InputLabel>
+      <Select labelId="blog-set" id="blog-set" value={id || ''} onChange={e => setId(e.target.value)}>
+        <MenuItem value={0} key={0}>
+          新しく作成
+        </MenuItem>
+        {latestOrderBlogs.map(blog => (
           <MenuItem value={blog.id} key={blog.id}>
             {blog.title}
           </MenuItem>
         ))}
-    </Select>
-  </FormControl>
-)
+      </Select>
+    </FormControl>
+  )
+}
 export const StatusSelect: React.FC<StatusSelectProps> = ({ status, setStatus }) => {
   const options = [{ status: 'editing' }, { status: 'publish' }, { status: 'hidden' }]
   return (

@@ -4,21 +4,25 @@ import { History } from 'history'
 import { Blog } from 'store/blogs/types'
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask } from 'mdbreact'
 
-interface CarouselProps {
+interface BlogsCarouselProps {
+  data: Blog[]
+  history: History
+}
+interface RelatedBlogsCarouselProps {
   data: Blog[]
   history: History
 }
 
-export const CarouselTitle: React.FC<CarouselProps> = ({ data, history }) => {
+export const BlogsCarousel: React.FC<BlogsCarouselProps> = ({ data, history }) => {
   /** @jsx jsx */
   const item = css`
-    height: 60vh;
+    height: 68vh;
     @media (max-width: 960px) {
       height: 40vh;
     }
   `
   const image = css`
-    min-height: 60vh;
+    min-height: 68vh;
     object-fit: cover;
     @media (max-width: 960px) {
       min-height: 40vh;
