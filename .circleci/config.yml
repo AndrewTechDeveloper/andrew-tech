@@ -29,7 +29,7 @@ jobs:
           name: Avoid hosts unknown for ec2
           command: |
             touch ~/.ssh/config
-            echo -e "Host 52.198.226.72\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+            echo -e "Host 52.192.82.55\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
           name: ssh log_in and deploy
           command: ssh ${USER_NAME}@${HOST_NAME} './deploy.sh'
