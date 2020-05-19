@@ -1,0 +1,52 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+        - image: alpine
+    steps:
+        - checkout
+        - run:
+            name: Echo Test
+            command: echo "CircleCI Test"
+  deploy:
+    docker:
+      - image: circleci/python:3.6-jessie
+    steps:
+      - checkout
+      - add_ssh_keys
+      - run:
+          name: install awscli
+          command: sudo pip install awscli
+      - run:
+          name: authorize-security-group-ingress
+          command: |
+            IP=`curl -s ifconfig.me`
+            echo "#!/bin/bash" > ./sg.sh
+            echo "aws configure set region ap-northeast-1" >> ./sg.sh
+            echo "aws ec2 authorize-security-group-ingress --group-id sg-091f73172ab5bbe18 --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
+            bash ./sg.sh
+      - run:
+          name: Avoid hosts unknown for ec2
+          command: |
+            touch ~/.ssh/config
+            echo -e "Host ${HOST_NAME}\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run:
+          name: ssh log_in and deploy
+          command: ssh ${USER_NAME}@${HOST_NAME} './deploy.sh'
+      - run:
+          name: revoke-security-group-ingress
+          command: |
+            IP=`curl -s ifconfig.me`
+            echo "#!/bin/bash" > ./sg.sh
+            echo "aws configure set region ap-northeast-1" >> ./sg.sh
+            echo "aws ec2 revoke-security-group-ingress --group-id sg-091f73172ab5bbe18 --protocol tcp --port 22 --cidr ${IP}/32" >> ./sg.sh
+            bash ./sg.sh
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          filters:
+            branches:
+              only: master
