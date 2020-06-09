@@ -23,9 +23,9 @@ function* handleFetch() {
     const state = yield select()
     const res = yield fetchRequest(state.blogs)
     if (res.isSuccess) {
-      const content = convertFromRaw(JSON.parse(res.data.blog.content))
-      res.data.blog.content = EditorState.createWithContent(content)
-      yield put(blogsActions.fetchSuccess(res.data.blog))
+      const content = convertFromRaw(JSON.parse(res.data.body.content))
+      res.data.body.content = EditorState.createWithContent(content)
+      yield put(blogsActions.fetchSuccess(res.data.body))
     } else {
       yield put(blogsActions.setToast({ message: 'ブログの取得に失敗しました。', severity: 'error', isOpen: true }))
     }
@@ -38,7 +38,7 @@ function* handleFetchAll() {
     const state = yield select()
     const res = yield fetchAllRequest(state.blogs)
     if (res.isSuccess) {
-      yield put(blogsActions.fetchAllSuccess(res.data.blogs))
+      yield put(blogsActions.fetchAllSuccess(res.data.body))
     } else {
       yield put(blogsActions.setToast({ message: 'ブログの取得に失敗しました。', severity: 'error', isOpen: true }))
     }

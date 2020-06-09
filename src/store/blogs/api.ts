@@ -10,7 +10,7 @@ export const saveRequest = async (blogs: BlogsState) => {
     const res = await axios.post(`${API_ENDPOINT}/blogs`, {
       id: blogs.id || '',
       title: blogs.title,
-      og_image: blogs.ogImage,
+      image: blogs.image,
       description: blogs.description,
       content: JSON.stringify(content),
       status: blogs.status
@@ -23,7 +23,11 @@ export const saveRequest = async (blogs: BlogsState) => {
 
 export const fetchRequest = async (blogs: BlogsState) => {
   try {
-    const res = await axios.get(`${API_ENDPOINT}/blogs/${blogs.id}`)
+    const res = await axios.get(`${API_ENDPOINT}/blogs/${blogs.id}`, {
+      params: {
+        id: blogs.id
+      }
+    })
     return { data: res.data, isSuccess: true }
   } catch (error) {
     return { data: null, isSuccess: false }
@@ -34,9 +38,11 @@ export const fetchAllRequest = async (blogs: BlogsState) => {
   try {
     const res = await axios.get(`${API_ENDPOINT}/blogs`, {
       params: {
+        id: '',
         status: blogs.status || null
       }
     })
+    console.log(res.data)
     return { data: res.data, isSuccess: true }
   } catch (error) {
     return { data: null, isSuccess: false }

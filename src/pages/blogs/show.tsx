@@ -27,7 +27,7 @@ interface PropsFromState {
   editorState: EditorState
   title: string
   description: string
-  ogImage: string
+  image: string
   createdAt: string
   data: Blog[]
   history: History
@@ -46,7 +46,7 @@ const mapStateToProps = ({ blogs }: AppState) => ({
   editorState: blogs.editorState,
   title: blogs.title,
   description: blogs.description,
-  ogImage: blogs.ogImage,
+  image: blogs.image,
   createdAt: blogs.createdAt,
   data: blogs.data
 })
@@ -83,12 +83,12 @@ class BlogsShowPage extends React.Component<AllProps> {
       }
     }
     const shareUrl = window.location.origin + this.props.history.location.pathname
-    const { editorState, title, description, ogImage, createdAt, setEditorState } = this.props
+    const { editorState, title, description, image, createdAt, setEditorState } = this.props
     return (
       <>
         <Container maxWidth="md" className="my-5 blog min-vh-100">
           <div className="d-flex align-items-center">
-            <Avatar alt="og image" src={ogImage} className="mr-4" style={style.image} />
+            <Avatar alt="og image" src={image} className="mr-4" style={style.image} />
             <div>
               <Typography variant="h5" component="h1">
                 {title}

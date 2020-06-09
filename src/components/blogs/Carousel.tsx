@@ -42,7 +42,7 @@ export const BlogsCarousel: React.FC<BlogsCarouselProps> = ({ data, history }) =
         {data.map((blog, index) => (
           <MDBCarouselItem type="button" itemId={index + 1} key={index + 1} onClick={() => history.push(`blogs/${blog.id}`)}>
             <MDBView>
-              <img alt="carousel" className="d-block m-auto" src={blog.og_image} css={image} />
+              <img alt="carousel" className="d-block m-auto" src={blog.image} css={image} />
               <MDBMask overlay="black-strong" />
             </MDBView>
             <MDBCarouselCaption>

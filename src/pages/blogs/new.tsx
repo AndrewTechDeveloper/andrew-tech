@@ -3,7 +3,7 @@ import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import { BlogsSelect, OgImageForm, TitleForm, DescriptionForm, StatusSelect } from 'components/blogs/Form'
+import { BlogsSelect, ImageForm, TitleForm, DescriptionForm, StatusSelect } from 'components/blogs/Form'
 import { FetchButton, SaveButton } from 'components/blogs/Button'
 import { Editor } from 'react-draft-wysiwyg'
 import { EditorState } from 'draft-js'
@@ -20,7 +20,7 @@ interface PropsFromState {
   id: number
   title: string
   description: string
-  ogImage: string
+  image: string
   status: string
   data: Blog[]
   editorState: EditorState
@@ -31,7 +31,7 @@ interface PropsFromDispatch {
   setEditorState: typeof blogsActions.setEditorState
   setTitle: typeof blogsActions.setTitle
   setDescription: typeof blogsActions.setDescription
-  setOgImage: typeof blogsActions.setOgImage
+  setImage: typeof blogsActions.setImage
   setId: typeof blogsActions.setId
   setStatus: typeof blogsActions.setStatus
   fetchRequest: typeof blogsActions.fetchRequest
@@ -42,7 +42,7 @@ type AllProps = PropsFromState & PropsFromDispatch
 
 const mapStateToProps = ({ blogs }: AppState) => ({
   id: blogs.id,
-  ogImage: blogs.ogImage,
+  image: blogs.image,
   title: blogs.title,
   description: blogs.description,
   status: blogs.status,
@@ -55,7 +55,7 @@ const mapDispatchToProps = {
   setEditorState: blogsActions.setEditorState,
   setTitle: blogsActions.setTitle,
   setDescription: blogsActions.setDescription,
-  setOgImage: blogsActions.setOgImage,
+  setImage: blogsActions.setImage,
   setId: blogsActions.setId,
   setStatus: blogsActions.setStatus,
   fetchRequest: blogsActions.fetchRequest,
@@ -106,7 +106,7 @@ class BlogsNewPage extends React.Component<AllProps> {
                 <DescriptionForm {...this.props} />
               </Grid>
               <Grid item xs>
-                <OgImageForm {...this.props} />
+                <ImageForm {...this.props} />
               </Grid>
               <Grid item xs>
                 <StatusSelect {...this.props} />

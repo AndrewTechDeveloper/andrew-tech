@@ -5,7 +5,7 @@ import { EditorState } from 'draft-js'
 export const initialState: BlogsState = {
   id: 0,
   title: '',
-  ogImage: '',
+  image: '',
   description: '',
   editorState: EditorState.createEmpty(),
   createdAt: '',
@@ -31,7 +31,7 @@ const reducer: Reducer<BlogsState> = (state = initialState, action) => {
         editorState: action.payload.content,
         title: action.payload.title,
         description: action.payload.description,
-        ogImage: action.payload.og_image,
+        image: action.payload.image,
         status: action.payload.status,
         createdAt: action.payload.created_at,
         updatedAt: action.payload.updated_at,
@@ -50,8 +50,8 @@ const reducer: Reducer<BlogsState> = (state = initialState, action) => {
     case BlogsActionTypes.SET_DESCRIPTION: {
       return { ...state, description: action.payload }
     }
-    case BlogsActionTypes.SET_OG_IMAGE: {
-      return { ...state, ogImage: action.payload }
+    case BlogsActionTypes.SET_IMAGE: {
+      return { ...state, image: action.payload }
     }
     case BlogsActionTypes.SET_STATUS: {
       return { ...state, status: action.payload }

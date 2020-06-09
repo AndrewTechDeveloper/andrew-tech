@@ -13,7 +13,7 @@ interface DeckCardProps {
   history: History
 }
 interface ImageCardProps {
-  ogImage: string
+  image: string
 }
 const style = {
   media: {
@@ -29,10 +29,10 @@ const style = {
   }
 }
 
-export const ImageCard: React.FC<ImageCardProps> = ({ ogImage }) => (
+export const ImageCard: React.FC<ImageCardProps> = ({ image }) => (
   <Card>
     <CardActionArea>
-      <CardMedia image={ogImage || 'image'} title="blog image" style={style.media} />
+      <CardMedia image={image || 'image'} title="blog image" style={style.media} />
     </CardActionArea>
   </Card>
 )
@@ -46,7 +46,7 @@ export const TrendDecksCard: React.FC<DeckCardProps> = ({ data, history }) => {
       <MDBCardGroup deck>
         {data.slice(0, 3).map(blog => (
           <MDBCard key={blog.id}>
-            <MDBCardImage src={blog.og_image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
+            <MDBCardImage src={blog.image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
             <MDBCardBody>
               <MDBCardTitle tag="h5">{blog.title}</MDBCardTitle>
               <MDBCardText small muted>
@@ -80,7 +80,7 @@ export const RecentDecksCard: React.FC<DeckCardProps> = ({ data, history }) => {
       <MDBCardGroup deck>
         {latestOrderBlogs.slice(0, 3).map(blog => (
           <MDBCard key={blog.id}>
-            <MDBCardImage src={blog.og_image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
+            <MDBCardImage src={blog.image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
             <MDBCardBody>
               <MDBCardTitle tag="h5">{blog.title}</MDBCardTitle>
               <MDBCardText small muted>
@@ -113,7 +113,7 @@ export const RelatedDecksCard: React.FC<DeckCardProps> = ({ id, data, history })
       <MDBCardGroup deck>
         {prevBlog &&
           <MDBCard>
-            <MDBCardImage src={prevBlog.og_image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
+            <MDBCardImage src={prevBlog.image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
             <MDBCardBody>
               <MDBCardTitle tag="h5">{prevBlog.title}</MDBCardTitle>
               <MDBCardText small muted>
@@ -132,7 +132,7 @@ export const RelatedDecksCard: React.FC<DeckCardProps> = ({ id, data, history })
         }
         {nextBlog &&
           <MDBCard>
-            <MDBCardImage src={nextBlog.og_image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
+            <MDBCardImage src={nextBlog.image} alt="MDBCard image cap" top hover waves overlay="white-slight" style={style.deck.image} />
             <MDBCardBody>
               <MDBCardTitle tag="h5">{nextBlog.title}</MDBCardTitle>
               <MDBCardText small muted>

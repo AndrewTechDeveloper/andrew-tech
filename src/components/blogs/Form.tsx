@@ -24,9 +24,9 @@ interface DescriptionFormProps {
   description: string
   setDescription: typeof blogsActions.setDescription
 }
-interface OgImageFormProps {
-  ogImage: string
-  setOgImage: typeof blogsActions.setOgImage
+interface ImageFormProps {
+  image: string
+  setImage: typeof blogsActions.setImage
 }
 
 export const BlogsSelect: React.FC<BlogsSelectProps> = ({ id, data, setId }) => {
@@ -70,6 +70,6 @@ export const TitleForm: React.FC<TitleFormProps> = ({ title, setTitle }) => (
 export const DescriptionForm: React.FC<DescriptionFormProps> = ({ description, setDescription }) => (
   <TextField id="description-form" label="description" value={description} onChange={e => setDescription(e.target.value)} />
 )
-export const OgImageForm: React.FC<OgImageFormProps> = ({ ogImage, setOgImage }) => (
-  <TextField id="og_image_form" label="og_image url" value={ogImage} onChange={e => setOgImage(e.target.value)} />
+export const ImageForm: React.FC<ImageFormProps> = ({ image, setImage }) => (
+  <TextField id="image_form" label="image url" value={image} onChange={e => setImage(e.target.value)} />
 )

@@ -7,7 +7,7 @@ export const setStatus = (status: number | unknown) => action(BlogsActionTypes.S
 export const setEditorState = (editorState: EditorState) => action(BlogsActionTypes.SET_EDITOR_STATE, editorState)
 export const setTitle = (title: string) => action(BlogsActionTypes.SET_TITLE, title)
 export const setDescription = (description: string) => action(BlogsActionTypes.SET_DESCRIPTION, description)
-export const setOgImage = (ogImage: string) => action(BlogsActionTypes.SET_OG_IMAGE, ogImage)
+export const setImage = (image: string) => action(BlogsActionTypes.SET_IMAGE, image)
 export const setToast = (toast: { message?: string; severity?: 'success' | 'info' | 'warning' | 'error' | undefined; isOpen?: boolean }) =>
   action(BlogsActionTypes.SET_TOAST, toast)
 

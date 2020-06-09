@@ -10,7 +10,7 @@ export enum BlogsActionTypes {
   SET_EDITOR_STATE = '@@blogs/SET_EDITOR_STATE',
   SET_TITLE = '@@blogs/SET_TITLE',
   SET_DESCRIPTION = '@@blogs/SET_DESCRIPTION',
-  SET_OG_IMAGE = '@@blogs/SET_OG_IMAGE',
+  SET_IMAGE = '@@blogs/SET_IMAGE',
   SET_STATUS = '@@blogs/SET_STATUS',
   SET_ID = '@@blogs/SET_ID'
 }
@@ -18,7 +18,7 @@ export enum BlogsActionTypes {
 export interface Blog extends ApiResponse {
   id: number
   title: string
-  og_image: string
+  image: string
   description: string
   content: string
   status: string
@@ -32,7 +32,7 @@ export interface BlogsState {
   readonly id: number
   readonly editorState: EditorState
   readonly style: string
-  readonly ogImage: string
+  readonly image: string
   readonly title: string
   readonly description: string
   readonly status: string

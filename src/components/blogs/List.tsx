@@ -24,7 +24,7 @@ export const AllList: React.FC<AllListProps> = ({ data, history }) => (
           <div key={blog.id}>
             <ListItem alignItems="flex-start" button onClick={() => history.push(`blogs/${blog.id}`)}>
               <ListItemAvatar>
-                <Avatar src={blog.og_image} />
+                <Avatar src={blog.image} />
               </ListItemAvatar>
               <ListItemText
                 primary={blog.title}
