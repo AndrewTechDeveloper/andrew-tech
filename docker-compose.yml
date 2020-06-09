@@ -1,14 +1,14 @@
 version: '3'
 services:
-  front:
+  app:
     build:
       context: .
       dockerfile: ./Dockerfile
     volumes:
-      - frontend-sync:/app:nocopy
+      - app-sync:/app:nocopy
     environment:
       - CHOKIDAR_USEPOLLING=true
-    command: sh -c "yarn start"
+    command: yarn start
     tty: true
     stdin_open: true
     ports:
