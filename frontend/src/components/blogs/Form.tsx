@@ -73,3 +73,12 @@ export const DescriptionForm: React.FC<DescriptionFormProps> = ({ description, s
 export const OgImageForm: React.FC<OgImageFormProps> = ({ ogImage, setOgImage }) => (
   <TextField id="og_image_form" label="og_image url" value={ogImage} onChange={e => setOgImage(e.target.value)} />
 )
+export const MemoForm: React.FC = () => (
+  <TextField
+    id="standard-textarea"
+    label="memo"
+    placeholder="Placeholder"
+    multiline
+    style={{ position: 'fixed', right: 40, top: 200 }}
+  />
+)

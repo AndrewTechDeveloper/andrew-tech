@@ -1,15 +1,28 @@
 # Ignore bundler config.
-.env
-node_modules
-package-lock.json
+/api/.bundle
+/api/vendor/bundle
+/frontend/node_modules
+/frontend/package-lock.json
+/frontend/.next
+/frontend/.env
 
 # Ignore all logfiles and tempfiles.
+/api/log/*
+/api/tmp/*
+!/api/log/.keep
+!/api/tmp/.keep
 *.log
 *.keep
 
 # Ignore uploaded files in development.
 .DS_Store
+/storage/*
+!/api/storage/.keep
+.byebug_history
 
 # Ignore master key for decrypting credentials and more.
+/api/config/master.key
+/api/.env
+/frontend/.env
+/mysql/*
 /.docker-sync/*
-build

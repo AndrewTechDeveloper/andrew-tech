@@ -3,7 +3,7 @@ import { AppState } from 'store'
 import { connect } from 'react-redux'
 import * as blogsActions from 'store/blogs/actions'
 import { Blog } from 'store/blogs/types'
-import { BlogsSelect, OgImageForm, TitleForm, DescriptionForm, StatusSelect } from 'components/blogs/Form'
+import { BlogsSelect, OgImageForm, TitleForm, DescriptionForm, StatusSelect, MemoForm } from 'components/blogs/Form'
 import { FetchButton, SaveButton } from 'components/blogs/Button'
 import { Editor } from 'react-draft-wysiwyg'
 import { EditorState } from 'draft-js'
@@ -117,6 +117,7 @@ class BlogsNewPage extends React.Component<AllProps> {
             </Grid>
           </Card>
           <Editor editorState={editorState} onEditorStateChange={setEditorState} />
+          <MemoForm />
         </Container>
       </>
     )

@@ -7,7 +7,7 @@ const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || ''
 export const saveRequest = async (blogs: BlogsState) => {
   try {
     const content = convertToRaw(blogs.editorState.getCurrentContent())
-    const res = await axios.post(`${API_ENDPOINT}/blogs`, {
+    const res = await axios.post(`${API_ENDPOINT}/api/blogs`, {
       id: blogs.id || '',
       title: blogs.title,
       og_image: blogs.ogImage,
@@ -23,7 +23,7 @@ export const saveRequest = async (blogs: BlogsState) => {
 
 export const fetchRequest = async (blogs: BlogsState) => {
   try {
-    const res = await axios.get(`${API_ENDPOINT}/blogs/${blogs.id}`)
+    const res = await axios.get(`${API_ENDPOINT}/api/blogs/${blogs.id}`)
     return { data: res.data, isSuccess: true }
   } catch (error) {
     return { data: null, isSuccess: false }
@@ -32,7 +32,7 @@ export const fetchRequest = async (blogs: BlogsState) => {
 
 export const fetchAllRequest = async (blogs: BlogsState) => {
   try {
-    const res = await axios.get(`${API_ENDPOINT}/blogs`, {
+    const res = await axios.get(`${API_ENDPOINT}/api/blogs`, {
       params: {
         status: blogs.status || null
       }
