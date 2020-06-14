@@ -30,7 +30,21 @@ export const PortfolioList = () => {
       image: 'https://andrew-tech.s3-ap-northeast-1.amazonaws.com/logo/andrew-tech-icon.png',
       description: '技術発信ブログ(当サイト)。興味のある技術・言語について発信します。',
       skills: 'Frontend: Draft.js + React + Redux + Typescript, Backend: Ruby on Rails, Infrastructure: AWS(EC2 + RDS)'
-    }
+    },
+    {
+      name: 'salesman',
+      period: '2020/05',
+      image: 'https://andrew-tech.s3-ap-northeast-1.amazonaws.com/logo/salesman.png',
+      description: '遺伝的アルゴリズムを用いてセールスマン問題に取り組んだ',
+      skills: 'Python, Pygame'
+    },
+    {
+      name: 'twitter-weathering-emotion',
+      period: '2020/06',
+      image: 'https://andrew-tech.s3-ap-northeast-1.amazonaws.com/logo/kokoro.png',
+      description: 'Janome + Twitter APIで人々のツイートを可視化し、定時に呟くTwitter botを作成した',
+      skills: 'Python, Janome, Wordcloud, Heroku, TwitterAPI'
+    },
   ]
   return (
     <List>
@@ -77,25 +91,25 @@ export const SkillSetList = () => {
       title: 'Frontend',
       color: 'blue',
       logoLetter: 'F',
-      skills: 'React, Redux, Vue, Vuex, Typescript, Pygame, Draft.js, Webpack, Gulp, jQuery, HTML, SCSS'
+      skills: 'React, Redux, Vue, Vuex, Nuxt, Typescript, Pygame, Draft.js, Webpack, Gulp, jQuery, HTML, SCSS'
     },
     {
       title: 'Backend',
       color: 'green',
       logoLetter: 'B',
-      skills: 'Ruby on Rails, Python, Nginx, Apache, TensorFlow'
+      skills: 'Ruby on Rails, Python, Nginx, Apache, TensorFlow, Janome'
     },
     {
       title: 'Infrastructure',
       color: 'orange',
       logoLetter: 'I',
-      skills: 'EC2, RDS, SES, Route53, CloudFront, S3, ACM, MySQL, SequelPro, Bigquery, TablePlus, Heroku'
+      skills: 'EC2, RDS, SES, Route53, CloudFront, S3, ACM, API Gateway, Lambda, DynamoDB, MySQL, SequelPro, Bigquery, TablePlus, Heroku'
     },
     {
       title: 'DevOps',
       color: 'pink',
       logoLetter: 'D',
-      skills: 'Docker, Selenium, Github, Git Flow, Mackerel'
+      skills: 'Docker, Circle CI, Jest, Selenium, Github, Git Flow, Mackerel'
     },
     {
       title: 'Others',
